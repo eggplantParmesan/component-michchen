@@ -1,17 +1,26 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
-  "engines": {
-    "node": ">=6.13.0"
-  },
+  "name": "hrsf102-front-end-capstone",
+  "version": "1.0.0",
+  "description": "> Project description",
+  "main": ".eslintrc.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
-  "dependencies": {
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/8-bit-beauty/component-michchen.git"
   },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/8-bit-beauty/component-michchen/issues"
+  },
+  "homepage": "https://github.com/8-bit-beauty/component-michchen#readme",
+  "dependencies": {},
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "express": "^4.16.3",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.4"
   }
 }
