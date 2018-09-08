@@ -18,16 +18,14 @@ const randImArr = function (){
   return "[" + cats.data.sort(()=>0.5-Math.random()).slice(0,num).map(x=>`'${x}'`).join(',') + "]";
 }
 
-const createQuery = function(howMany){
+const createProductQuery = function(howMany){
   var price = parseInt(faker.commerce.price());
   var percent1 = Math.round(Math.random()*20+80);
   var percent2 = Math.round(Math.random()*50+50);
   var list_price = price * (percent1/100);
   var used_price = list_price * (percent2/100);
 
-  var queryConcat = `DELETE FROM products;\
-ALTER TABLE products AUTO_INCREMENT=1;\
-INSERT INTO products (product_name,product_url,seller_name,seller_url,ratings_average,ratings_count,questions_count,category_name,category_url,price,price_list_price,free_returns,free_shipping,sold_by_name,sold_by_url,available,description,used_count,used_price) VALUES `;
+  var queryConcat = `INSERT INTO products (product_name,product_url,seller_name,seller_url,ratings_average,ratings_count,questions_count,category_name,category_url,price,price_list_price,free_returns,free_shipping,sold_by_name,sold_by_url,available,description,used_count,used_price) VALUES `;
 
   for (var i = 0; i < howMany; i++) {
     if (i > 0) {
@@ -59,55 +57,45 @@ INSERT INTO products (product_name,product_url,seller_name,seller_url,ratings_av
 };
 
 function createImageQuery(howMany){
-  let queryConcat = `DELETE FROM images;\
-ALTER TABLE images AUTO_INCREMENT=1;\
-INSERT INTO images (product_id,var_key,var_value,image_url) VALUES `;
-
+  let queryConcat = `INSERT INTO images (product_id,var_key,var_value,image_url) VALUES `;
   var imindex = 0;
 
-  for (var i = 1; i <= howMany; i++) {
-    var key = Math.round(Math.random()*2);
-    let varInfo = variations[key - 1];
+  // for each product_id, add a new query to the queryConcat string
+  for (var productID = 1; productID <= howMany; productID++) {
+    let categoryObj = variations[Math.round(Math.random())];
 
-    if (i > 1) {
-      queryConcat += ",";
-    }
+    // loop through a few items at a random section of the array
+    let randStart = Math.round(Math.random() * (categoryObj.data.length / 2));
+    let maxItems = 5;
+    let randEnd = randStart + Math.ceil(Math.random() * maxItems);
 
-    // cycle around when index passes the end of the array of image urls
-
-// same: product_id, var_key
-// new: image_url, var_info-
-    let jStart = Math.round(Math.random() * (varInfo.data / 2));
-    console.log(jStart);
-    for (var j = jStart; j < jStart + (Math.random() * 3 + 1); j++) {
-
+    for (var j = randStart; j < randEnd; j++) {
+      if (imindex > 0) {
+        queryConcat += `,`;
+      }
       queryConcat += `(\
-        "${/*product_id*/ i}",\
-        "${/*var_key*/ varInfo ? varInfo.category : ''}",\
-        "${/*var_value*/ varInfo ? varInfo.data[j] : ''}"\
-        "${/*image_url*/ cats.data[imindex % cats.data.length]}",\
-      )`;
+"${/*product_id*/ productID}",\
+"${/*var_key*/ categoryObj ? categoryObj.category : ''}",\
+"${/*var_value*/ categoryObj ? categoryObj.data[j] : ''}",\
+"${/*image_url*/ cats.data[imindex % cats.data.length]}"\
+)`;
+      imindex++;
     }
-    imindex++;
   }
-
-  // "${/*var_value*/ varInfo ? varInfo.data.splice(Math.random() * (varInfo.data.length/2), Math.random()*4+2).map(x=>`'${x}'`).join(','): ''}"\
 
   return queryConcat + ";";
 }
 
+var num = 100;
 
-// console.log(createImageQuery(2));
-
-var num = 2;
-//
-// let product_query = createQuery(num); // console.log(product_query);
-// db.insertRow(product_query, (err, res) => {
-//   console.log(`INSERTED ${num} ROWS`);
-// });
-//
-let image_query = createImageQuery(num);
-console.log(image_query);
-// db.insertRow(image_query, (err, res) => {
-//   console.log(`INSERTED ${num} ROWS`);
-// });
+db.resetTable("products", () => {
+  db.insertRow(createProductQuery(num), (res, con) => {
+    console.log(`INSERTED ${num} ROWS into products`);
+    db.resetTable("images", () => {
+      db.insertRow(createImageQuery(num), (res, con) => {
+        console.log(`INSERTED ${num} ROWS into images`);
+        con.end()
+      });
+    });
+  });
+});

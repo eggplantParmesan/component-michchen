@@ -2,24 +2,37 @@ const mysql = require("mysql");
 
 var con = mysql.createConnection({
   url: "localhost",
+  // port: "9001",
   user: "root",
   password: "",
   database: "amazon"
 });
 
+// console.log(con);
+
 con.connect(err => {
   if (err) {
     console.log("db.js > connection error");
+    console.log(err);
   }
 });
+
+const resetTable = function(table, cb){
+  con.query(`DELETE FROM ${table};`, (err,res) => {
+    console.log(`DELETED TABLE ${table}`);
+    con.query(`ALTER TABLE ${table} AUTO_INCREMENT=1;`, (err,res) => {
+      console.log(`RESET AUTO_INCREMENT for ${table}`);
+      cb();
+    })
+  })
+}
 
 const insertRow = function(query, cb){
   con.query(query, function(err, res) {
       if(err){
         console.log(err);
       } else {
-        // console.log(res);
-        cb(res);
+        cb(res, con);
       }
     }
   );
@@ -48,3 +61,4 @@ const getVariations = function(id, cb) {
 module.exports.getProduct = getProduct;
 module.exports.getVariations = getVariations;
 module.exports.insertRow = insertRow;
+module.exports.resetTable = resetTable;
