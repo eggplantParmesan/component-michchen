@@ -19,49 +19,16 @@ CREATE TABLE products(
   free_shipping BOOLEAN,
   sold_by_name VARCHAR(150),
   sold_by_url VARCHAR(255),
-  available BOOLEAN,
+  available INT,
   description TEXT,
   used_count INT,
-  used_price INT,
-  variations TEXT
+  used_price INT
 );
 
-INSERT INTO products (
-  product_name,
-  product_url,
-  seller_name,
-  seller_url,
-  ratings_average,
-  ratings_count,
-  questions_count,
-  category_name,
-  category_url,
-  price,
-  price_list_price,
-  free_returns,
-  free_shipping,
-  sold_by_name,
-  sold_by_url,
-  available,
-  description,
-  used_count,
-  used_price,
-  variations
-)
-
-
-CREATE TABLE variations (
+CREATE TABLE images (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   product_id INT,
   image_url VARCHAR(255),
   var_key VARCHAR(150),
-  var_value VARCHAR(150),
-  is_priority BOOLEAN
+  var_value VARCHAR(150)
 );
-
--- (1, "https://images-na.ssl-images-amazon.com/images/I/619S7EI24dL._SL1000_.jpg", "color", "White Gold", true),
--- (1, "https://images-na.ssl-images-amazon.com/images/I/51fMx0tuJRL._SL1000_.jpg", "color", "White Gold", false),
--- (1, "https://images-na.ssl-images-amazon.com/images/I/516slUhAghL._SL1000_.jpg", "color", "White Gold", false),
--- (1, "https://images-na.ssl-images-amazon.com/images/I/51l-vUuha7L._SL1000_.jpg", "color", "White Gold", false),
--- (1, "https://images-na.ssl-images-amazon.com/images/I/51NCI69zTHL._SL1000_.jpg", "color", "White Gold", false),
--- (1, "https://images-na.ssl-images-amazon.com/images/I/41wUtbB5ZYL._SL1000_.jpg", "color", "White Gold", false),

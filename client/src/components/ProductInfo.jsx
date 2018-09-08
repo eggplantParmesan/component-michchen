@@ -44,7 +44,7 @@ const ProductInfo = props => (
     <ul>
       {props.data.description
         ? props.data.description
-            .split(/\n/g)
+            .split(/\\n/g)
             .map((x, i) => <DescBullet text={x} key={i} />)
         : "no description"}
     </ul>

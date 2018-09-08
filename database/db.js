@@ -13,12 +13,12 @@ con.connect(err => {
   }
 });
 
-const insertProduct = function(query){
+const insertRow = function(query, cb){
   con.query(query, function(err, res) {
       if(err){
         console.log(err);
       } else {
-        console.log(res);
+        // console.log(res);
         cb(res);
       }
     }
@@ -47,4 +47,4 @@ const getVariations = function(id, cb) {
 // module.exports.getAllProducts = getAllProducts;
 module.exports.getProduct = getProduct;
 module.exports.getVariations = getVariations;
-module.exports.insertProduct = insertProduct;
+module.exports.insertRow = insertRow;
