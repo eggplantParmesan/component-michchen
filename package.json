@@ -5,7 +5,8 @@
   "main": ".eslintrc.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "react-dev": "webpack -d --watch"
   },
   "repository": {
     "type": "git",
@@ -19,8 +20,55 @@
   "homepage": "https://github.com/8-bit-beauty/component-michchen#readme",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "express": "^4.16.3",
+    "faker": "^4.1.0",
+    "jquery": "^3.3.1",
     "mysql": "^2.16.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "request": "^2.88.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "module": {
+    "rules": [
+      {
+        "test": "ksldjfldsjflskjlfjsldkjfl",
+        "loader": [
+          "style-loader",
+          {
+            "loader": "css-loader",
+            "options": {
+              "modules": true
+            }
+          }
+        ]
+      },
+      {
+        "test": "sldfjl;sk;fksdl;",
+        "loader": "babel-loader",
+        "exclude": "/node_modules/",
+        "query": {
+          "cacheDirectory": true,
+          "presets": [
+            "@babel/preset-react",
+            "@babel/preset-env"
+          ]
+        }
+      }
+    ]
   }
 }
