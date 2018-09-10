@@ -18,7 +18,7 @@ class App extends React.Component {
       prodNum = prodNum || 1;
 
       var reqProduct = $.get({
-        url: "http://localhost:9001/get",
+        url: `http://localhost:${process.env.PORT || 9001}/get`,
         context: this,
         data: { id: prodNum }
       });

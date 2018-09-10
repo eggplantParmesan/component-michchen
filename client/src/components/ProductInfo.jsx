@@ -3,56 +3,61 @@ import DescBullet from "./DescBullet.jsx";
 import Selector from "./Selector.jsx";
 
 const addComma = function(num) {
+  // add a comma every three places e.g. 1,000
+  // mostly used for review counts
   return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-const ProductInfo = props => (
-  <div style={props.styles}>
-    <div id="title_block" style={props.styles.title_block}>
-      <a id="seller_name" href={props.data.seller_url}>{props.data.seller_name}</a>
-      <h3 id="product_name" style={props.styles.title}>{props.data.product_name}</h3>
+const ProductInfo = props => {
+  const {title_block, title, ratings_stars} = props.styles;
+  const {seller_url, seller_name, product_name, ratings_average, ratings_count, num_questions, list_price, price, images, free_shipping, sale, description} = props.data;
 
-      <div id="ratings_stars" style={props.styles.ratings_stars}>stars</div>
-      <a id="ratings_average" href="#">{props.data.ratings_average
-        ? Math.round(props.data.ratings_average*10)/10 + " stars"
-        : ""}</a>
-      <a id="ratings_count" href="#">{props.data.ratings_count
-        ? addComma(props.data.ratings_count) + " customer reviews"
-        : ""}</a>
-      <a id="num_questions" href="#">{props.data.num_questions
-        ? addComma(props.data.num_questions) + " answered questions"
-        : ""}</a>
+  return (
+    <div style={props.styles}>
+      <div id="title_block" style={title_block}>
+        <a id="seller_name" href={seller_url}>{seller_name}</a>
+        <h3 id="product_name" style={title}>{product_name}</h3>
+
+        <div id="ratings_stars" style={ratings_stars}>stars</div>
+        <a id="ratings_average" href="#">{ratings_average
+          ? Math.round(ratings_average * 10) / 10 + " stars"
+          : ""}</a>
+        <a id="ratings_count" href="#">{ratings_count
+          ? addComma(ratings_count) + " customer reviews"
+          : ""}</a>
+        <a id="num_questions" href="#">{num_questions
+          ? addComma(num_questions) + " answered questions"
+          : ""}</a>
+      </div>
+
+      {list_price ? "List Price: $" + list_price / 1 : ""}
+      <br />
+      {price ? "Price: $" + price / 1 : ""}
+      <br />
+      {list_price && price
+        ? `You Save: $${list_price - price} (${Math.round(
+            list_price - price
+          ) / list_price}%)`
+        : ""}
+      <br />
+
+      <Selector images={props.data.images} cb={props.custCb}/>
+      <br />
+      {free_shipping === 1 ? "FREE Shipping Details" : ""}
+      <br />
+      {sale ? "ON SALE" : ""}
+      <br />
+      <ul>
+        {description
+          ? description
+              .split(/\n/g)
+              .map((x, i) => <DescBullet text={x} key={i} />)
+          : "no description"}
+      </ul>
+      <br />
+      <br />
     </div>
-
-
-    {props.data.list_price ? "List Price: $" + props.data.list_price / 1 : ""}
-    <br />
-    {props.data.price ? "Price: $" + props.data.price / 1 : ""}
-    <br />
-    {props.data.list_price && props.data.price
-      ? `You Save: $${props.data.list_price - props.data.price} (${Math.round(
-          props.data.list_price - props.data.price
-        ) / props.data.list_price}%)`
-      : ""}
-    <br />
-
-
-    <Selector images={props.data.images} cb={props.custCb}/>
-    <br />
-    {props.data.free_shipping === 1 ? "FREE Shipping Details" : ""}
-    <br />
-    {props.data.sale ? "ON SALE" : ""}
-    <br />
-    <ul>
-      {props.data.description
-        ? props.data.description
-            .split(/\n/g)
-            .map((x, i) => <DescBullet text={x} key={i} />)
-        : "no description"}
-    </ul>
-    <br />
-    <br />
-  </div>
-);
+  )
+};
 
 export default ProductInfo;

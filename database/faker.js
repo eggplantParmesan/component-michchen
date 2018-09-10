@@ -2,6 +2,7 @@ const cats = require('./cats');
 const faker = require('faker');
 const db = require('./db');
 
+// possible product variations to choose from
 const variations = [
   {
     category: "color",
@@ -9,20 +10,35 @@ const variations = [
   },
   {
     category: "size",
-    data: [1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10]
+    data: [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10]
   }
 ];
 
-const randImArr = function (){
-  let num = Math.round(Math.random()*3)+1;
-  return "[" + cats.data.sort(()=>0.5-Math.random()).slice(0,num).map(x=>`'${x}'`).join(',') + "]";
+// function randImArr: gets a randomly-sized part of the image array (imported from cats.js)
+const randImArr = function () {
+  // num = a random number between 1 and 4
+  let num = Math.round(Math.random() * 3) + 1;
+  return "[" +
+        // randomize cats
+        cats.data.sort(() => 0.5 - Math.random())
+        // get a random slice of the array
+        .slice(0, num)
+        // put each entry between single quotes
+        .map(x => `'${x}'`)
+        // join by comma
+        .join(',')
+      + "]";
 }
 
 const createProductQuery = function(howMany){
   var price = parseInt(faker.commerce.price());
-  var percent1 = Math.round(Math.random()*20+80);
-  var percent2 = Math.round(Math.random()*50+50);
+
+  // list price is between 80% to 95% of the original price
+  var percent1 = Math.round(Math.random() * 20 + 75);
   var list_price = price * (percent1/100);
+
+  // used_price is between 50% to 95% of the list price
+  var percent2 = Math.round(Math.random() * 50 + 45);
   var used_price = list_price * (percent2/100);
 
   var queryConcat = `INSERT INTO products (product_name,product_url,seller_name,seller_url,ratings_average,ratings_count,questions_count,category_name,category_url,price,price_list_price,free_returns,free_shipping,sold_by_name,sold_by_url,available,description,used_count,used_price) VALUES `;
@@ -93,11 +109,11 @@ db.resetTable("products", () => {
   db.insertRow(createProductQuery(num), (res, con) => {
     console.log(`INSERTED ${num} ROWS into products`);
 
-    // reset products table and insert rows
+    // reset images table and insert rows
     db.resetTable("images", () => {
       db.insertRow(createImageQuery(num), (res, con) => {
 
-        // success
+        // log success
         console.log(`INSERTED ${num} ROWS into images`);
         console.log('Data generation finished. Press ctrl-C to exit.');
       });
