@@ -2,22 +2,22 @@ const mysql = require("mysql");
 
 var con = mysql.createConnection({
   url: "localhost",
-  // port: "9001",
   user: "root",
   password: "",
   database: "amazon"
 });
 
-// console.log(con);
-
 con.connect(err => {
   if (err) {
     console.log("db.js > connection error");
     console.log(err);
+  } else {
+    console.log("connection success!");
   }
 });
 
-const resetTable = function(table, cb){
+// for creating fake data (faker.js)
+exports.resetTable = function(table, cb){
   con.query(`DELETE FROM ${table};`, (err,res) => {
     console.log(`DELETED TABLE ${table}`);
     con.query(`ALTER TABLE ${table} AUTO_INCREMENT=1;`, (err,res) => {
@@ -27,7 +27,7 @@ const resetTable = function(table, cb){
   })
 }
 
-const insertRow = function(query, cb){
+exports.insertRow = function(query, cb){
   con.query(query, function(err, res) {
       if(err){
         console.log(err);
@@ -38,27 +38,27 @@ const insertRow = function(query, cb){
   );
 }
 
-const getProduct = function(id, cb) {
-  con.query(`SELECT * FROM products WHERE id=${id}`, function(err, res) {
-    cb(res);
+exports.getProduct = function(id, cb) {
+  con.query(`SELECT * FROM products WHERE id=${id}`, function(err, result) {
+    let productObj = result[0];
+    con.query(`SELECT * FROM images WHERE product_id=${id}`, function(err, res) {
+      let img_arr = {};
+      for (var i = 0; i < res.length; i++) {
+        // init category object if does not exist
+        if (img_arr[res[i].var_key] === undefined){
+          img_arr[res[i].var_key] = {};
+        }
+
+        // init category object > value arr if does not exist
+        if (img_arr[res[i].var_key][res[i].var_value] === undefined){
+          img_arr[res[i].var_key][res[i].var_value] = [];
+        }
+
+        // add image url to array
+        img_arr[res[i].var_key][res[i].var_value].push(res[i].image_url);
+      }
+      productObj.images = img_arr;
+      cb(productObj)
+    });
   });
 };
-
-const getVariations = function(id, cb) {
-  con.query(
-    `SELECT product_id, image_url, var_key, var_value, is_priority FROM variations WHERE product_id=${id}`,
-    function(err, res) {
-      if(err){
-        console.log(err);
-      } else {
-        cb(res);
-      }
-    }
-  );
-};
-
-// module.exports.getAllProducts = getAllProducts;
-module.exports.getProduct = getProduct;
-module.exports.getVariations = getVariations;
-module.exports.insertRow = insertRow;
-module.exports.resetTable = resetTable;

@@ -17,7 +17,6 @@ exports.data = ["http://www.petwebsite.co.uk/media/k2/items/cache/0548677e643278
 "http://purrfectcatbreeds.com/wp-content/uploads/2016/05/male-vs-female-kittens.jpg",
 "http://www.bandofcats.com/wp-content/uploads/2014/09/jade-kitten.jpg",
 "http://cdn.playbuzz.com/cdn/6c078a0a-436a-4e0e-9e67-f1abab42e737/29ebe26c-6c0e-448d-8d13-ed698737b9d4_560_420.jpg",
-"http://nevadahumanesociety.org/wp-content/uploads/2018/01/Victor-192047-and-Mictor-19204610.jpg",
 "http://pets-wiki.com/wp-content/uploads/2018/02/1500x500-e1517572751187.jpg",
 "http://ochumanesociety.com/clients/3697/images/kittens.jpg",
 "http://fixnation.org/wordpress/wp-content/uploads/2014/03/cats-kittens_00379052.jpg",
@@ -37,5 +36,3 @@ exports.data = ["http://www.petwebsite.co.uk/media/k2/items/cache/0548677e643278
 "http://lh5.ggpht.com/_QE_t15aYSqg/SrAEty_xaZI/AAAAAAAABt0/ZVwoZACK7ho/Huff-Heri200.jpg",
 "http://www.valleycatsrescue.org/wp-content/uploads/2014/07/tom-tom1-980x460.jpg",
 "http://raisinghappykittens.com/wp-content/uploads/2015/05/kitten-growth-chart-5-day-o.jpg"]
-
-// export default cats;

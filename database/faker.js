@@ -88,13 +88,18 @@ function createImageQuery(howMany){
 
 var num = 100;
 
+// reset products table and insert rows
 db.resetTable("products", () => {
   db.insertRow(createProductQuery(num), (res, con) => {
     console.log(`INSERTED ${num} ROWS into products`);
+
+    // reset products table and insert rows
     db.resetTable("images", () => {
       db.insertRow(createImageQuery(num), (res, con) => {
+
+        // success
         console.log(`INSERTED ${num} ROWS into images`);
-        con.end()
+        console.log('Data generation finished. Press ctrl-C to exit.');
       });
     });
   });

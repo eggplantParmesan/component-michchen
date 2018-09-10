@@ -2,8 +2,12 @@ const React = require("react");
 const ReactDOM = require("react-dom");
 const $ = require("jquery");
 
+import Selector from "./components/Selector.jsx";
+import Breadcrumb from "./components/Breadcrumb.jsx";
 import Gallery from "./components/Gallery.jsx";
 import ProductInfo from "./components/ProductInfo.jsx";
+
+import styles from './style.css.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,68 +22,42 @@ class App extends React.Component {
         context: this,
         data: { id: prodNum }
       });
-      reqProduct.done(res => {
-        this.setState(res[0]);
-        window.state = this.state;
 
-        var reqVariations = $.get({
-          url: "http://localhost:9001/var",
-          context: this,
-          data: { id: prodNum }
+      reqProduct.done(res => {
+        this.setState(res, () => {
+          this.setState({
+            curSelect: Object.keys(Object.values(res.images)[0])[0]
+          })
         });
-        reqVariations.done(res => {
-          this.addImages(res);
-        });
+
+        window.state = this.state;
       });
     };
 
-    this.addImages = function(images) {
-      if (this.state.variations) {
-        console.log(this.state);
-        this.setState({ images: images });
-        window.images = this.state.images
-        let result = {};
-
-        for (var i = 0; i < images.length; i++) {
-          let cur = images[i];
-          cur.var_key = cur.var_key || 'default';
-          if (result[cur.var_key] === undefined) {
-            result[cur.var_key] = {};
-          }
-
-          cur.var_value = cur.var_value || 'default';
-          if (result[cur.var_key][cur.var_value] === undefined) {
-            result[cur.var_key][cur.var_value] = [];
-          }
-
-          if (cur.is_priority !== 1) {
-            result[cur.var_key][cur.var_value].push(cur.image_url);
-          } else {
-            result[cur.var_key][cur.var_value].unshift(cur.image_url);
-          }
-
-        }
-        window.images = result;
-        console.log(result);
-      }
-
-    };
+    this.selectOption = function(e) {
+      this.setState({
+        curSelect: e.target.value // value of the select
+      });
+    }
   }
 
   componentDidMount() {
     let id = window.location.href.match(/(\?|\&)id=(\d\d?\d?\d?\d?\d?\d?\d?)/);
     if (id) {
+      // get id from window URL
       this.getData(id[2], this);
     } else {
+      // otherwise get product of id=1
       this.getData(1, this);
     }
   }
 
   render(props) {
     return (
-      <div>
-        <Gallery />
-        <ProductInfo data={this.state} />
+      <div style={styles.main}>
+        <Breadcrumb styles={styles.breadcrumb} data={this.state}/>
+        <Gallery styles={styles.gallery} cur={this.state.curSelect} images={this.state.images}/>
+        <ProductInfo styles={styles.productInfo} data={this.state} test="my test" custCb={this.selectOption.bind(this)}/>
       </div>
     );
   }
