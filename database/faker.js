@@ -1,5 +1,10 @@
+// how to use:
+// (1) set numToGenerate
+// (2) run "node database/faker.js" in the terminal
+
 /*
 --- NOTES ---
+delete "link" columns
 prices the same in every entry??
 "price" should be less than "list price"
 Answered questions should only be in the 10s
@@ -13,12 +18,9 @@ If only one image, then don't show a dropdown
 Deal of the day countdown
 Want it tomorrow, Sept. 11? Order within 14 hrs 36 mins and choose One-Day Shipping at checkout. Details
 Convert prices back to normal, eg $5.99 = '5.99' and not '599'
-change price_list_price to price_list
 */
 
-// INSERT INTO products (id, product_name, product_url, seller_name, seller_url, ratings_average, ratings_count, questions_count, category_name, category_url, price, price_list_price, free_returns, free_shipping, sold_by_name, sold_by_url, available, description, used_count, used_price) VALUES (101, "LG G6+ - 128 GB - Unlocked (AT&T/T-Mobile/Verizon) - Black - Prime Exclusive", "#", "LG", "#", 4, 80, 86, "Cell Phones & Accessories", "#", 40999, 79999, 1, 1, "Some sketchy guy", "#", 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare augue non eleifend accumsan. \nMaecenas sit amet maximus lacus. Nullam eu placerat metus, et aliquet ex. Vivamus justo magna, tincidunt a convallis eu, semper vitae nunc. \nSed tincidunt quis purus vitae dictum. \nDonec eu ante pharetra, maximus erat sit amet, imperdiet odio. \nIn tincidunt feugiat ligula, quis tempus leo eleifend in. Pellentesque vitae lectus est.", 20, 30749);
-
-
+// INSERT INTO products (id, product_name, product_url, seller_name, seller_url, ratings_average, ratings_count, questions_count, category_name, category_url, price, price_list, free_returns, free_shipping, sold_by_name, sold_by_url, available, description, used_count, used_price) VALUES (101, "LG G6+ - 128 GB - Unlocked (AT&T/T-Mobile/Verizon) - Black - Prime Exclusive", "#", "LG", "#", 4, 80, 86, "Cell Phones & Accessories", "#", 40999, 79999, 1, 1, "Some sketchy guy", "#", 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare augue non eleifend accumsan. \nMaecenas sit amet maximus lacus. Nullam eu placerat metus, et aliquet ex. Vivamus justo magna, tincidunt a convallis eu, semper vitae nunc. \nSed tincidunt quis purus vitae dictum. \nDonec eu ante pharetra, maximus erat sit amet, imperdiet odio. \nIn tincidunt feugiat ligula, quis tempus leo eleifend in. Pellentesque vitae lectus est.", 20, 30749);
 
 // INSERT INTO images (product_id,var_key,var_value,image_url) VALUES (101, "","","https://images-na.ssl-images-amazon.com/images/I/61Rh3tVbr-L._SL1200_.jpg");
 
@@ -42,12 +44,12 @@ const variations = [
 // function randImArr: gets a randomly-sized part of the image array (sourced from from cats.js)
 const randImArr = function () {
   // num = a random number between 1 and 4, representing number of images to get
-  let num = Math.round(Math.random() * 3) + 1;
+  let howManyImages = Math.round(Math.random() * 3) + 1;
   return "[" +
         // randomize cats
         cats.data.sort(() => 0.5 - Math.random())
         // get a random slice of the array
-        .slice(0, num)
+        .slice(0, howManyImages)
         // put each entry between single quotes
         .map(x => `'${x}'`)
         // join by comma
@@ -56,17 +58,17 @@ const randImArr = function () {
 }
 
 const createProductQuery = function(howMany){
-  var price = parseInt(faker.commerce.price());
+  var listPrice = parseInt(faker.commerce.price());
 
-  // list price is between 80% to 95% of the original price
+  // price is between 80% to 95% of the list price
   var percent1 = Math.round(Math.random() * 20 + 75);
-  var list_price = price * (percent1/100);
+  var price = listPrice * (percent1 / 100);
 
-  // used_price is between 50% to 95% of the list price
+  // used_price is between 50% to 95% of the price
   var percent2 = Math.round(Math.random() * 50 + 45);
-  var used_price = list_price * (percent2/100);
+  var usedPrice = price * (percent2/100);
 
-  var queryConcat = `INSERT INTO products (product_name,product_url,seller_name,seller_url,ratings_average,ratings_count,questions_count,category_name,category_url,price,price_list_price,free_returns,free_shipping,sold_by_name,sold_by_url,available,description,used_count,used_price) VALUES `;
+  var queryConcat = `INSERT INTO products (product_name,product_url,seller_name,seller_url,ratings_average,ratings_count,questions_count,amazons_choice,category_name,category_url,price,price_list,free_returns,free_shipping,sold_by_name,sold_by_url,available,description,used_count,used_price) VALUES `;
 
   for (var i = 0; i < howMany; i++) {
     if (i > 0) {
@@ -77,21 +79,22 @@ const createProductQuery = function(howMany){
 "${/*product_url*/ "#"}",\
 "${/*seller_name*/ faker.company.companyName()}",\
 "${/*seller_url*/ "#"}",\
-"${/*ratings_average*/ Math.round(Math.random()*500)/100}",\
-"${/*ratings_count*/ Math.round(Math.random()*1000)}",\
-"${/*questions_count*/ Math.round(Math.random()*30)}",\
+"${/*ratings_average*/ Math.round(Math.random() * 50) / 10}",\
+"${/*ratings_count*/ Math.round(Math.random() * 1000)}",\
+"${/*questions_count*/ Math.round(Math.random() * 30)}",\
+"${/*amazons_choice*/ Math.round(Math.random())}",\
 "${/*category_name*/ faker.commerce.department()}",\
 "${/*category_url*/ "#"}",\
 "${/*price*/ price}",\
-"${/*price_list_price*/ list_price}",\
+"${/*price_list*/ listPrice}",\
 "${/*free_returns*/ Math.round(Math.random())}",\
 "${/*free_shipping*/ Math.round(Math.random())}",\
 "${/*sold_by_name*/ faker.company.companyName()}",\
 "${/*sold_by_url*/ "#"}",\
-"${/*available*/ Math.round(Math.random())}",\
+"${/*available*/ Math.round(Math.random() + 0.25)}",\
 "${/*description*/ faker.lorem.lines().replace(/\n/g,'\\n')}",\
-"${/*used_count*/ Math.round(Math.random()*20)}",\
-"${/*used_price*/ used_price}"\
+"${/*used_count*/ Math.round(Math.random() * 20)}",\
+"${/*used_price*/ usedPrice}"\
 )`;
   }
   return queryConcat + ";";
@@ -127,19 +130,19 @@ function createImageQuery(howMany){
   return queryConcat + ";";
 }
 
-var num = 100;
+var numToGenerate = 100;
 
 // reset products table and insert rows
 db.resetTable("products", () => {
-  db.insertRow(createProductQuery(num), (res, con) => {
-    console.log(`INSERTED ${num} ROWS into products`);
+  db.insertRow(createProductQuery(numToGenerate), (res, con) => {
+    console.log(`  INSERTED ${numToGenerate} ROWS into products`);
 
     // reset images table and insert rows
     db.resetTable("images", () => {
-      db.insertRow(createImageQuery(num), (res, con) => {
+      db.insertRow(createImageQuery(numToGenerate), (res, con) => {
 
         // log success
-        console.log(`INSERTED ${num} ROWS into images`);
+        console.log(`  INSERTED ${numToGenerate} ROWS into images`);
         console.log('Data generation finished. Press ctrl-C to exit.');
       });
     });

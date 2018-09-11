@@ -4,6 +4,8 @@ const {style_main, style_dropdown, style_category} = styles;
 
 const Selector = props => {
 
+// TODO: if there's only one image, then don't render the selector
+// TODO: image selector for colors
 
   return (
     <div className={style_main}>
@@ -15,7 +17,7 @@ const Selector = props => {
             {/* category name */}
             {x[0].trim().length > 0 ?
               <span className={style_category}>
-                {(x[0].charAt(0).toUpperCase() + x[0].substr(1))}
+                {(x[0].charAt(0).toUpperCase() + x[0].substr(1)) + ':'}
               </span>
               : ""
             }

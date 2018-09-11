@@ -8,6 +8,7 @@ var con = mysql.createConnection({
 });
 
 con.connect(err => {
+  console.log('con.connect--------------------------------')
   if (err) {
     console.log('db.js > connection error', err);
   } else {
@@ -38,7 +39,14 @@ exports.insertRow = function(query, cb){
 }
 
 exports.getProduct = function(id, cb) {
+
+  console.log('exports.getProduct');
+  console.log(`SELECT * FROM products WHERE id=${id}`);
+
   con.query(`SELECT * FROM products WHERE id=${id}`, function(err, result) {
+
+    console.log('selected sucessfully from products');
+
     let productObj = result[0];
     con.query(`SELECT * FROM images WHERE product_id=${id}`, function(err, res) {
       let img_arr = {};
@@ -56,8 +64,8 @@ exports.getProduct = function(id, cb) {
         // add image url to array
         img_arr[res[i].var_key][res[i].var_value].push(res[i].image_url);
       }
-      
-      productObj.images = img_arr;
+
+      if (productObj) {productObj.images = img_arr;}
       cb(productObj)
     });
   });

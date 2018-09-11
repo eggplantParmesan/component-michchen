@@ -4,8 +4,9 @@
 
 .style_dropdown {
   margin-top: 6px;
-  width: 70px;
+  width: 130px;
   height: 20px;
+  line-height: 20px;
   -webkit-appearance: menulist-button;
 }
 
