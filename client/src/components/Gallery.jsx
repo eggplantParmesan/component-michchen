@@ -19,7 +19,7 @@ const Gallery = props => {
         </div>
       )}
       </div>
-      : 'no images'
+      : ''
     }
     Gallery current: ({props.cur})<br/>
   </div>

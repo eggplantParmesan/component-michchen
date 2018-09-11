@@ -1,0 +1,12 @@
+.styles_main {
+  margin: 1em 0;
+}
+
+.styles_bold {
+  font-weight: 700;
+}
+
+.styles_green {
+  font-weight: 700;
+  color: green;
+}

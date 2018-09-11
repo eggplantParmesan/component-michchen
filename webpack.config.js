@@ -1,5 +1,5 @@
 module.exports = {
-  entry: __dirname + "/client/src/App.jsx",
+  entry: path.join("/client/src/App.jsx")
   module: {
     rules: [
       // 9/10 avh helped me: moved css above jsx
@@ -28,6 +28,6 @@ module.exports = {
   },
   output: {
     filename: "bundle.js",
-    path: __dirname + "/client/dist"
+    path: path.join("/client/dist")
   }
 };

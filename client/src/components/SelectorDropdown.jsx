@@ -1,8 +1,8 @@
 const React = require('react');
-import styles from '../styles/Selector.css';
+import styles from '../styles/SelectorDropdown.css';
 const {style_main, style_dropdown, style_category} = styles;
 
-const Selector = props => {
+const SelectorDropdown = props => {
 
 // TODO: if there's only one image, then don't render the selector
 // TODO: image selector for colors
@@ -41,4 +41,4 @@ const Selector = props => {
   );
 }
 
-export default Selector;
+export default SelectorDropdown;

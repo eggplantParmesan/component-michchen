@@ -2,7 +2,6 @@ const React = require("react");
 const ReactDOM = require("react-dom");
 const $ = require("jquery");
 
-import Selector from "./components/Selector.jsx";
 import Breadcrumb from "./components/Breadcrumb.jsx";
 import Gallery from "./components/Gallery.jsx";
 import ProductInfo from "./components/ProductInfo.jsx";
@@ -40,6 +39,10 @@ class App extends React.Component {
         });
       }
     }
+
+    this.selectImage = function(e) {
+      console.log('selectImage');
+    }
   }
 
   componentDidMount() {
@@ -60,7 +63,7 @@ class App extends React.Component {
       <div>
         <Breadcrumb data={this.state}/>
         <Gallery cur={this.state.curSelect} images={this.state.images}/>
-        <ProductInfo data={this.state} test="my test" custCb={this.selectOption.bind(this)}/>
+        <ProductInfo data={this.state} test="my test" dropdownCb={this.selectOption.bind(this)} imageCb={this.selectImage.bind(this)}/>
       </div>
     );
   }

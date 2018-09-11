@@ -1,23 +1,22 @@
-/*
-
-Double check id=46
-
-*/
-
 const React = require('react');
-import DescBullet from './DescBullet.jsx';
-import Selector from './Selector.jsx';
 import Rating from './Rating.jsx';
+import Countdown from './Countdown.jsx';
+import SelectorDropdown from './SelectorDropdown.jsx';
+import SelectorImage from './SelectorImage.jsx';
+import DescBullet from './DescBullet.jsx';
+
 import styles from '../styles/ProductInfo.css';
 const { style_main,
         style_title_block,
         style_product_name,
         style_seller,
         style_seller_name,
+
         style_ratings_average,
         style_ratings_count,
         style_subhed_pipe,
         style_questions_count,
+
         style_amazons_choice,
         style_amazons_choice_orange,
         style_amazons_choice_triangle,
@@ -34,6 +33,7 @@ const { style_main,
         style_sale,
         style_description,
 
+        style_compare,
         style_used,
         style_used_bold
       } = styles;
@@ -61,24 +61,21 @@ const ProductInfo = props => {
   const { amazons_choice,
   available,
   category_name,
-  category_url,
   curSelect,
   description,
   free_returns,
   free_shipping,
   id,
+  has_countdown,
   images,
   price,
   price_list,
   product_name,
-  product_url,
   questions_count,
   ratings_average,
   ratings_count,
   seller_name,
-  seller_url,
   sold_by_name,
-  sold_by_url,
   used_count,
   used_price
 } = props.data;
@@ -87,7 +84,7 @@ const ProductInfo = props => {
     <div className={style_main}>
       <div className={style_title_block}>
         <h3 className={style_product_name}>{product_name}</h3>
-        <div className={style_seller}>by <a className={style_seller_name} href={seller_url}>{seller_name}</a></div>
+        <div className={style_seller}>by <a className={style_seller_name} href="#">{seller_name}</a></div>
 
         <Rating className={style_ratings_average} rating={Math.round(ratings_average * 10) / 10}/>
 
@@ -134,16 +131,32 @@ const ProductInfo = props => {
           : <tr><td></td></tr>}
       </tbody></table>
 
+      <a href="#">Details</a>
 
       {available ?
         <div className={style_available}>In Stock.</div>
       : <div className={style_unavailable}>Out of Stock.</div>
       }
 
-      {available ?
-        <Selector images={props.data.images} cb={props.custCb}/>
-      : ''
+      {has_countdown && available ?
+        <Countdown/>
+      : ""
       }
+
+      {/* dropdown size selector */}
+      {props.data.images ?
+        props.data.images.size ?
+          <SelectorDropdown images={props.data.images} cb={props.dropdownCb}/>
+        : ""
+      : ""}
+
+      {/* image color selector */}
+      {props.data.images ?
+        props.data.images.color ?
+          <SelectorImage images={props.data.images} cb={props.imageCb}/>
+        : ""
+      : ""}
+
 
       {/* {free_shipping == 1 ?
         <div className={style_free_shipping}>FREE Shipping <a href="#">Details</a></div>
@@ -158,8 +171,10 @@ const ProductInfo = props => {
           ? description
               .split(/\n/g)
               .map((x, i) => <DescBullet text={x} key={i} />)
-          : 'no description'}
+          : ''}
       </ul>
+
+      <a href="#" className={style_compare}>Compare with similar items</a>
 
       {used_count > 0 && available ?
         <div className={style_used}><a href="#"><span className={style_used_bold}>Used & new</span> ({used_count}) from {renderPrice(used_price)}</a>

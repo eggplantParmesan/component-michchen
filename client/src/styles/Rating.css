@@ -1,13 +1,14 @@
 .style_main {
   display: inline-block;
   width: 105px;
+  cursor: pointer;
 }
 
 .style_stars {
   display: inline-block;
   width: 83px;
   background-image : url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-sprite_2x-01a49470266a51f632dab1aef2fc09112d280c1e._V2_.png');
-  background-position: -4px -375px;
+  background-position: -86px -375px;
   background-size: 408px auto;
 }
 
