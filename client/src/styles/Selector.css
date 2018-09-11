@@ -1,15 +1,15 @@
-.style_wrapper {
-    margin-top:43px;
+.style_main {
+    margin: 15px 0 23px 0;
 }
 
 .style_dropdown {
-  margin-top:6px;
+  margin-top: 6px;
   width: 70px;
   height: 20px;
   -webkit-appearance: menulist-button;
 }
 
 .style_category {
-  font-weight: bold;
+  font-weight: 700;
   display: block;
 }

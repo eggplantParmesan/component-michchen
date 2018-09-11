@@ -54,7 +54,7 @@ const createProductQuery = function(howMany){
 "${/*seller_url*/ "#"}",\
 "${/*ratings_average*/ Math.round(Math.random()*500)/100}",\
 "${/*ratings_count*/ Math.round(Math.random()*1000)}",\
-"${/*questions_count*/ Math.round(Math.random()*1000)}",\
+"${/*questions_count*/ Math.round(Math.random()*30)}",\
 "${/*category_name*/ faker.commerce.department()}",\
 "${/*category_url*/ "#"}",\
 "${/*price*/ price}",\

@@ -2,42 +2,44 @@
   display: block;
   float: left;
   width: 45.5%;
-  outline: 1px solid blue;
-  padding: 0 0 0 2vmin;
+  margin: 0 0 0 2vmin;
 }
 
 .style_title_block {
   border: 1px solid #aaa;
   border-width: 0 0 1px 0;
   margin: 0 0 12px 0;
+  padding: 0 0 5px 0;
 }
 
 .style_product_name {
   padding:0;
-  margin:0px;
+  margin:5px 0;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.3;
 }
 
 .style_seller_name{}
 
-.style_ratings_stars, .style_ratings_average, .style_ratings_count, .style_num_questions {
+.style_ratings_count {
   display: inline-block;
-  margin: 0 1em 0 0;
+  margin: 0 0.4em 0 0;
+}
+
+.style_subhed_pipe, .style_questions_count {
+  display: inline-block;
+  margin: 0 0.4em;
 }
 
 .style_price {
-  font-size: 1.3em;
-  font-weight: 600;
-  color:#B12704;
+  font-size: 1.4em;
+  color: #B12704;
 }
 
 .style_list_price {}
-
-.style_you_save {
-
-}
-
+.style_you_save {}
 .style_free_shipping {}
-
 .style_sale {}
 
 .style_description {

@@ -9,8 +9,8 @@ const { style_main,
         style_seller_name,
         style_ratings_average,
         style_ratings_count,
-        style_ratings_stars,
-        style_num_questions,
+        style_subhed_pipe,
+        style_questions_count,
         style_price,
         style_list_price,
         style_you_save,
@@ -27,7 +27,8 @@ const addComma = function(num) {
 };
 
 const ProductInfo = props => {
-  const {seller_url, seller_name, product_name, ratings_average, ratings_count, num_questions, list_price, price, images, free_shipping, sale, description} = props.data;
+  // console.log(props.data);
+  const {seller_url, seller_name, product_name, ratings_average, ratings_count, questions_count, list_price, price, images, free_shipping, sale, description} = props.data;
 
   return (
     <div className={style_main}>
@@ -35,31 +36,26 @@ const ProductInfo = props => {
         <a className={style_seller_name} href={seller_url}>{seller_name}</a>
         <h3 className={style_product_name}>{product_name}</h3>
 
-        {/* <span className={style_ratings_average} rating=${Math.round(ratings_average * 10) / 10}></span> */}
         <Rating className={style_ratings_average} rating={Math.round(ratings_average * 10) / 10}/>
 
-        <a className={style_ratings_count} href="#">
-          {ratings_count ?
-              `${addComma(ratings_count)} customer reviews`
-            : ""}
-        </a>
-        <a className={style_num_questions} href="#">
-          {num_questions ?
-              `${addComma(num_questions)} answered questions`
-            : ""}
-        </a>
+        {ratings_count ?
+          <a className={style_ratings_count} href="#">{addComma(ratings_count)} customer reviews</a>
+        : ""}
+
+        {ratings_count && questions_count ? <span className={style_subhed_pipe}>|</span> : ''}
+
+        {questions_count ?
+          <a className={style_questions_count} href="#">{addComma(questions_count)} answered questions</a>
+        : ""}
       </div>
 
-      <div className={style_list_price}>{
-        list_price ?
-        `List Price: $ ${list_price / 1}`
-        : ""
-      }</div>
+      {list_price ?
+        <div className={style_list_price}>List Price: $${list_price / 1}</div>
+      : ""}
 
-      <div>
-        {price ? `Price: ` : ""}
-        <span className={style_price}>{price ? `$${price / 100}` : ""}</span>
-      </div>
+      {price ?
+        <div>Price: <span className={style_price}>${price / 100}</span></div>
+      : ""}
 
       {list_price && price
         ? <div className={style_you_save}>
@@ -68,7 +64,6 @@ const ProductInfo = props => {
           </div>
         : ""}
 
-
       <Selector images={props.data.images} cb={props.custCb}/>
 
       {free_shipping == 1 ?
@@ -76,16 +71,13 @@ const ProductInfo = props => {
         : ""
       }
       {sale ? "ON SALE" : ""}
-      <br />
-      <ul>
+      <ul className={style_description}>
         {description
           ? description
               .split(/\n/g)
               .map((x, i) => <DescBullet text={x} key={i} />)
           : "no description"}
       </ul>
-      <br />
-      <br />
     </div>
   )
 };
