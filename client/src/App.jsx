@@ -7,8 +7,6 @@ import Breadcrumb from "./components/Breadcrumb.jsx";
 import Gallery from "./components/Gallery.jsx";
 import ProductInfo from "./components/ProductInfo.jsx";
 
-import styles from './style.css.js';
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +24,7 @@ class App extends React.Component {
       reqProduct.done(res => {
         this.setState(res, () => {
           this.setState({
+            // onload, select the first option for product variation
             curSelect: Object.keys(Object.values(res.images)[0])[0]
           })
         });
@@ -36,28 +35,29 @@ class App extends React.Component {
 
     this.selectOption = function(e) {
       this.setState({
-        curSelect: e.target.value // value of the select
+        curSelect: e.target.value // value of the dropdown
       });
     }
   }
 
   componentDidMount() {
+    // get "id" from URL params
     let id = window.location.href.match(/(\?|\&)id=(\d\d?\d?\d?\d?\d?\d?\d?)/);
     if (id) {
-      // get id from window URL
+      // get data using id from window URL
       this.getData(id[2], this);
     } else {
-      // otherwise get product of id=1
+      // otherwise get data for id=1
       this.getData(1, this);
     }
   }
 
-  render(props) {
+  render (props) {
     return (
-      <div style={styles.main}>
-        <Breadcrumb styles={styles.breadcrumb} data={this.state}/>
-        <Gallery styles={styles.gallery} cur={this.state.curSelect} images={this.state.images}/>
-        <ProductInfo styles={styles.productInfo} data={this.state} test="my test" custCb={this.selectOption.bind(this)}/>
+      <div>
+        <Breadcrumb data={this.state}/>
+        <Gallery cur={this.state.curSelect} images={this.state.images}/>
+        <ProductInfo data={this.state} test="my test" custCb={this.selectOption.bind(this)}/>
       </div>
     );
   }

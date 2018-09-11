@@ -42,33 +42,5 @@
     "style-loader": "^0.23.0",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0"
-  },
-  "module": {
-    "rules": [
-      {
-        "test": "ksldjfldsjflskjlfjsldkjfl",
-        "loader": [
-          "style-loader",
-          {
-            "loader": "css-loader",
-            "options": {
-              "modules": true
-            }
-          }
-        ]
-      },
-      {
-        "test": "sldfjl;sk;fksdl;",
-        "loader": "babel-loader",
-        "exclude": "/node_modules/",
-        "query": {
-          "cacheDirectory": true,
-          "presets": [
-            "@babel/preset-react",
-            "@babel/preset-env"
-          ]
-        }
-      }
-    ]
   }
 }

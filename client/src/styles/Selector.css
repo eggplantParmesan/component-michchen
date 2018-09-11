@@ -1,0 +1,15 @@
+.style_wrapper {
+    margin-top:43px;
+}
+
+.style_dropdown {
+  margin-top:6px;
+  width: 70px;
+  height: 20px;
+  -webkit-appearance: menulist-button;
+}
+
+.style_category {
+  font-weight: bold;
+  display: block;
+}

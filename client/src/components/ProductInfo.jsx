@@ -1,50 +1,80 @@
-const React = require("react");
-import DescBullet from "./DescBullet.jsx";
-import Selector from "./Selector.jsx";
+const React = require('react');
+import DescBullet from './DescBullet.jsx';
+import Selector from './Selector.jsx';
+import Rating from './Rating.jsx';
+import styles from '../styles/ProductInfo.css';
+const { style_main,
+        style_title_block,
+        style_product_name,
+        style_seller_name,
+        style_ratings_average,
+        style_ratings_count,
+        style_ratings_stars,
+        style_num_questions,
+        style_price,
+        style_list_price,
+        style_you_save,
+        style_free_shipping,
+        style_sale,
+        style_description
+      } = styles;
+
 
 const addComma = function(num) {
   // add a comma every three places e.g. 1,000
-  // mostly used for review counts
+  // used for review and questions counts
   return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 const ProductInfo = props => {
-  const {title_block, title, ratings_stars} = props.styles;
   const {seller_url, seller_name, product_name, ratings_average, ratings_count, num_questions, list_price, price, images, free_shipping, sale, description} = props.data;
 
   return (
-    <div style={props.styles}>
-      <div id="title_block" style={title_block}>
-        <a id="seller_name" href={seller_url}>{seller_name}</a>
-        <h3 id="product_name" style={title}>{product_name}</h3>
+    <div className={style_main}>
+      <div className={style_title_block}>
+        <a className={style_seller_name} href={seller_url}>{seller_name}</a>
+        <h3 className={style_product_name}>{product_name}</h3>
 
-        <div id="ratings_stars" style={ratings_stars}>stars</div>
-        <a id="ratings_average" href="#">{ratings_average
-          ? Math.round(ratings_average * 10) / 10 + " stars"
-          : ""}</a>
-        <a id="ratings_count" href="#">{ratings_count
-          ? addComma(ratings_count) + " customer reviews"
-          : ""}</a>
-        <a id="num_questions" href="#">{num_questions
-          ? addComma(num_questions) + " answered questions"
-          : ""}</a>
+        {/* <span className={style_ratings_average} rating=${Math.round(ratings_average * 10) / 10}></span> */}
+        <Rating className={style_ratings_average} rating={Math.round(ratings_average * 10) / 10}/>
+
+        <a className={style_ratings_count} href="#">
+          {ratings_count ?
+              `${addComma(ratings_count)} customer reviews`
+            : ""}
+        </a>
+        <a className={style_num_questions} href="#">
+          {num_questions ?
+              `${addComma(num_questions)} answered questions`
+            : ""}
+        </a>
       </div>
 
-      {list_price ? "List Price: $" + list_price / 1 : ""}
-      <br />
-      {price ? "Price: $" + price / 1 : ""}
-      <br />
+      <div className={style_list_price}>{
+        list_price ?
+        `List Price: $ ${list_price / 1}`
+        : ""
+      }</div>
+
+      <div>
+        {price ? `Price: ` : ""}
+        <span className={style_price}>{price ? `$${price / 100}` : ""}</span>
+      </div>
+
       {list_price && price
-        ? `You Save: $${list_price - price} (${Math.round(
-            list_price - price
-          ) / list_price}%)`
+        ? <div className={style_you_save}>
+            You Save: $${list_price - price}
+            (${Math.round(list_price - price) / list_price})
+          </div>
         : ""}
-      <br />
+
 
       <Selector images={props.data.images} cb={props.custCb}/>
-      <br />
-      {free_shipping === 1 ? "FREE Shipping Details" : ""}
-      <br />
+
+      {free_shipping == 1 ?
+        <div className={style_free_shipping}>FREE Shipping <a href="#">Details</a></div>
+        : ""
+      }
       {sale ? "ON SALE" : ""}
       <br />
       <ul>

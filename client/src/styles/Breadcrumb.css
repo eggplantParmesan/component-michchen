@@ -1,0 +1,12 @@
+.breadcrumb {
+  font-size: 12px;
+  height: 38px;
+  color: #767676;
+  display: block;
+}
+
+/* change this to apply only to the child <a>s */
+.breadcrumb:hover{
+  color: #e47911;
+  text-decoration: underline;
+}

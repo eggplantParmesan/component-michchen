@@ -1,0 +1,45 @@
+.style_main {
+  display: block;
+  float: left;
+  width: 45.5%;
+  outline: 1px solid blue;
+  padding: 0 0 0 2vmin;
+}
+
+.style_title_block {
+  border: 1px solid #aaa;
+  border-width: 0 0 1px 0;
+  margin: 0 0 12px 0;
+}
+
+.style_product_name {
+  padding:0;
+  margin:0px;
+}
+
+.style_seller_name{}
+
+.style_ratings_stars, .style_ratings_average, .style_ratings_count, .style_num_questions {
+  display: inline-block;
+  margin: 0 1em 0 0;
+}
+
+.style_price {
+  font-size: 1.3em;
+  font-weight: 600;
+  color:#B12704;
+}
+
+.style_list_price {}
+
+.style_you_save {
+
+}
+
+.style_free_shipping {}
+
+.style_sale {}
+
+.style_description {
+  padding-left: 1.5em;
+}
