@@ -1,0 +1,13 @@
+.bullet {
+  list-style: none;
+  font-size: 1em;
+}
+
+.bullet::before {
+  content: "•";
+  font-size: 0.8em;
+  color: #949494;
+  display: inline-block;
+  width: 1.8em;
+  margin-left: -20px;
+}

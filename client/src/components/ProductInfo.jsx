@@ -1,3 +1,9 @@
+/*
+
+Double check id=46
+
+*/
+
 const React = require('react');
 import DescBullet from './DescBullet.jsx';
 import Selector from './Selector.jsx';
@@ -11,9 +17,15 @@ const { style_main,
         style_ratings_count,
         style_subhed_pipe,
         style_questions_count,
+
+        style_available,
+        style_unavailable,
+
+        style_price_label,
         style_price,
         style_list_price,
         style_you_save,
+
         style_free_shipping,
         style_sale,
         style_description
@@ -26,9 +38,13 @@ const addComma = function(num) {
   return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+const renderPrice = function(num) {
+  return num % 1 === 0 ? num + '.00' : num;
+}
+
 const ProductInfo = props => {
-  // console.log(props.data);
-  const {seller_url, seller_name, product_name, ratings_average, ratings_count, questions_count, list_price, price, images, free_shipping, sale, description} = props.data;
+  const {available,
+    seller_url, seller_name, product_name, ratings_average, ratings_count, questions_count, price_list_price, price, images, free_shipping, sale, description} = props.data;
 
   return (
     <div className={style_main}>
@@ -47,22 +63,32 @@ const ProductInfo = props => {
         {questions_count ?
           <a className={style_questions_count} href="#">{addComma(questions_count)} answered questions</a>
         : ""}
+
       </div>
 
-      {list_price ?
-        <div className={style_list_price}>List Price: $${list_price / 1}</div>
-      : ""}
 
-      {price ?
-        <div>Price: <span className={style_price}>${price / 100}</span></div>
-      : ""}
+      <table><tbody>
+        {price_list_price ? <tr>
+            <td className={style_price_label}>List Price: </td>
+            <td className={style_list_price}>${renderPrice(price_list_price)}</td>
+          </tr>
+        : <tr><td></td></tr>}
+        {price ? <tr>
+            <td className={style_price_label}>Price: </td>
+            <td className={style_price}>${renderPrice(price)}</td>
+          </tr>
+        : <tr><td></td></tr>}
+        {price_list_price && price ? <tr>
+            <td className={style_price_label}>You Save: </td>
+            <td className={style_you_save}>
+              ${renderPrice((price_list_price - price))}&nbsp;
+              ({Math.round(((price_list_price - price)/price_list_price) * 100)}%)
+            </td></tr>
+          : <tr><td></td></tr>}
+      </tbody></table>
 
-      {list_price && price
-        ? <div className={style_you_save}>
-            You Save: $${list_price - price}
-            (${Math.round(list_price - price) / list_price})
-          </div>
-        : ""}
+
+      {available ? <div className={style_available}>In Stock.</div> : <div className={style_unavailable}>Out of Stock.</div>}
 
       <Selector images={props.data.images} cb={props.custCb}/>
 
@@ -72,6 +98,7 @@ const ProductInfo = props => {
       }
       {sale ? "ON SALE" : ""}
       <ul className={style_description}>
+        {/* convert \n-separated text to bulleted list */}
         {description
           ? description
               .split(/\n/g)

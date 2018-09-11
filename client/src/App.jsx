@@ -34,9 +34,11 @@ class App extends React.Component {
     };
 
     this.selectOption = function(e) {
-      this.setState({
-        curSelect: e.target.value // value of the dropdown
-      });
+      if (e.target.value !== 'Select') {
+        this.setState({
+          curSelect: e.target.value // value of the dropdown
+        });
+      }
     }
   }
 
@@ -53,6 +55,7 @@ class App extends React.Component {
   }
 
   render (props) {
+    console.log(this.state);
     return (
       <div>
         <Breadcrumb data={this.state}/>

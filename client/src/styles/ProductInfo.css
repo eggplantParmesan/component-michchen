@@ -6,7 +6,7 @@
 }
 
 .style_title_block {
-  border: 1px solid #aaa;
+  border: 1px solid #ddd;
   border-width: 0 0 1px 0;
   margin: 0 0 12px 0;
   padding: 0 0 5px 0;
@@ -32,16 +32,40 @@
   margin: 0 0.4em;
 }
 
+.style_price_label {
+  text-align: right;
+  color: #555555;
+}
+
 .style_price {
   font-size: 1.4em;
   color: #B12704;
+  margin-left: 0.25em;
 }
 
-.style_list_price {}
-.style_you_save {}
+.style_list_price {
+  text-decoration: line-through;
+}
+
+.style_available {
+  margin-top: 0.75em;
+  font-size: 1.2em;
+  color:green;
+}
+
+.style_unavailable {
+  margin-top: 0.75em;
+  font-size: 1.2em;
+  color:red;
+}
+
+.style_you_save {
+  color: #B12704;
+}
+
 .style_free_shipping {}
 .style_sale {}
 
 .style_description {
-  padding-left: 1.5em;
+  padding-left: 1.8em;
 }

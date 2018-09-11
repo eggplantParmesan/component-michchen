@@ -1,18 +1,17 @@
-const mysql = require("mysql");
+const mysql = require('mysql');
 
 var con = mysql.createConnection({
-  url: "localhost",
-  user: "root",
-  password: "",
-  database: "amazon"
+  url: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'amazon'
 });
 
 con.connect(err => {
   if (err) {
-    console.log("db.js > connection error");
-    console.log(err);
+    console.log('db.js > connection error', err);
   } else {
-    console.log("connection success!");
+    console.log('connection success!');
   }
 });
 
@@ -49,7 +48,7 @@ exports.getProduct = function(id, cb) {
           img_arr[res[i].var_key] = {};
         }
 
-        // init category object > value arr if does not exist
+        // init category object's value arr if does not exist
         if (img_arr[res[i].var_key][res[i].var_value] === undefined){
           img_arr[res[i].var_key][res[i].var_value] = [];
         }
@@ -57,6 +56,7 @@ exports.getProduct = function(id, cb) {
         // add image url to array
         img_arr[res[i].var_key][res[i].var_value].push(res[i].image_url);
       }
+      
       productObj.images = img_arr;
       cb(productObj)
     });

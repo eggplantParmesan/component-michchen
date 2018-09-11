@@ -1,3 +1,28 @@
+/*
+--- NOTES ---
+prices the same in every entry??
+"price" should be less than "list price"
+Answered questions should only be in the 10s
+Add "fit" (maybe), "Prime"
+Add star distribution and fit distribution
+Breadcrumb trail?
+More images per product
+"Style" in addition to Size and Color?
+Replace "In stock" with "available"?
+If only one image, then don't show a dropdown
+Deal of the day countdown
+Want it tomorrow, Sept. 11? Order within 14 hrs 36 mins and choose One-Day Shipping at checkout. Details
+Convert prices back to normal, eg $5.99 = '5.99' and not '599'
+change price_list_price to price_list
+*/
+
+// INSERT INTO products (id, product_name, product_url, seller_name, seller_url, ratings_average, ratings_count, questions_count, category_name, category_url, price, price_list_price, free_returns, free_shipping, sold_by_name, sold_by_url, available, description, used_count, used_price) VALUES (101, "LG G6+ - 128 GB - Unlocked (AT&T/T-Mobile/Verizon) - Black - Prime Exclusive", "#", "LG", "#", 4, 80, 86, "Cell Phones & Accessories", "#", 40999, 79999, 1, 1, "Some sketchy guy", "#", 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare augue non eleifend accumsan. \nMaecenas sit amet maximus lacus. Nullam eu placerat metus, et aliquet ex. Vivamus justo magna, tincidunt a convallis eu, semper vitae nunc. \nSed tincidunt quis purus vitae dictum. \nDonec eu ante pharetra, maximus erat sit amet, imperdiet odio. \nIn tincidunt feugiat ligula, quis tempus leo eleifend in. Pellentesque vitae lectus est.", 20, 30749);
+
+
+
+// INSERT INTO images (product_id,var_key,var_value,image_url) VALUES (101, "","","https://images-na.ssl-images-amazon.com/images/I/61Rh3tVbr-L._SL1200_.jpg");
+
+
 const cats = require('./cats');
 const faker = require('faker');
 const db = require('./db');
@@ -14,9 +39,9 @@ const variations = [
   }
 ];
 
-// function randImArr: gets a randomly-sized part of the image array (imported from cats.js)
+// function randImArr: gets a randomly-sized part of the image array (sourced from from cats.js)
 const randImArr = function () {
-  // num = a random number between 1 and 4
+  // num = a random number between 1 and 4, representing number of images to get
   let num = Math.round(Math.random() * 3) + 1;
   return "[" +
         // randomize cats
