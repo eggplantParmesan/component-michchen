@@ -1,16 +1,16 @@
-.style_main {
+.styleMain {
     margin: 15px 0 23px 0;
 }
 
-.style_dropdown {
+.styleDropdown {
   margin-top: 6px;
   width: 130px;
   height: 20px;
   line-height: 20px;
-  -webkit-appearance: menulist-button;
+  -webkit-appearance: none;
 }
 
-.style_category {
+.styleCategory {
   font-weight: 700;
   display: block;
 }

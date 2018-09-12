@@ -18,7 +18,10 @@
     "url": "https://github.com/8-bit-beauty/component-michchen/issues"
   },
   "homepage": "https://github.com/8-bit-beauty/component-michchen#readme",
-  "dependencies": {},
+  "dependencies": {
+    "jest": "^23.6.0",
+    "puppeteer": "^1.8.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
@@ -28,6 +31,7 @@
     "css-loader": "^1.0.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-google": "^0.10.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",

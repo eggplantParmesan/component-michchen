@@ -49,21 +49,21 @@ exports.getProduct = function(id, cb) {
     console.log('selected sucessfully from products');
 
     let productObj = result[0];
-    con.query(`SELECT * FROM images WHERE product_id=${id}`, function(err, res) {
+    con.query(`SELECT * FROM images WHERE productId=${id}`, function(err, res) {
       let img_arr = {};
       for (var i = 0; i < res.length; i++) {
         // init category object if does not exist
-        if (img_arr[res[i].var_key] === undefined){
-          img_arr[res[i].var_key] = {};
+        if (img_arr[res[i].varKey] === undefined){
+          img_arr[res[i].varKey] = {};
         }
 
         // init category object's value arr if does not exist
-        if (img_arr[res[i].var_key][res[i].var_value] === undefined){
-          img_arr[res[i].var_key][res[i].var_value] = [];
+        if (img_arr[res[i].varKey][res[i].varValue] === undefined){
+          img_arr[res[i].varKey][res[i].varValue] = [];
         }
 
         // add image url to array
-        img_arr[res[i].var_key][res[i].var_value].push(res[i].image_url);
+        img_arr[res[i].varKey][res[i].varValue].push(res[i].imageUrl);
       }
 
       if (productObj) {productObj.images = img_arr;}

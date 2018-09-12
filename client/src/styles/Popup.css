@@ -1,4 +1,4 @@
-.styles_main {
+.stylesMain {
   position: absolute;
   margin-left: -74px;
   width: 200px;
@@ -6,7 +6,7 @@
   cursor: default;
 }
 
-.styles_popup {
+.stylesPopup {
   position: relative;
   width: 100%;
   height: 100%;

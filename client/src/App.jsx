@@ -28,45 +28,45 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
 
-    this.getData = function(prodNum, appObj) {
-      prodNum = prodNum || 1;
+  getData(prodNum) {
+    const prodNumCopy = prodNum || 1;
 
-      var reqProduct = $.get({
-        url: `http://localhost:${process.env.PORT || 9001}/get`,
-        context: this,
-        data: { id: prodNum }
+    let reqProduct = $.get({
+      url: `http://localhost:${process.env.PORT || 9001}/get`,
+      context: this,
+      data: { id: prodNumCopy }
+    });
+
+    reqProduct.done(res => {
+      this.setState(res, () => {
+        // onload, select the first option for product variation
+        if (res.images['color'] !== null) {
+          this.setState({
+            selected_variation: Object.keys(Object.values(res.images)[0])[0]
+          })
+        }
       });
 
-      reqProduct.done(res => {
-        this.setState(res, () => {
-          // onload, select the first option for product variation
-          if (res.images['color'] !== null) {
-            this.setState({
-              selected_variation: Object.keys(Object.values(res.images)[0])[0]
-            })
-          }
-        });
+      window.state = this.state;
+    });
+  };
 
-        window.state = this.state;
-      });
-    };
-
-    this.selectOption = function(e) {
-      if (e.target.value !== 'Select') {
-        this.setState({
-          selected_size: e.target.value // value of the dropdown
-        });
-      }
-    }
-
-    this.selectImage = function(e) {
+  selectOption (e) {
+    if (e.target.value !== 'Select') {
       this.setState({
-        selected_variation: e.target.getAttribute('data')
+        selected_size: e.target.value // value of the dropdown
       });
-
-      e.stopPropagation();
     }
+  }
+
+  selectImage(e) {
+    this.setState({
+      selected_variation: e.target.getAttribute('data')
+    });
+
+    e.stopPropagation();
   }
 
   componentDidMount() {
@@ -80,22 +80,22 @@ class App extends React.Component {
       this.getData(1, this);
     }
 
-    var today = new Date();
-    var tomorrow = new Date();
+    const today = new Date();
+    const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
-    tomorrow.setHours(0,0,0,0);
+    tomorrow.setHours(0, 0, 0, 0);
 
     this.setState({
-      'timeLeft': tomorrow - today
-    })
+      timeLeft: tomorrow - today,
+    });
   }
 
-  render (props) {
+  render(props) {
     return (
       <div>
-        <Breadcrumb data={this.state}/>
+        <Breadcrumb data={this.state} />
         <Gallery
-          current_image={this.state.selected_variation}
+          currentImage={this.state.selected_variation}
           images={this.state.images}
         />
         <ProductInfo
@@ -110,4 +110,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));

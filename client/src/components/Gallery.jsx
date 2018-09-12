@@ -1,29 +1,40 @@
-const React = require('react');
-import GalleryImage from './GalleryImage.jsx'
+import GalleryImage from './GalleryImage.jsx';
 import styles from '../styles/Gallery.css';
-const { style_main } = styles;
 
-const Gallery = props => {
+const React = require('react');
+
+const { styleMain } = styles;
+
+const Gallery = (props) => {
+  const { images, currentImage } = props;
+
+  // props is eventually defined...
+  // console.log(images);
   return (
-  <div className={style_main}>
-    {props.images ?
-      <div>
-      {Object.entries(props.images).map((attr, i) =>
-        <div key={i}>
-          {Object.entries(attr[1]).map((imgArr, j) =>
-            <GalleryImage imgSrc={imgArr}
-                 attributeName={attr[0]}
-                 key={j}
-            />
-          )}
-        </div>
-      )}
-      </div>
-      : ''
+    <div className={styleMain}>
+      {images ?
+        (
+          <div>
+            {Object.entries(images).map(attr => (
+              <div key={attr}>
+                {Object.entries(attr[1]).map(imgArr => (
+                  <GalleryImage
+                    imgSrc={imgArr}
+                    attributeName={attr[0]}
+                    key={imgArr}
+                  />
+                ))}
+              </div>))}
+          </div>)
+        : ''
     }
-    Gallery current: ({props.current_image})<br/>
-  </div>
-);}
+    Gallery current: (
+      { currentImage }
+    )
+      <br />
+    </div>
+  );
+};
 
 
 export default Gallery;

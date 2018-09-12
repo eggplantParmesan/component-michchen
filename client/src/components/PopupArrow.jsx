@@ -1,7 +1,8 @@
-const React = require('react');
 import styles from '../styles/Popup.css';
 
-let styles_arrow = {
+const React = require('react');
+
+const stylesArrow = {
   width: '0px',
   height: '0px',
   borderTop: '1px solid transparent',
@@ -12,9 +13,9 @@ let styles_arrow = {
   left: '-12px',
   top: '-12px',
   borderWidth: '12px'
-}
+};
 
-let styles_arrow_border = {
+const stylesArrowBorder = {
   width: '0px',
   height: '0px',
   borderTop: '1px solid transparent',
@@ -24,14 +25,12 @@ let styles_arrow_border = {
   position: 'absolute',
   borderWidth: '11px',
   zIndex: '99',
-}
+};
 
-const PopupArrow = props => {
-  return (
-    <div style={styles_arrow_border} className={'popupArrowBorder_' + props.dir}>
-      <div style={styles_arrow} className={'popupArrow_' + props.dir}/>
-    </div>
-  );
-}
+const PopupArrow = props => (
+  <div style={stylesArrowBorder} className={`popupArrowBorder_${props.dir}`}>
+    <div style={stylesArrow} className={`popupArrow_${props.dir}`}/>
+  </div>
+);
 
 export default PopupArrow;

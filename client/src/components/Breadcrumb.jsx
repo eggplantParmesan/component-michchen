@@ -1,30 +1,37 @@
-const React = require('react');
 import styles from '../styles/Breadcrumb.css';
-const {style_main, style_breadcrumb} = styles;
 
-const Breadcrumb = props => {
-  let category_arr = [];
+const React = require('react');
+const { styleMain, styleBreadcrumb } = styles;
 
-  if (props.data.category_name) {
-    category_arr = props.data.category_name.split('\n');
+const Breadcrumb = (props) => {
+  let categoryArr = [];
+  const { data } = props;
+  const { propsCategoryName } = data;
+
+  if (propsCategoryName) {
+    categoryArr = propsCategoryName.split('\n');
   }
 
   return (
-    <div id="breadcrumb" className={style_main}>
-      {props.data.category_name ?
-        category_arr.map((x, i) =>
-          <span key={i}>
-            <a href="#" className={style_breadcrumb}>
-              {x}&nbsp;
+    <div id="breadcrumb" className={styleMain}>
+      {propsCategoryName ?
+
+        categoryArr.map((x, i) => (
+          <span key={x}>
+            <a href="http://hackreactor.com" className={styleBreadcrumb}>
+              { x }
+              &nbsp;
             </a>
-            {i < category_arr.length - 1 ? '>' : ''}&nbsp;
-          </span>
-        )
-         :
-        ''
+            { /* if not the last category, append a ">" */ }
+            { i < categoryArr.length - 1 ? '>' : '' }
+            &nbsp;
+          </span>))
+
+        : ''
+
       }
     </div>
   );
-}
+};
 
 export default Breadcrumb;

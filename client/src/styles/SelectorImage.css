@@ -1,4 +1,4 @@
-.styles_main {
+.stylesMain {
   display: inline-block;
   outline: 1px solid #e2e6ec;
   margin: 0 10 0 0;
@@ -8,16 +8,16 @@
   cursor: pointer;
 }
 
-.styles_color {
+.stylesColor {
   height:70%;
   position: relative;
   top:15%;
 }
 
-.styles_variation_name {
+.stylesVariationName {
   font-weight: 700;
 }
 
-.styles_variation_name_holder {
+.stylesVariationNameHolder {
   margin: 1em 0 0.5em 0;
 }

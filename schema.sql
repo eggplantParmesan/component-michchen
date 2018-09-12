@@ -4,29 +4,29 @@ USE amazon;
 
 CREATE TABLE products(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  product_name VARCHAR(150),
-  seller_name VARCHAR(150),
-  ratings_average FLOAT,
-  ratings_count INT,
-  questions_count INT,
-  amazons_choice INT,
-  category_name VARCHAR(255),
+  productName VARCHAR(150),
+  sellerName VARCHAR(150),
+  ratingsAverage FLOAT,
+  ratingsCount INT,
+  questionsCount INT,
+  amazonsChoice INT,
+  categoryName VARCHAR(255),
   price FLOAT,
-  price_list FLOAT,
-  free_returns BOOLEAN,
-  free_shipping BOOLEAN,
-  sold_by_name VARCHAR(150),
+  priceList FLOAT,
+  freeReturns BOOLEAN,
+  freeShipping BOOLEAN,
+  soldByName VARCHAR(150),
   available INT,
-  has_countdown INT,
+  hasCountdown INT,
   description TEXT,
-  used_count INT,
-  used_price INT
+  usedCount INT,
+  usedPrice INT
 );
 
 CREATE TABLE images (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  product_id INT,
-  image_url VARCHAR(255),
-  var_key VARCHAR(150),
-  var_value VARCHAR(150)
+  productId INT,
+  imageUrl VARCHAR(255),
+  varKey VARCHAR(150),
+  varValue VARCHAR(150)
 );

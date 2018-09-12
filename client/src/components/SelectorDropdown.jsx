@@ -1,44 +1,27 @@
 const React = require('react');
 import styles from '../styles/SelectorDropdown.css';
-const {style_main, style_dropdown, style_category} = styles;
+const { styleMain, styleDropdown, styleCategory } = styles;
 
-const SelectorDropdown = props => {
+const SelectorDropdown = props => (<div className={styleMain}>
+  {props.images ? (
+    <div>
+      { /* category name */ }
+      {<span className={styleCategory}>Size:</span>}
 
-// TODO: if there's only one image, then don't render the selector
-// TODO: image selector for colors
+      {/* if there is more than one option, render dropdown. otherwise render empty string */}
 
-  return (
-    <div className={style_main}>
-      {props.images ?
-        // for each category (color, size)
-        Object.entries(props.images).map((x, i) =>
-          <div key={i}>
+      <select className={styleDropdown} onChange={props.cb}>
 
-            {/* category name */}
-            {x[0].trim().length > 0 ?
-              <span className={style_category}>
-                {(x[0].charAt(0).toUpperCase() + x[0].substr(1)) + ':'}
-              </span>
-              : ""
-            }
-
-            {x[0].trim().length > 0 ?
-              <select className={style_dropdown} onChange={props.cb}>
-                {/* first default option is the text "Select" */}
-                <option>Select</option>
-                {/* each option in the dropdown */}
-                {Object.entries(x[1]).map((y, j) =>
-                  <option value={y[0]} key={j}>{y[0]}</option>)
-                }
-              </select>
-              : ""
-            }
-
-          </div>)
-        : ''
-      }
+        { /* first default option is the text "Select" */ }
+        <option>Select</option>
+        { /* each option in the dropdown */ }
+        {Object.entries(props.images).map(x => <option value={x[0]} key={x}>{ x[0] }</option>)}
+      </select>
     </div>
-  );
-}
+  )
+  : ''
+  }
+</div>
+);
 
 export default SelectorDropdown;

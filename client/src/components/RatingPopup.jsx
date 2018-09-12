@@ -1,8 +1,8 @@
 const React = require('react');
-const {style_} = styles;
+// const {style} = styles;
 
-RatingPopup = () => (
+const RatingPopup = () => (
   <div>Popup</div>
-)
+);
 
 export default RatingPopup;
