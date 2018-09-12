@@ -6,6 +6,24 @@ import Breadcrumb from "./components/Breadcrumb.jsx";
 import Gallery from "./components/Gallery.jsx";
 import ProductInfo from "./components/ProductInfo.jsx";
 
+$(document).keydown(e =>{
+  let productNum = document.location.search;
+  if (productNum) {
+    productNum = productNum.replace(/(id|=|\?|\&)/g, '');
+    productNum = Number(productNum);
+  }
+
+  if (e.which === 37 && productNum > 1) {
+    // prev
+    document.location.href = document.location.origin + '/?id=' + (productNum - 1);
+
+  } else if (e.which === 39 && productNum < 100) {
+    // next
+    document.location.href = document.location.origin + '/?id=' + (productNum + 1);
+
+  }
+})
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,10 +40,12 @@ class App extends React.Component {
 
       reqProduct.done(res => {
         this.setState(res, () => {
-          this.setState({
-            // onload, select the first option for product variation
-            curSelect: Object.keys(Object.values(res.images)[0])[0]
-          })
+          // onload, select the first option for product variation
+          if (res.images['color'] !== null) {
+            this.setState({
+              selected_variation: Object.keys(Object.values(res.images)[0])[0]
+            })
+          }
         });
 
         window.state = this.state;
@@ -35,13 +55,17 @@ class App extends React.Component {
     this.selectOption = function(e) {
       if (e.target.value !== 'Select') {
         this.setState({
-          curSelect: e.target.value // value of the dropdown
+          selected_size: e.target.value // value of the dropdown
         });
       }
     }
 
     this.selectImage = function(e) {
-      console.log('selectImage');
+      this.setState({
+        selected_variation: e.target.getAttribute('data')
+      });
+
+      e.stopPropagation();
     }
   }
 
@@ -55,15 +79,32 @@ class App extends React.Component {
       // otherwise get data for id=1
       this.getData(1, this);
     }
+
+    var today = new Date();
+    var tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+    tomorrow.setHours(0,0,0,0);
+
+    this.setState({
+      'timeLeft': tomorrow - today
+    })
   }
 
   render (props) {
-    console.log(this.state);
     return (
       <div>
         <Breadcrumb data={this.state}/>
-        <Gallery cur={this.state.curSelect} images={this.state.images}/>
-        <ProductInfo data={this.state} test="my test" dropdownCb={this.selectOption.bind(this)} imageCb={this.selectImage.bind(this)}/>
+        <Gallery
+          current_image={this.state.selected_variation}
+          images={this.state.images}
+        />
+        <ProductInfo
+          data={this.state}
+          selected_variation={this.state.selected_variation}
+          dropdownCb={this.selectOption.bind(this)}
+          imageCb={this.selectImage.bind(this)}
+          timeLeft={this.state.timeLeft}
+        />
       </div>
     );
   }

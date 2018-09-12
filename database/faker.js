@@ -75,7 +75,7 @@ var randomNumFromRange = function(lowerBound, upperBound, growthRate, decimalPla
 
 const createProductQuery = function(howMany){
 
-  var queryConcat = `INSERT INTO products (\
+var queryConcat = `INSERT INTO products (\
 product_name,\
 seller_name,\
 ratings_average,\
@@ -101,15 +101,14 @@ var ratings_total = 0;
       queryConcat += ",";
     }
 
-    var listPrice = parseInt(faker.commerce.price()/9);
+    // the 9 is to put the price within an affordable range haha
+    var listPrice = parseInt(faker.commerce.price() / 9);
 
     // price is between 80% to 95% of the list price
-    var percent1 = randomNumFromRange(80, 95);
-    var price = listPrice * (percent1 / 100);
+    var price = listPrice * (randomNumFromRange(80, 95); / 100);
 
-    // used_price is between 50% to 95% of the price
-    var percent2 = randomNumFromRange(50, 95);
-    var usedPrice = price * (percent2 / 100);
+    // used price is between 50% to 95% of the price
+    var usedPrice = price * (randomNumFromRange(50, 95) / 100);
 
     // generate a random sequence of departments for breadcrumb
     var department = `${faker.commerce.department()}`;

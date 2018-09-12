@@ -5,10 +5,10 @@
   display: block;
 }
 
-.style_breadcrumb:hover{
+/* .style_breadcrumb:hover{
   color: #e47911;
   text-decoration: underline;
-}
+} */
 
 .style_breadcrumb{
   color: #767676;

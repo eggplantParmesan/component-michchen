@@ -82,6 +82,7 @@ const ProductInfo = props => {
 
   return (
     <div className={style_main}>
+
       <div className={style_title_block}>
         <h3 className={style_product_name}>{product_name}</h3>
         <div className={style_seller}>by <a className={style_seller_name} href="#">{seller_name}</a></div>
@@ -108,7 +109,7 @@ const ProductInfo = props => {
           : ''
         }
 
-      </div>
+      </div> {/* end title block*/}
 
 
       <table><tbody>
@@ -137,22 +138,26 @@ const ProductInfo = props => {
       }
 
       {has_countdown && available ?
-        <Countdown/>
+        <Countdown timeLeft={props.timeLeft}/>
       : ""
       }
 
       {/* dropdown size selector */}
-      {props.data.images ?
+      {props.data.images && available ?
         props.data.images.size ?
-        // before i add ".size" to images={props.data.images}, need to change SelectorDropdown.jsx
-          <SelectorDropdown images={props.data.images} cb={props.dropdownCb}/>
+          Object.keys(props.data.images.size).length > 1 ?
+          // before i add ".size" to images={props.data.images}, need to change SelectorDropdown.jsx
+            <SelectorDropdown images={props.data.images} cb={props.dropdownCb}/>
+          : ""
         : ""
       : ""}
 
       {/* image color selector */}
-      {props.data.images ?
+      {props.data.images && available ?
         props.data.images.color ?
-          <SelectorImage images={props.data.images.color} cb={props.imageCb}/>
+          Object.keys(props.data.images.color).length > 1 ?
+            <SelectorImage images={props.data.images.color} cb={props.imageCb} selected_variation={props.selected_variation}/>
+          : ""
         : ""
       : ""}
 

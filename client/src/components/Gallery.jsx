@@ -21,7 +21,7 @@ const Gallery = props => {
       </div>
       : ''
     }
-    Gallery current: ({props.cur})<br/>
+    Gallery current: ({props.current_image})<br/>
   </div>
 );}
 
