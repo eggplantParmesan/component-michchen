@@ -131,8 +131,6 @@ const ProductInfo = props => {
           : <tr><td></td></tr>}
       </tbody></table>
 
-      <a href="#">Details</a>
-
       {available ?
         <div className={style_available}>In Stock.</div>
       : <div className={style_unavailable}>Out of Stock.</div>
@@ -146,6 +144,7 @@ const ProductInfo = props => {
       {/* dropdown size selector */}
       {props.data.images ?
         props.data.images.size ?
+        // before i add ".size" to images={props.data.images}, need to change SelectorDropdown.jsx
           <SelectorDropdown images={props.data.images} cb={props.dropdownCb}/>
         : ""
       : ""}
@@ -153,7 +152,7 @@ const ProductInfo = props => {
       {/* image color selector */}
       {props.data.images ?
         props.data.images.color ?
-          <SelectorImage images={props.data.images} cb={props.imageCb}/>
+          <SelectorImage images={props.data.images.color} cb={props.imageCb}/>
         : ""
       : ""}
 
