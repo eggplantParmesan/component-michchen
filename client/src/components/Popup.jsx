@@ -6,7 +6,7 @@ const {styles_main, styles_popup} = styles;
 
 const Popup = props => {
   return (
-    <div className={styles_main}>
+    <div className={styles_main + ' ' + (props.show ? '' : 'hide')}>
       {/* top right bottom left */}
       <Arrow dir="top"/>
       <div className={styles_popup}>
