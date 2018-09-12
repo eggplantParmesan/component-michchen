@@ -3,6 +3,7 @@ const mysql = require('mysql');
 var con = mysql.createConnection({
   url: 'localhost',
   user: 'root',
+  // port: 9001,
   password: '',
   database: 'amazon'
 });

@@ -58,7 +58,8 @@ const renderPrice = function(num) {
 }
 
 const ProductInfo = props => {
-  const { amazons_choice,
+  const {
+  amazons_choice,
   available,
   category_name,
   curSelect,
@@ -79,6 +80,7 @@ const ProductInfo = props => {
   used_count,
   used_price
 } = props.data;
+// debugger
 
   return (
     <div className={style_main}>
@@ -178,7 +180,7 @@ const ProductInfo = props => {
           : ''}
       </ul>
 
-      <a href="#" className={style_compare}>Compare with similar items</a>
+      <div className={style_compare}><a href="#">Compare with similar items</a></div>
 
       {used_count > 0 && available ?
         <div className={style_used}><a href="#"><span className={style_used_bold}>Used & new</span> ({used_count}) from {renderPrice(used_price)}</a>

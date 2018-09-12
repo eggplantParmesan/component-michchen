@@ -38,32 +38,27 @@ class Rating extends React.Component {
   }
 
   render () {
-
-    /*
-    let starClass = this.props.rating ?
-      // prepend class with 's'
-      's' +
-      String(
-        // round rating to the  nearest .5
-        Math.round(this.props.rating * 2) / 2
-      // convert to usable class name i.e. remove "."
-      ).replace(/\./g,'')
-    : '';
-    */
-
     // TODO trying to merge base star style (style_stars) with
     // custom ratings (star_rating) using spread operators
     // if i get this to work, remove styling from style.css
-    let star_rating = {};
-    star_rating['s5']
+
+    // debugger
+    let rating = this.props.rating;
+
+    if (rating !== undefined && !isNaN(rating)) {
+      // round to nearest .5
+      rating = Math.round(rating * 2) / 2;
+      // remove .s so it's a usable class name
+      rating = String(rating).replace(/\./g,'');
+    }
 
     return (
       <div className={style_main}>
         <div id="stars"
-          className={{...style_stars, ...star_rating}}
+          className={style_stars + ` s${rating}`}
           onMouseEnter={this.hoverOn.bind(this)}
           onMouseLeave={this.hoverOff.bind(this)}
-        >
+         >
           &nbsp;
           <Popup content="test" show={this.state.hover} dir="down"/>
         </div>
