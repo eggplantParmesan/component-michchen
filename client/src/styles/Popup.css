@@ -8,57 +8,11 @@
 
 .styles_popup {
   position: relative;
-  top: 21px;
   width: 100%;
   height: 100%;
   background-color: white;
   display: block;
   border: 1px solid #ccc;
   border-radius: 2px;
-  padding: 1em;
   text-align: center;
-}
-
-.styles_main {
-  position: absolute;
-  margin-left: -74px;
-  width: 200px;
-  height: 80px;
-  cursor: default;
-}
-
-/* up */
-.styles_arrow_up {
-  border-bottom-color: #FFFFFF !important;
-}
-
-.styles_arrow_up_border {
-  border-bottom-color: #000000 !important;
-}
-
-/* right */
-.styles_arrow_right {
-  border-left-color: #FFFFFF !important;
-}
-
-.styles_arrow_right_border {
-  border-left-color: #000000 !important;
-}
-
-/* down */
-.styles_arrow_down {
-  border-top-color: #FFFFFF !important;
-}
-
-.styles_arrow_down_border {
-  border-top-color: #000000 !important;
-}
-
-/* left */
-.styles_arrow_left {
-  border-right-color: #FFFFFF !important;
-}
-
-.styles_arrow_left_border {
-  border-right-color: #000000 !important;
 }

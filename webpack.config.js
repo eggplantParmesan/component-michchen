@@ -2,9 +2,9 @@ module.exports = {
   entry: path.join("/client/src/App.jsx")
   module: {
     rules: [
-      // 9/10 avh helped me: moved css above jsx
       {
         test: /\.css$/,
+        exclude: /client\/dist/,
         loader: [
           'style-loader',
           {
