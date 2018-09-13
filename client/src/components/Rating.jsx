@@ -27,8 +27,8 @@ class Rating extends React.Component {
     // custom ratings (star_rating) using spread operators
     // if i get this to work, remove styling from style.css
 
-    let { rating } = this.props;
     let { hover } = this.state;
+    let { rating } = this.props;
 
     if (rating !== undefined && !isNaN(rating)) {
       // round to nearest .5

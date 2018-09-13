@@ -4,6 +4,7 @@ import SelectorDropdown from './SelectorDropdown.jsx';
 import SelectorImage from './SelectorImage.jsx';
 import DescBullet from './DescBullet.jsx';
 import styles from '../styles/ProductInfo.css';
+import {addComma, renderPrice} from './ProductInfo.js';
 
 const React = require('react');
 
@@ -35,25 +36,7 @@ const {
 } = styles;
 
 
-// add a comma every three places e.g. 1,000
-// used for review and questions counts
-function addComma(num) {
-  return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
-
-function renderPrice(num) {
-  let newNum = Math.round(num * 100) / 100;
-
-  if (newNum % 1 === 0) {
-    // add .00 to a price if it has no decimals
-    newNum += '.00';
-  } else if ((newNum * 10) % 1 === 0) {
-    // otherwise if there's a single-digit decimal, append a 0
-    newNum += '0';
-  }
-
-  return `$${newNum}`;
-}
+// here i had functions addComma and rednerPrice
 
 const ProductInfo = (props) => {
   const { data, timeLeft } = props;
