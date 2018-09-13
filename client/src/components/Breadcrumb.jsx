@@ -6,16 +6,15 @@ const { styleMain, styleBreadcrumb } = styles;
 const Breadcrumb = (props) => {
   let categoryArr = [];
   const { data } = props;
-  const { propsCategoryName } = data;
+  const { categoryName } = data;
 
-  if (propsCategoryName) {
-    categoryArr = propsCategoryName.split('\n');
+  if (categoryName) {
+    categoryArr = categoryName.split('\n');
   }
 
   return (
     <div id="breadcrumb" className={styleMain}>
-      {propsCategoryName ?
-
+      {categoryName ?
         categoryArr.map((x, i) => (
           <span key={x}>
             <a href="http://hackreactor.com" className={styleBreadcrumb}>
@@ -26,9 +25,7 @@ const Breadcrumb = (props) => {
             { i < categoryArr.length - 1 ? '>' : '' }
             &nbsp;
           </span>))
-
         : ''
-
       }
     </div>
   );

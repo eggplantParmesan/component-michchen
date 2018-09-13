@@ -135,8 +135,9 @@ const ProductInfo = (props) => {
               <td className={stylePriceLabel}>You Save: </td>
               <td className={styleYouSave}>
                 {renderPrice((priceList - price))}
-                &nbsp;
-                ({Math.round(((priceList - price) / priceList) * 100)}%)
+                &nbsp;(
+                {Math.round(((priceList - price) / priceList) * 100)}
+                %)
               </td>
             </tr>)
             : <tr><td /></tr>}
@@ -171,12 +172,6 @@ const ProductInfo = (props) => {
         : ''
       }
 
-
-      {/* {freeShipping == 1 ?
-        <div className={styleFreeShipping}>FREE Shipping <a href="http://hackreactor.com">Details</a></div>
-        : ''
-      } */}
-
       {/* {sale ? "ON SALE" : ''} */}
 
       <ul className={styleDescription}>
@@ -195,13 +190,10 @@ const ProductInfo = (props) => {
           <div className={styleUsed}>
             <a href="http://hackreactor.com">
               <span className={styleUsedBold}>Used & new</span>
-              &nbsp;
-              (
+              &nbsp;(
               {usedCount}
-              ) from&nbsp;
-              {
-                renderPrice(usedPrice)
-              }
+            ) from&nbsp;
+              {renderPrice(usedPrice)}
             </a>
             {freeShipping ?
               ' & FREE shipping'

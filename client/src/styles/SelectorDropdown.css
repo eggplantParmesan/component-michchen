@@ -3,11 +3,20 @@
 }
 
 .styleDropdown {
-  margin-top: 6px;
-  width: 130px;
-  height: 20px;
-  line-height: 20px;
   -webkit-appearance: none;
+  border: 1px solid #a6a6a6;
+  background-image: linear-gradient(#f6f7f9, #e7e9eb);
+  height: 30px;
+  width: 80px;
+  margin-top: 6px;
+  padding: 0 12px;
+  line-height: 20px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.styleDropdown:hover {
+  background-image: linear-gradient(#eaecee, #dadcde);
 }
 
 .styleCategory {

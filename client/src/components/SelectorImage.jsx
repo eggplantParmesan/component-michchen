@@ -3,7 +3,7 @@ import styles from '../styles/SelectorImage.css';
 const React = require('react');
 
 const {
-  stylesMain, stylesColor, stylesVariationNameHolder, stylesVariationName
+  stylesMain, stylesColor, stylesVariationNameHolder, stylesVariationName, stylesSelectedVariation
 } = styles;
 
 const SelectorImage = props => (
@@ -11,7 +11,7 @@ const SelectorImage = props => (
     <div className={stylesVariationNameHolder}>
       <span className={stylesVariationName}>Color:</span>
       &nbsp;
-      { props.selectedVariation }
+      <span className={stylesSelectedVariation}>{ props.selectedVariation }</span>
     </div>
     {
       Object.entries(props.images).map(x => (
