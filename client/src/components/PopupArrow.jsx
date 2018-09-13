@@ -12,7 +12,7 @@ const stylesArrow = {
   position: 'relative',
   left: '-12px',
   top: '-12px',
-  borderWidth: '12px'
+  borderWidth: '12px',
 };
 
 const stylesArrowBorder = {

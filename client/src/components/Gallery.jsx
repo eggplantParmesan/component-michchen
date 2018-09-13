@@ -6,14 +6,14 @@ const React = require('react');
 const { styleMain } = styles;
 
 const Gallery = (props) => {
-  const { images, currentImage } = props;
+  const {images, currentImage} = props;
 
   // props is eventually defined...
   // console.log(images);
   return (
     <div className={styleMain}>
-      {images ?
-        (
+      {images
+        ? (
           <div>
             {Object.entries(images).map(attr => (
               <div key={attr}>
