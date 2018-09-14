@@ -2,6 +2,7 @@
   display: inline-block;
   width: 105px;
   cursor: pointer;
+  position: relative;
 }
 
 .styleStars {
@@ -18,9 +19,6 @@
   background-image : url('https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-sprite_2x-01a49470266a51f632dab1aef2fc09112d280c1e._V2_.png');
   background-position: -383px -82px;
   background-size: 408px auto;
-}
-
-.stylePopupMain {
 }
 
 .s5 { background-position-x: -4px; }

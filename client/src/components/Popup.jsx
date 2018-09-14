@@ -1,17 +1,29 @@
 import styles from '../styles/Popup.css';
 import Arrow from './PopupArrow.jsx';
+import PopupHistogram from './PopupHistogram.jsx';
+import PopupMessage from './PopupMessage.jsx';
 
 const React = require('react');
-const { stylesMain, stylesPopup } = styles;
+const { stylesMain, stylesPopupBox } = styles;
 
 
-const Popup = props => (
-  <div className={`${stylesMain} ${(props.show ? '' : 'hide')}`}>
-    <Arrow dir="top" />
-    <div className={stylesPopup}>
-      {props.content}
+const Popup = (props) => {
+  const {dir, show, content, rating, numReviews} = props;
+  let popupClass = `${stylesMain} popup${dir} ${(show ? '' : 'hide')}`;
+
+  return (
+    <div className={`${stylesMain} popup${dir} ${(show ? '' : 'hide')}`}>
+
+      <Arrow dir={dir} />
+      <div className={stylesPopupBox}>
+        {
+          (content === 'ratings')
+            ? <PopupHistogram rating={rating} numReviews={numReviews}></PopupHistogram>
+            : <PopupMessage></PopupMessage>
+        }
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Popup;

@@ -60,7 +60,7 @@ const ProductInfo = (props) => {
           </a>
         </div>
 
-        <Rating className={styleRatingsAverage} rating={Math.round(ratingsAverage * 10) / 10} />
+        <Rating className={styleRatingsAverage} rating={Math.round(ratingsAverage * 10) / 10} numReviews={ratingsCount}/>
 
         {ratingsCount
           ? (

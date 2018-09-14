@@ -1,12 +1,14 @@
 .stylesMain {
   position: absolute;
-  margin-left: -74px;
-  width: 200px;
-  height: 80px;
+  font-size: 1px;
+  width: 240px;
+  height: 195px;
   cursor: default;
+  z-index: 99;
+  display: none;
 }
 
-.stylesPopup {
+.stylesPopupBox {
   position: relative;
   width: 100%;
   height: 100%;
