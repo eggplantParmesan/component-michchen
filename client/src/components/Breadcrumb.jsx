@@ -16,7 +16,7 @@ const Breadcrumb = (props) => {
     <div id="breadcrumb" className={styleMain}>
       {categoryName ?
         categoryArr.map((x, i) => (
-          <span key={x}>
+          <span key={x + i}>
             <a href="http://hackreactor.com" className={styleBreadcrumb}>
               { x }
               &nbsp;
