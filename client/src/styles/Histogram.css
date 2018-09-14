@@ -1,6 +1,18 @@
 .stylesMain {
-  margin: 15px auto 10px auto;
+  margin: 0px auto;
   width: 85%;
+}
+
+/* 3.5 out of 5 stars */
+.stylesAvgRatingText {
+  display: block;
+  font-size: 13px;
+  padding: 14px 0 9px 0;
+}
+
+/* how many stars does this bar represent */
+.stylesStarText {
+  font-size: 11px;
 }
 
 /* grey bar */
@@ -32,9 +44,6 @@
   top:-1px;
   left:-1px;
   height:100%;
-}
-
-.stylesBarInner {
   width:100%;
   overflow:hidden;
   animation-delay: 0.25s;
@@ -47,20 +56,14 @@
   100% { width: 100%; }
 }
 
-
-.stylesText {
-  color: #666666;
-}
-
 .stylesPercentageText {
   position: relative;
   left: 8px;
+  font-size: 11px;
 }
 
-.stylesRatingText {
-  font-size: 14px;
-  padding-top: 17px;
-}
 .stylesSeeAllReviews {
   font-size: 12px;
+  padding: 8px 0;
+  display: block;
 }

@@ -5,6 +5,7 @@
   height: 195px;
   cursor: default;
   z-index: 99;
+  /* uncomment the following  */
   /* display: block; */
 }
 

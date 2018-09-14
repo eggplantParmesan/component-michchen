@@ -14,9 +14,9 @@ const Breadcrumb = (props) => {
 
   return (
     <div id="breadcrumb" className={styleMain}>
-      {categoryName ?
-        categoryArr.map((x, i) => (
-          <span key={x + i}>
+      {categoryName
+        ? categoryArr.map((x, i) => (
+          <span key={x + Math.round(Math.random() * 9)}>
             <a href="http://hackreactor.com" className={styleBreadcrumb}>
               { x }
               &nbsp;

@@ -3,8 +3,8 @@ import styles from '../styles/Histogram.css';
 const React = require('react');
 
 const {
-  stylesMain, stylesBar, stylesPercentageText, stylesRatingText,
-  stylesSeeAllReviews, stylesBarInner, stylesBarOuter,
+  stylesMain, stylesAvgRatingText, stylesStarText, stylesBar, stylesBarInner,
+  stylesBarOuter, stylesPercentageText, stylesSeeAllReviews,
 } = styles;
 
 function randomDistribution(average) {
@@ -38,7 +38,7 @@ const PopupHistogram = (props) => {
 
   return (
     <div>
-      <span className={stylesRatingText}>
+      <span className={stylesAvgRatingText}>
         {rating || ''} out of 5 stars
       </span>
       <table className={stylesMain} cellSpacing="3">
@@ -65,13 +65,11 @@ const PopupHistogram = (props) => {
 const HistogramBar = (props) => {
   const { value, num } = props;
   const percentageRender = { width: `${Math.round(value * 100)}%` };
-  const stylesText = { fontSize: '10px !important' }
   return (
     <tr>
-      <td width="50" style={stylesText}>
-        <a href="http://hackreactor.com">
-          {num}
-          star
+      <td width="50">
+        <a href="http://hackreactor.com" className={stylesStarText}>
+          {num} star
         </a>
       </td>
       <td className={`${stylesBar} bartest`}>
@@ -79,7 +77,7 @@ const HistogramBar = (props) => {
           <div className={stylesBarInner} />
         </div>
       </td>
-      <td width="35" style={stylesText}>
+      <td width="35">
         <span className={stylesPercentageText}>
           {`${Math.round(value * 100)}%`}
         </span>

@@ -32,14 +32,16 @@ const {
   styleDescription,
   styleCompare,
   styleUsed,
-  styleUsedBold
+  styleUsedBold,
 } = styles;
 
 
 // here i had functions addComma and rednerPrice
 
 const ProductInfo = (props) => {
-  const { data, timeLeft } = props;
+  const {
+    data, timeLeft, imageCb, selectedVariation
+  } = props;
 
   const {
     amazonsChoice, available, categoryName, curSelect, description, freeReturns,
@@ -60,7 +62,11 @@ const ProductInfo = (props) => {
           </a>
         </div>
 
-        <Rating className={styleRatingsAverage} rating={Math.round(ratingsAverage * 10) / 10} numReviews={ratingsCount}/>
+        <Rating
+          className={styleRatingsAverage}
+          rating={Math.round(ratingsAverage * 10) / 10}
+          numReviews={ratingsCount}
+        />
 
         {ratingsCount
           ? (
@@ -127,29 +133,34 @@ const ProductInfo = (props) => {
         </tbody>
       </table>
 
-      {available ?
-        (<div className={styleAvailable}>In Stock.</div>)
+      {available
+        ? (<div className={styleAvailable}>In Stock.</div>)
         : (<div className={styleUnavailable}>Out of Stock.</div>)
       }
 
-      {hasCountdown && available ?
-        (<Countdown timeLeft={timeLeft} />)
+      {hasCountdown && available
+        ? (<Countdown timeLeft={timeLeft} />)
         : ''
       }
 
       {/* dropdown size selector */}
-      {props.data.images && props.data.images.size && available ?
-        (<SelectorDropdown images={props.data.images.size} cb={props.dropdownCb} />)
+      {data.images && data.images.size && available
+        ? (
+          <SelectorDropdown
+            images={data.images.size}
+            cb={props.dropdownCb}
+          />
+        )
         : ''
       }
 
       {/* image color selector */}
-      {props.data.images && props.data.images.color && available ?
-        (
+      {data.images && data.images.color && available
+        ? (
           <SelectorImage
-            images={props.data.images.color}
-            cb={props.imageCb}
-            selectedVariation={props.selected_variation}
+            images={data.images.color}
+            cb={imageCb}
+            selectedVariation={selectedVariation}
           />
         )
         : ''
@@ -168,8 +179,8 @@ const ProductInfo = (props) => {
 
       <div className={styleCompare}><a href="http://hackreactor.com">Compare with similar items</a></div>
 
-      {usedCount > 0 && available ?
-        (
+      {usedCount > 0 && available
+        ? (
           <div className={styleUsed}>
             <a href="http://hackreactor.com">
               <span className={styleUsedBold}>Used & new</span>
@@ -178,8 +189,8 @@ const ProductInfo = (props) => {
             ) from&nbsp;
               {renderPrice(usedPrice)}
             </a>
-            {freeShipping ?
-              ' & FREE shipping'
+            {freeShipping
+              ? ' & FREE shipping'
               : ''
             }
             .&nbsp;
