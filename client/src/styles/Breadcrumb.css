@@ -1,0 +1,11 @@
+.stylesMain {
+  font-size: 11px;
+  height: 38px;
+  color: #666;
+  display: block;
+}
+
+.stylesBreadcrumb{
+  color: #666;
+  font-size: 11px;
+}

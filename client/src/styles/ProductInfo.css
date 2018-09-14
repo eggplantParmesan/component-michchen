@@ -1,0 +1,113 @@
+.styleMain {
+  display: block;
+  float: left;
+  width: 45.5%;
+  margin: 0 0 0 2vmin;
+}
+
+.styleTitleBlock {
+  border: 1px solid #ddd;
+  border-width: 0 0 1px 0;
+  margin: 0 0 12px 0;
+  padding: 0 0 5px 0;
+}
+
+.styleProductName {
+  padding: 0;
+  margin: 5px 0;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.styleSeller{
+  margin: 0 0 5px 0;
+}
+
+.styleSellerName{}
+
+.styleRatingsCount {
+  display: inline-block;
+  margin: 0 0.4em 0 0;
+}
+
+.styleSubhedPipe, .styleQuestionsCount {
+  display: inline-block;
+  margin: 0 0.4em;
+}
+
+.styleAmazonsChoice {
+  background-color: red;
+  width: 116px;
+  height: 22px;
+  line-height: 22px;
+  padding-left: 8px;
+  font-size: 12px;
+  color: #FFFFFF;
+  background-color: #232F3E;
+  /* background-image: url('./amazonsChoice-edge.png'); */
+  margin: 5px 0;
+}
+
+.styleAmazonsChoiceOrange {
+  font-size: 12px;
+  color: #F69931;
+}
+
+.styleAmazonsChoiceTriangle {
+  border-right: 10px solid transparent;
+  border-top: 22px solid;
+  color: #232f3e;
+  width: 0px;
+}
+
+.stylePriceLabel {
+  text-align: right;
+  color: #555555;
+}
+
+.stylePrice {
+  font-size: 1.4em;
+  color: #B12704;
+  margin-left: 0.25em;
+}
+
+.styleListPrice {
+  text-decoration: line-through;
+}
+
+.styleAvailable {
+  margin-top: 0.75em;
+  font-size: 1.2em;
+  color: green;
+}
+
+.styleUnavailable {
+  margin-top: 0.75em;
+  font-size: 1.2em;
+  color: red;
+}
+
+.styleYouSave {
+  color: #B12704;
+}
+
+.styleFreeShipping {}
+.styleSale {}
+
+.styleDescription {
+  padding-left: 1.8em;
+}
+
+.styleCompare {
+  margin: 0.75em 0;
+  display: block;
+}
+
+.styleUsed {
+  color: #555555;
+}
+
+.styleUsedBold {
+  font-weight: 700;
+}

@@ -1,0 +1,25 @@
+.styleMain {
+    margin: 15px 0 23px 0;
+}
+
+.styleDropdown {
+  -webkit-appearance: none;
+  border: 1px solid #a6a6a6;
+  background-image: linear-gradient(#f6f7f9, #e7e9eb);
+  height: 30px;
+  width: 80px;
+  margin-top: 6px;
+  padding: 0 12px;
+  line-height: 20px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.styleDropdown:hover {
+  background-image: linear-gradient(#eaecee, #dadcde);
+}
+
+.styleCategory {
+  font-weight: 700;
+  display: block;
+}

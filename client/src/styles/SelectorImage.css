@@ -1,0 +1,27 @@
+.stylesMain {
+  display: inline-block;
+  outline: 1px solid #e2e6ec;
+  margin: 0 10 0 0;
+  width: 38px;
+  height: 50px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.stylesColor {
+  height:70%;
+  position: relative;
+  top:15%;
+}
+
+.stylesVariationName {
+  font-weight: 700;
+}
+
+.stylesVariationNameHolder {
+  margin: 1em 0 0.5em 0;
+}
+
+.stylesSelectedVariation {
+  display: inline;
+}

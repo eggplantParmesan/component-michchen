@@ -1,0 +1,19 @@
+.stylesMain {
+  position: absolute;
+  font-size: 1px;
+  width: 240px;
+  height: 195px;
+  cursor: default;
+  z-index: 99;
+}
+
+.stylesPopupBox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  text-align: center;
+}
