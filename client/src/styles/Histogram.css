@@ -19,8 +19,6 @@
 .stylesBar {
   background-color: #eee;
   background: linear-gradient(to bottom, #999, #ccc 6%, #eee 20%, #eee 100%);
-  /* opacity: 0.75; */
-  /* border: 1px solid #000; */
   border-right: 1px solid #ddd;
   width: 200px;
   height: 18px;
