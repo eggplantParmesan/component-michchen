@@ -14,17 +14,15 @@
 
 .styleProductName {
   padding: 0;
-  margin: 5px 0;
+  margin: 0;
   font-weight: 400;
   font-size: 21px;
   line-height: 1.3;
 }
 
-.styleSeller{
-  margin: 0 0 5px 0;
+.styleSeller {
+  margin: 2px 0 6px 0;
 }
-
-.styleSellerName{}
 
 .styleRatingsCount {
   display: inline-block;
