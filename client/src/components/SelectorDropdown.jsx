@@ -1,5 +1,7 @@
-const React = require('react');
 import styles from '../styles/SelectorDropdown.css';
+
+const React = require('react');
+
 const { styleMain, styleDropdown, styleCategory } = styles;
 
 const SelectorDropdown = (props) => {

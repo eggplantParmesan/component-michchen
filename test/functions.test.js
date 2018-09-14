@@ -1,14 +1,34 @@
 const functions = require('./functions');
-const { addComma, renderPrice } = require('../client/src/components/ProductInfo.js');
+const { addCommas, renderPrice } = require('../client/src/components/ProductInfo.js');
+
+// addCommas
 
 test('Adds 2 + 2 to equal 4', () => {
   expect(functions.sum(2, 2)).toBe(4);
 });
 
 test('Adds comma to after the first digit in 1000', () => {
-  expect(addComma(1000)).toBe('1,000');
+  expect(addCommas(1000)).toBe('1,000');
 });
 
-test('Renders a number as a proper price', () => {
+test('Adds comma every three digits', () => {
+  expect(addCommas(1234567890)).toBe('1,234,567,890');
+});
+
+test('Does not add comma to value < 1000', () => {
+  expect(addCommas(123)).toBe('123');
+});
+
+// renderPrice()
+
+test('Renders price with two decimal places', () => {
+  expect(renderPrice(123.45678)).toBe('$123.46');
+});
+
+test('Renders price less than 1 dollar', () => {
+  expect(renderPrice(0.123)).toBe('$0.12');
+});
+
+test('Renders price, with trailing 0s if it\'s a round number', () => {
   expect(renderPrice(1000)).toBe('$1,000.00');
 });

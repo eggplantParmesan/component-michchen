@@ -4,11 +4,14 @@ import PopupHistogram from './PopupHistogram.jsx';
 import PopupMessage from './PopupMessage.jsx';
 
 const React = require('react');
+
 const { stylesMain, stylesPopupBox } = styles;
 
 
 const Popup = (props) => {
-  const {dir, show, content, rating, numReviews} = props;
+  const {
+    dir, show, content, rating, numReviews,
+  } = props;
 
   return (
     <div className={`${stylesMain} popup${dir} ${(show ? '' : 'hide')}`}>
@@ -17,8 +20,8 @@ const Popup = (props) => {
       <div className={stylesPopupBox}>
         {
           (content === 'ratings')
-            ? <PopupHistogram rating={rating} numReviews={numReviews}></PopupHistogram>
-            : <PopupMessage></PopupMessage>
+            ? <PopupHistogram rating={rating} numReviews={numReviews} />
+            : <PopupMessage />
         }
       </div>
     </div>
