@@ -39,9 +39,7 @@ const PopupHistogram = (props) => {
   return (
     <div>
       <span className={stylesRatingText}>
-        {rating || ''}
-        &nbsp;
-        out of 5 stars
+        {rating || ''} out of 5 stars
       </span>
       <table className={stylesMain} cellSpacing="3">
         <tbody>
