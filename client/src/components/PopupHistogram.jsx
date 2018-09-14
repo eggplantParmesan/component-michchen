@@ -72,6 +72,6 @@ const HistogramBar = (props) => {
       </td>
     </tr>
   );
-}
+};
 
 export default PopupHistogram;
