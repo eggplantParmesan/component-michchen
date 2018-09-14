@@ -40,14 +40,14 @@ const {
 
 const ProductInfo = (props) => {
   const {
-    data, timeLeft, imageCb, selectedVariation
+    data, timeLeft, imageCb, dropdownCb, selectedVariation,
   } = props;
 
   const {
     amazonsChoice, available, categoryName, curSelect, description, freeReturns,
     freeShipping, id, hasCountdown, images, price, priceList, productName,
     questionsCount, ratingsAverage, ratingsCount, sellerName, soldByName,
-    usedCount, usedPrice
+    usedCount, usedPrice,
   } = data;
 
   return (
@@ -148,7 +148,7 @@ const ProductInfo = (props) => {
         ? (
           <SelectorDropdown
             images={data.images.size}
-            cb={props.dropdownCb}
+            cb={dropdownCb}
           />
         )
         : ''
@@ -199,8 +199,6 @@ const ProductInfo = (props) => {
         )
         : ''
       }
-
-
     </div>
   );
 };
