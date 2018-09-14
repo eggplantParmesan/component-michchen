@@ -1,8 +1,11 @@
 import styles from '../styles/Histogram.css';
 
 const React = require('react');
-const { stylesMain, stylesBar, stylesPercentageText, stylesRatingText, stylesSeeAllReviews,
-        stylesBarInner, stylesBarOuter} = styles;
+
+const {
+  stylesMain, stylesBar, stylesPercentageText, stylesRatingText,
+  stylesSeeAllReviews, stylesBarInner, stylesBarOuter,
+} = styles;
 
 function randomDistribution(average) {
   // let averageCopy = average;
@@ -36,33 +39,44 @@ const PopupHistogram = (props) => {
   return (
     <div>
       <span className={stylesRatingText}>
-        {rating || ''}&nbsp;
-        out of 5 stars
+        {rating || ''} out of 5 stars
       </span>
       <table className={stylesMain} cellSpacing="3">
         <tbody>
-          {percentageArr.map(keyValuePair => <HistogramBar key={keyValuePair} num={keyValuePair[0]} value={keyValuePair[1]} />)}
+          {percentageArr.map(keyValuePair => (
+            <HistogramBar
+              key={keyValuePair}
+              num={keyValuePair[0]}
+              value={keyValuePair[1]}
+            />
+          ))
+          }
         </tbody>
       </table>
-      <a href="http://hackreactor.com" className={stylesSeeAllReviews}>See all {numReviews} reviews ></a>
+      <a href="http://hackreactor.com" className={stylesSeeAllReviews}>
+        See all&nbsp;
+        {numReviews}
+        &nbsp;reviews &raquo;
+      </a>
     </div>
   );
 };
 
 const HistogramBar = (props) => {
   const { value, num } = props;
-  const percentageRender = {width: `${Math.round(value*100)}%`};
-  const stylesText = {fontSize: '10px !important'}
+  const percentageRender = { width: `${Math.round(value * 100)}%` };
+  const stylesText = { fontSize: '10px !important' }
   return (
     <tr>
       <td width="50" style={stylesText}>
         <a href="http://hackreactor.com">
-          {num} star
+          {num}
+          star
         </a>
       </td>
       <td className={`${stylesBar} bartest`}>
         <div className={stylesBarOuter} style={percentageRender}>
-          <div className={`${stylesBarInner} barAnimation`} />
+          <div className={stylesBarInner} />
         </div>
       </td>
       <td width="35" style={stylesText}>
@@ -72,6 +86,6 @@ const HistogramBar = (props) => {
       </td>
     </tr>
   );
-}
+};
 
 export default PopupHistogram;

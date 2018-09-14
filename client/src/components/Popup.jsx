@@ -9,7 +9,6 @@ const { stylesMain, stylesPopupBox } = styles;
 
 const Popup = (props) => {
   const {dir, show, content, rating, numReviews} = props;
-  let popupClass = `${stylesMain} popup${dir} ${(show ? '' : 'hide')}`;
 
   return (
     <div className={`${stylesMain} popup${dir} ${(show ? '' : 'hide')}`}>
