@@ -1,5 +1,6 @@
 import styles from '../styles/Breadcrumb.css';
 
+const {stylesMain, stylesBreadcrumb} = styles;
 const React = require('react');
 const { styleMain, styleBreadcrumb } = styles;
 
@@ -13,16 +14,16 @@ const Breadcrumb = (props) => {
   }
 
   return (
-    <div id="breadcrumb" className={styleMain}>
-      {categoryName ?
-        categoryArr.map((x, i) => (
+    <div id="breadcrumb" className={stylesMain}>
+      {categoryName
+        ? categoryArr.map((x, i) => (
           <span key={x + i}>
-            <a href="http://hackreactor.com" className={styleBreadcrumb}>
-              { x }
+            <a href="http://hackreactor.com" className={stylesBreadcrumb}>
+              {x}
               &nbsp;
             </a>
-            { /* if not the last category, append a ">" */ }
-            { i < categoryArr.length - 1 ? '>' : '' }
+            {/* if not last in the list, append a ">" */}
+            {i < categoryArr.length - 1 ? '>' : ''}
             &nbsp;
           </span>))
         : ''
