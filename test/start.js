@@ -4,4 +4,5 @@ require('babel-register')({
 });
 
 // Import the rest of our application.
-module.exports = require('./sum.test.js');
+// module.exports = require('./sum.test.js');
+module.exports = require('./functions.test.js');

@@ -4,7 +4,7 @@ import SelectorDropdown from './SelectorDropdown.jsx';
 import SelectorImage from './SelectorImage.jsx';
 import DescBullet from './DescBullet.jsx';
 import styles from '../styles/ProductInfo.css';
-import {addComma, renderPrice} from './ProductInfo.js';
+import {addCommas, renderPrice, savedPercent} from './ProductInfo.js';
 
 const React = require('react');
 
@@ -36,7 +36,7 @@ const {
 } = styles;
 
 
-// here i had functions addComma and rednerPrice
+// here i had functions addCommas and rednerPrice
 
 const ProductInfo = (props) => {
   const {
@@ -71,7 +71,7 @@ const ProductInfo = (props) => {
         {ratingsCount
           ? (
             <a className={styleRatingsCount} href="http://hackreactor.com">
-              {addComma(ratingsCount)}
+              {addCommas(ratingsCount)}
               &nbsp;customer&nbsp;
               {ratingsCount === 1 ? 'review' : 'reviews'}
             </a>
@@ -83,7 +83,7 @@ const ProductInfo = (props) => {
 
         {questionsCount ? (
           <a className={styleQuestionsCount} href="http://hackreactor.com">
-            {addComma(questionsCount)}
+            {addCommas(questionsCount)}
             &nbsp;answered&nbsp;
             {questionsCount === 1 ? 'question' : 'questions'}
           </a>)
@@ -125,7 +125,7 @@ const ProductInfo = (props) => {
               <td className={styleYouSave}>
                 {renderPrice((priceList - price))}
                 &nbsp;(
-                {Math.round(((priceList - price) / priceList) * 100)}
+                {savedPercent(priceList, price)}
                 %)
               </td>
             </tr>)
