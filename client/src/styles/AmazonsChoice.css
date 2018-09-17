@@ -5,7 +5,7 @@
 }
 
 .styleAmazonsChoice {
-  width: 116px;
+  width: 100%;
   height: 22px;
   line-height: 22px;
   padding-left: 8px;
@@ -24,6 +24,6 @@
 }
 
 .styleAmazonsChoicePopup {
-  width: 425px;
-  height: 70px;
+  width: 413px;
+  height: 65px;
 }

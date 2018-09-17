@@ -40,15 +40,16 @@ class Rating extends React.Component {
     // remove .s so it's a usable class name
 
     return (
-      <div className={styleMain}>
+      <div
+        className={styleMain}
+        onMouseEnter={this.hoverOn.bind(this)}
+        onMouseLeave={this.hoverOff.bind(this)}
+      >
         <div
           id="stars"
           className={`${styleStars} s${ratingClassName}`}
-          onMouseEnter={this.hoverOn.bind(this)}
-          onMouseLeave={this.hoverOff.bind(this)}
         >
           &nbsp;
-          {/* up down left right */}
           <Popup content="ratings" show={hover} dir="down" rating={rating} numReviews={numReviews} />
         </div>
         <div className={styleArr}>

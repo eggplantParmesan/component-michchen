@@ -26,9 +26,11 @@ const Popup = (props) => {
       width: '425px',
       height: '70px',
       top: '-84px',
-      left: '-130%',
+      left: '-132%',
     };
   }
+
+  // dir: up/down/left/right
 
   return (
     <div
