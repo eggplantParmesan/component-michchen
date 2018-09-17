@@ -1,4 +1,5 @@
 import Rating from './Rating.jsx';
+import AmazonsChoice from './AmazonsChoice.jsx';
 import Countdown from './Countdown.jsx';
 import SelectorDropdown from './SelectorDropdown.jsx';
 import SelectorImage from './SelectorImage.jsx';
@@ -91,10 +92,7 @@ const ProductInfo = (props) => {
 
         {amazonsChoice ? (
           <div>
-            <div className={styleAmazonsChoice}>
-              Amazon&apos;s&nbsp;
-              <span className={styleAmazonsChoiceOrange}>Choice</span>
-            </div>
+            <AmazonsChoice />
           </div>)
           : ''
         }

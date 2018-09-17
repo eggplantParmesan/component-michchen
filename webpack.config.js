@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  // extends: 'airbnb',
   entry: path.join(__dirname, '/client/src/App.jsx'),
   module: {
     rules: [

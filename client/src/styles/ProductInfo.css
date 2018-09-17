@@ -34,26 +34,6 @@
   margin: 0 0.4em;
 }
 
-.styleAmazonsChoice {
-  background-color: red;
-  width: 116px;
-  height: 22px;
-  line-height: 22px;
-  padding-left: 8px;
-  font-size: 12px;
-  color: #FFFFFF;
-  background-color: #232F3E;
-  background-image: url('./amazons_choice_edge.png');
-  background-repeat: no-repeat;
-  background-position: 114px 0;
-  margin: 5px 0;
-}
-
-.styleAmazonsChoiceOrange {
-  font-size: 12px;
-  color: #F69931;
-}
-
 .stylePriceLabel {
   text-align: right;
   color: #555555;

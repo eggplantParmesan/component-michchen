@@ -7,21 +7,41 @@ const React = require('react');
 
 const { stylesMain, stylesPopupBox } = styles;
 
-
 const Popup = (props) => {
   const {
-    dir, show, content, rating, numReviews,
+    dir, show, content, rating, numReviews, clickCb,
   } = props;
 
+  let popupSize;
+
+  if (content === 'ratings') {
+    // histogram
+    popupSize = {
+      width: '240px',
+      height: '200px',
+    };
+  } else {
+    // message
+    popupSize = {
+      width: '425px',
+      height: '70px',
+      top: '-84px',
+      left: '-130%',
+    };
+  }
+
   return (
-    <div className={`${stylesMain} popup${dir} ${(show ? '' : 'hide')}`}>
+    <div
+      style={popupSize}
+      className={`${stylesMain} popup${dir} ${(show ? '' : 'hide')}`}
+    >
 
       <Arrow dir={dir} />
       <div className={stylesPopupBox}>
         {
           (content === 'ratings')
             ? <PopupHistogram rating={rating} numReviews={numReviews} />
-            : <PopupMessage message={content} />
+            : <PopupMessage content={content} clickCb={clickCb} />
         }
       </div>
     </div>
