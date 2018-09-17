@@ -21,7 +21,7 @@ const Popup = (props) => {
         {
           (content === 'ratings')
             ? <PopupHistogram rating={rating} numReviews={numReviews} />
-            : <PopupMessage />
+            : <PopupMessage message={content} />
         }
       </div>
     </div>

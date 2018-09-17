@@ -31,12 +31,13 @@ class Rating extends React.Component {
     const { hover } = this.state;
     let { rating, numReviews } = this.props;
 
-    if (rating !== undefined && !isNaN(rating)) {
+    let ratingClassName = '';
+    if (rating !== undefined && !Number.isNaN(rating)) {
       // round to nearest .5
-      rating = Math.round(rating * 2) / 2;
+      ratingClassName = Math.round(rating * 2) / 2;
+      ratingClassName = String(ratingClassName).replace(/\./g, '');
     }
     // remove .s so it's a usable class name
-    const ratingClassName = String(rating).replace(/\./g, '');
 
     return (
       <div className={styleMain}>

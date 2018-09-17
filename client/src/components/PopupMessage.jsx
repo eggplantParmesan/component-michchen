@@ -6,7 +6,7 @@ const PopupMessage = (props) => {
   return (
     <div>
       {message}
-      <div>x</div>
+      <div>{props.content}</div>
     </div>
   );
 };
