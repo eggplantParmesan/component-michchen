@@ -1,19 +1,33 @@
-// add a comma every three places e.g. 1,000
-// used for review and questions counts
-export function addComma(num) {
-  return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
+exports.addCommas = function addCommas(num) {
+  const numStr = String(num);
+  let result = '';
 
-export function renderPrice(num) {
-  let newNum = Math.round(num * 100) / 100;
-
-  if (newNum % 1 === 0) {
-    // add .00 to a price if it has no decimals
-    newNum += '.00';
-  } else if ((newNum * 10) % 1 === 0) {
-    // otherwise if there's a single-digit decimal, append a 0
-    newNum += '0';
+  for (let i = numStr.length; i > 0; i -= 3) {
+    if (i > 3) {
+      const threeDigits = numStr.slice(i - 3, i);
+      result = `,${threeDigits + result}`;
+    } else {
+      const threeDigits = numStr.slice(0, i);
+      result = threeDigits + result;
+    }
   }
+  return result;
+};
 
-  return `$${newNum}`;
+function shortenCents(cents) {
+  let centsAsInt = Math.round(cents * 100);
+  if (centsAsInt < 10) {
+    centsAsInt = `0${centsAsInt}`;
+  }
+  return centsAsInt;
 }
+
+exports.renderPrice = function renderPrice(num) {
+  const dollars = Math.floor(num);
+  const cents = num % 1;
+  return `$${exports.addCommas(dollars)}.${shortenCents(cents)}`;
+};
+
+exports.savedPercent = function savedPercent(priceList, price) {
+  return Math.round(((priceList - price) / priceList) * 100);
+};

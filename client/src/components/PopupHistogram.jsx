@@ -1,36 +1,12 @@
 import styles from '../styles/Histogram.css';
+import {randomDistribution} from './PopupHistogram.js';
 
 const React = require('react');
 
 const {
-  stylesMain, stylesBar, stylesPercentageText, stylesRatingText,
-  stylesSeeAllReviews, stylesBarInner, stylesBarOuter,
+  stylesMain, stylesAvgRatingText, stylesStarText, stylesBar, stylesBarInner,
+  stylesBarOuter, stylesPercentageText, stylesSeeAllReviews,
 } = styles;
-
-function randomDistribution(average) {
-  // let averageCopy = average;
-  // let resultsArr = [];
-  // let sum = 0;
-  // let remainder = 0;
-
-  // first bar:
-  // generate random(0,0.5)
-
-  // for each bar
-  //   generate random(0,remainder)
-  //   push to array
-
-  // return resultsArr;
-  return {
-    5: 0.24,
-    4: 0.05,
-    3: 0.09,
-    2: 0.10,
-    1: 0.52,
-  };
-}
-
-// last bar is the remainder
 
 const PopupHistogram = (props) => {
   const percentageArr = Object.entries(randomDistribution()).sort((x, y) => x[0] < y[0]);
@@ -38,8 +14,8 @@ const PopupHistogram = (props) => {
 
   return (
     <div>
-      <span className={stylesRatingText}>
-        {rating || ''} out of 5 stars
+      <span className={stylesAvgRatingText}>
+        {`${rating} out of 5 stars` || ''}
       </span>
       <table className={stylesMain} cellSpacing="3">
         <tbody>
@@ -65,13 +41,11 @@ const PopupHistogram = (props) => {
 const HistogramBar = (props) => {
   const { value, num } = props;
   const percentageRender = { width: `${Math.round(value * 100)}%` };
-  const stylesText = { fontSize: '10px !important' }
   return (
     <tr>
-      <td width="50" style={stylesText}>
-        <a href="http://hackreactor.com">
-          {num}
-          star
+      <td width="50">
+        <a href="http://hackreactor.com" className={stylesStarText}>
+          {num} star
         </a>
       </td>
       <td className={`${stylesBar} bartest`}>
@@ -79,7 +53,7 @@ const HistogramBar = (props) => {
           <div className={stylesBarInner} />
         </div>
       </td>
-      <td width="35" style={stylesText}>
+      <td width="35">
         <span className={stylesPercentageText}>
           {`${Math.round(value * 100)}%`}
         </span>

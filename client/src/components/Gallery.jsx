@@ -9,7 +9,7 @@ const Gallery = (props) => {
   const {images, currentImage} = props;
 
   // props is eventually defined...
-  // console.log(images);
+
   return (
     <div className={styleMain}>
       {images

@@ -6,23 +6,21 @@ import Breadcrumb from "./components/Breadcrumb.jsx";
 import Gallery from "./components/Gallery.jsx";
 import ProductInfo from "./components/ProductInfo.jsx";
 
-$(document).keydown(e =>{
+$(document).keydown((e) => {
   let productNum = document.location.search;
   if (productNum) {
-    productNum = productNum.replace(/(id|=|\?|\&)/g, '');
+    productNum = productNum.replace(/(id|=|\?|&)/g, '');
     productNum = Number(productNum);
+  } else {
+    productNum = 1;
   }
 
-  if (e.which === 37 && productNum > 1) {
-    // prev
-    document.location.href = document.location.origin + '/?id=' + (productNum - 1);
-
-  } else if (e.which === 39 && productNum < 100) {
-    // next
-    document.location.href = document.location.origin + '/?id=' + (productNum + 1);
-
+  if (e.which === 37 && productNum > 1) { // prev
+    document.location.href = `${document.location.origin}/?id=${productNum - 1}`;
+  } else if (e.which === 39 && productNum < 100) { // next
+    document.location.href = `${document.location.origin}/?id=${productNum + 1}`;
   }
-})
+});
 
 class App extends React.Component {
   constructor(props) {
@@ -44,7 +42,7 @@ class App extends React.Component {
         // onload, select the first option for product variation
         if (res.images['color'] !== null) {
           this.setState({
-            selected_variation: Object.keys(Object.values(res.images)[0])[0]
+            selectedVariation: Object.keys(Object.values(res.images)[0])[0]
           })
         }
       });
@@ -56,14 +54,14 @@ class App extends React.Component {
   selectOption (e) {
     if (e.target.value !== 'Select') {
       this.setState({
-        selected_size: e.target.value // value of the dropdown
+        selectedSize: e.target.value // value of the dropdown
       });
     }
   }
 
   selectImage(e) {
     this.setState({
-      selected_variation: e.target.getAttribute('data')
+      selectedVariation: e.target.getAttribute('data')
     });
 
     e.stopPropagation();
@@ -91,19 +89,21 @@ class App extends React.Component {
   }
 
   render(props) {
+    const {selectedVariation, images, timeLeft} = this.state;
+
     return (
       <div>
         <Breadcrumb data={this.state} />
         <Gallery
-          currentImage={this.state.selected_variation}
-          images={this.state.images}
+          currentImage={selectedVariation}
+          images={images}
         />
         <ProductInfo
           data={this.state}
-          selected_variation={this.state.selected_variation}
+          selectedVariation={selectedVariation}
           dropdownCb={this.selectOption.bind(this)}
           imageCb={this.selectImage.bind(this)}
-          timeLeft={this.state.timeLeft}
+          timeLeft={timeLeft}
         />
       </div>
     );

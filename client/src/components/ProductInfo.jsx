@@ -4,7 +4,7 @@ import SelectorDropdown from './SelectorDropdown.jsx';
 import SelectorImage from './SelectorImage.jsx';
 import DescBullet from './DescBullet.jsx';
 import styles from '../styles/ProductInfo.css';
-import {addComma, renderPrice} from './ProductInfo.js';
+import {addCommas, renderPrice, savedPercent} from './ProductInfo.js';
 
 const React = require('react');
 
@@ -20,7 +20,6 @@ const {
   styleQuestionsCount,
   styleAmazonsChoice,
   styleAmazonsChoiceOrange,
-  styleAmazonsChoiceTriangle,
   styleAvailable,
   styleUnavailable,
   stylePriceLabel,
@@ -32,25 +31,27 @@ const {
   styleDescription,
   styleCompare,
   styleUsed,
-  styleUsedBold
+  styleUsedBold,
 } = styles;
 
 
-// here i had functions addComma and rednerPrice
+// here i had functions addCommas and rednerPrice
 
 const ProductInfo = (props) => {
-  const { data, timeLeft } = props;
+  const {
+    data, timeLeft, imageCb, dropdownCb, selectedVariation,
+  } = props;
 
   const {
     amazonsChoice, available, categoryName, curSelect, description, freeReturns,
     freeShipping, id, hasCountdown, images, price, priceList, productName,
     questionsCount, ratingsAverage, ratingsCount, sellerName, soldByName,
-    usedCount, usedPrice
+    usedCount, usedPrice,
   } = data;
 
   return (
     <div className={styleMain}>
-
+      {/* begin TitleBlock */}
       <div className={styleTitleBlock}>
         <h3 className={styleProductName}>{productName}</h3>
         <div className={styleSeller}>
@@ -60,12 +61,16 @@ const ProductInfo = (props) => {
           </a>
         </div>
 
-        <Rating className={styleRatingsAverage} rating={Math.round(ratingsAverage * 10) / 10} numReviews={ratingsCount}/>
+        <Rating
+          className={styleRatingsAverage}
+          rating={Math.round(ratingsAverage * 10) / 10}
+          numReviews={ratingsCount}
+        />
 
         {ratingsCount
           ? (
             <a className={styleRatingsCount} href="http://hackreactor.com">
-              {addComma(ratingsCount)}
+              {addCommas(ratingsCount)}
               &nbsp;customer&nbsp;
               {ratingsCount === 1 ? 'review' : 'reviews'}
             </a>
@@ -77,7 +82,7 @@ const ProductInfo = (props) => {
 
         {questionsCount ? (
           <a className={styleQuestionsCount} href="http://hackreactor.com">
-            {addComma(questionsCount)}
+            {addCommas(questionsCount)}
             &nbsp;answered&nbsp;
             {questionsCount === 1 ? 'question' : 'questions'}
           </a>)
@@ -93,9 +98,8 @@ const ProductInfo = (props) => {
           </div>)
           : ''
         }
-
       </div>
-
+      {/* end TitleBlock */}
 
       <table>
         <tbody>
@@ -119,7 +123,7 @@ const ProductInfo = (props) => {
               <td className={styleYouSave}>
                 {renderPrice((priceList - price))}
                 &nbsp;(
-                {Math.round(((priceList - price) / priceList) * 100)}
+                {savedPercent(priceList, price)}
                 %)
               </td>
             </tr>)
@@ -127,29 +131,34 @@ const ProductInfo = (props) => {
         </tbody>
       </table>
 
-      {available ?
-        (<div className={styleAvailable}>In Stock.</div>)
+      {available
+        ? (<div className={styleAvailable}>In Stock.</div>)
         : (<div className={styleUnavailable}>Out of Stock.</div>)
       }
 
-      {hasCountdown && available ?
-        (<Countdown timeLeft={timeLeft} />)
+      {hasCountdown && available
+        ? (<Countdown timeLeft={timeLeft} />)
         : ''
       }
 
       {/* dropdown size selector */}
-      {props.data.images && props.data.images.size && available ?
-        (<SelectorDropdown images={props.data.images.size} cb={props.dropdownCb} />)
+      {images && images.size && available
+        ? (
+          <SelectorDropdown
+            images={images.size}
+            cb={dropdownCb}
+          />
+        )
         : ''
       }
 
       {/* image color selector */}
-      {props.data.images && props.data.images.color && available ?
-        (
+      {images && images.color && available
+        ? (
           <SelectorImage
-            images={props.data.images.color}
-            cb={props.imageCb}
-            selectedVariation={props.selected_variation}
+            images={images.color}
+            cb={imageCb}
+            selectedVariation={selectedVariation}
           />
         )
         : ''
@@ -166,10 +175,14 @@ const ProductInfo = (props) => {
           : ''}
       </ul>
 
-      <div className={styleCompare}><a href="http://hackreactor.com">Compare with similar items</a></div>
+      <div className={styleCompare}>
+        <a href="http://hackreactor.com">
+          Compare with similar items
+        </a>
+      </div>
 
-      {usedCount > 0 && available ?
-        (
+      {usedCount > 0 && available
+        ? (
           <div className={styleUsed}>
             <a href="http://hackreactor.com">
               <span className={styleUsedBold}>Used & new</span>
@@ -178,8 +191,8 @@ const ProductInfo = (props) => {
             ) from&nbsp;
               {renderPrice(usedPrice)}
             </a>
-            {freeShipping ?
-              ' & FREE shipping'
+            {freeShipping
+              ? ' & FREE shipping'
               : ''
             }
             .&nbsp;
@@ -188,8 +201,6 @@ const ProductInfo = (props) => {
         )
         : ''
       }
-
-
     </div>
   );
 };
