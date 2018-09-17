@@ -1,9 +1,8 @@
-// const path = require('path');
+const path = require('path');
 
 module.exports = {
   // extends: 'airbnb',
-  entry: __dirname + "/client/src/App.jsx",
-  // entry: path.join("/client/src/App.jsx"),
+  entry: path.join(__dirname, '/client/src/App.jsx'),
   module: {
     rules: [
       {
@@ -17,22 +16,29 @@ module.exports = {
               modules: true,
             },
           },
-        ]
+        ],
       },
       {
         test: [/\.jsx$/],
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         query: {
-          presets: ["@babel/preset-env", "@babel/preset-react"]
-        }
-      }
-
-    ]
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+        },
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
+    ],
   },
   output: {
-    filename: "bundle.js",
-    path: __dirname + "/client/dist"
-    // path: path.join("/client/dist")
-  }
+    filename: 'bundle.js',
+    path: path.join(__dirname, '/client/dist'),
+  },
 };

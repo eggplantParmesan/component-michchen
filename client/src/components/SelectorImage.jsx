@@ -6,40 +6,47 @@ const {
   stylesMain, stylesColor, stylesVariationNameHolder, stylesVariationName, stylesSelectedVariation
 } = styles;
 
-const SelectorImage = props => (
-  <div>
-    <div className={stylesVariationNameHolder}>
-      <span className={stylesVariationName}>Color:</span>
-      &nbsp;
-      <span className={stylesSelectedVariation}>{ props.selectedVariation }</span>
-    </div>
-    {
-      Object.entries(props.images).map(x => (
-        <SelectorImageOption
-          data={x}
-          key={x}
-          cb={props.cb}
-          selectedVariation={props.selectedVariation}
-        />
-      ))
-    }
-  </div>
-);
+const SelectorImage = (props) => {
+  const { selectedVariation, images, cb } = props;
 
-const SelectorImageOption = props => (
-  <div
-    className={stylesMain + ' ' + (props.selectedVariation === props.data[0] ? 'selectedVariation' : '')}
-    onClick={props.cb}
-    data={props.data[0]}
-  >
-    <div
-      style={{ backgroundColor: props.data[0].replace(/ /g, '').toLowerCase() }}
-      className={stylesColor}
-      data={props.data[0]}
-    >
-      &nbsp;
+  return (
+    <div>
+      <div className={stylesVariationNameHolder}>
+        <span className={stylesVariationName}>Color:</span>
+        &nbsp;
+        <span className={stylesSelectedVariation}>{ selectedVariation }</span>
+      </div>
+      {
+        Object.entries(images).map(x => (
+          <SelectorImageOption
+            data={x}
+            key={x}
+            cb={cb}
+            selectedVariation={selectedVariation}
+          />
+        ))
+      }
     </div>
-  </div>
-);
+  );
+};
+
+const SelectorImageOption = (props) => {
+  const { selectedVariation, data, cb } = props;
+  return (
+    <div
+      className={stylesMain + ' ' + (selectedVariation === data[0] ? 'selectedVariation' : '')}
+      onClick={cb}
+      data={data[0]}
+    >
+      <div
+        style={{ backgroundColor: data[0].replace(/ /g, '').toLowerCase() }}
+        className={stylesColor}
+        data={data[0]}
+      >
+        &nbsp;
+      </div>
+    </div>
+  );
+};
 
 export default SelectorImage;

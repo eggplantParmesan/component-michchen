@@ -1,6 +1,6 @@
 import styles from '../styles/Breadcrumb.css';
 
-const {stylesMain, stylesBreadcrumb} = styles;
+const { stylesMain, stylesBreadcrumb } = styles;
 const React = require('react');
 const { styleMain, styleBreadcrumb } = styles;
 

@@ -1,4 +1,4 @@
-import styles from '../styles/Popup.css';
+// import styles from '../styles/Popup.css';
 
 const React = require('react');
 
@@ -27,10 +27,13 @@ const stylesArrowBorder = {
   zIndex: '99',
 };
 
-const PopupArrow = props => (
-  <div style={stylesArrowBorder} className={`popupArrowBorder_${props.dir}`}>
-    <div style={stylesArrow} className={`popupArrow_${props.dir}`}/>
-  </div>
-);
+const PopupArrow = (props) => {
+  const { dir } = props;
+  return (
+    <div style={stylesArrowBorder} className={`popupArrowBorder_${dir}`}>
+      <div style={stylesArrow} className={`popupArrow_${dir}`} />
+    </div>
+  );
+};
 
 export default PopupArrow;

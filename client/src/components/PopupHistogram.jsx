@@ -1,4 +1,5 @@
 import styles from '../styles/Histogram.css';
+import {randomDistribution} from './PopupHistogram.js';
 
 const React = require('react');
 
@@ -7,31 +8,6 @@ const {
   stylesBarOuter, stylesPercentageText, stylesSeeAllReviews,
 } = styles;
 
-function randomDistribution(average) {
-  // let averageCopy = average;
-  // let resultsArr = [];
-  // let sum = 0;
-  // let remainder = 0;
-
-  // first bar:
-  // generate random(0,0.5)
-
-  // for each bar
-  //   generate random(0,remainder)
-  //   push to array
-
-  // return resultsArr;
-  return {
-    5: 0.24,
-    4: 0.05,
-    3: 0.09,
-    2: 0.10,
-    1: 0.52,
-  };
-}
-
-// last bar is the remainder
-
 const PopupHistogram = (props) => {
   const percentageArr = Object.entries(randomDistribution()).sort((x, y) => x[0] < y[0]);
   const { rating, numReviews } = props;
@@ -39,7 +15,7 @@ const PopupHistogram = (props) => {
   return (
     <div>
       <span className={stylesAvgRatingText}>
-        {rating || ''} out of 5 stars
+        {`${rating} out of 5 stars` || ''}
       </span>
       <table className={stylesMain} cellSpacing="3">
         <tbody>

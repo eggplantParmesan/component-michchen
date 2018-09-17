@@ -20,7 +20,6 @@ const {
   styleQuestionsCount,
   styleAmazonsChoice,
   styleAmazonsChoiceOrange,
-  styleAmazonsChoiceTriangle,
   styleAvailable,
   styleUnavailable,
   stylePriceLabel,
@@ -52,7 +51,7 @@ const ProductInfo = (props) => {
 
   return (
     <div className={styleMain}>
-
+      {/* begin TitleBlock */}
       <div className={styleTitleBlock}>
         <h3 className={styleProductName}>{productName}</h3>
         <div className={styleSeller}>
@@ -99,9 +98,8 @@ const ProductInfo = (props) => {
           </div>)
           : ''
         }
-
       </div>
-
+      {/* end TitleBlock */}
 
       <table>
         <tbody>
@@ -144,10 +142,10 @@ const ProductInfo = (props) => {
       }
 
       {/* dropdown size selector */}
-      {data.images && data.images.size && available
+      {images && images.size && available
         ? (
           <SelectorDropdown
-            images={data.images.size}
+            images={images.size}
             cb={dropdownCb}
           />
         )
@@ -155,10 +153,10 @@ const ProductInfo = (props) => {
       }
 
       {/* image color selector */}
-      {data.images && data.images.color && available
+      {images && images.color && available
         ? (
           <SelectorImage
-            images={data.images.color}
+            images={images.color}
             cb={imageCb}
             selectedVariation={selectedVariation}
           />
@@ -177,7 +175,11 @@ const ProductInfo = (props) => {
           : ''}
       </ul>
 
-      <div className={styleCompare}><a href="http://hackreactor.com">Compare with similar items</a></div>
+      <div className={styleCompare}>
+        <a href="http://hackreactor.com">
+          Compare with similar items
+        </a>
+      </div>
 
       {usedCount > 0 && available
         ? (
