@@ -29,7 +29,7 @@ const PopupHistogram = (props) => {
           }
         </tbody>
       </table>
-      <a href="http://hackreactor.com" className={stylesSeeAllReviews}>
+      <a href="#" className={stylesSeeAllReviews}>
         See all&nbsp;
         {numReviews}
         &nbsp;reviews &raquo;
@@ -44,7 +44,7 @@ const HistogramBar = (props) => {
   return (
     <tr>
       <td width="50">
-        <a href="http://hackreactor.com" className={stylesStarText}>
+        <a href="#" className={stylesStarText}>
           {num}
           &nbsp;
           star
