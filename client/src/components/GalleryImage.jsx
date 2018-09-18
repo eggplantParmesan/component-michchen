@@ -1,7 +1,6 @@
 const React = require('react');
 
-const GalleryImage = (props) => {
-  const { imgSrc, attributeName } = props;
+const GalleryImage = ({ imgSrc, attributeName }) => {
   return (
     <img
       src={imgSrc[1]}

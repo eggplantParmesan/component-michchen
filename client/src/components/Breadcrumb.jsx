@@ -1,21 +1,17 @@
-import styles from '../styles/Breadcrumb.css';
+import { stylesMain, stylesBreadcrumb } from '../styles/Breadcrumb.css';
 
-const { stylesMain, stylesBreadcrumb } = styles;
 const React = require('react');
-const { styleMain, styleBreadcrumb } = styles;
 
-const Breadcrumb = (props) => {
+const Breadcrumb = ({ data }) => {
   let categoryArr = [];
-  const { data } = props;
-  const { categoryName } = data;
 
-  if (categoryName) {
-    categoryArr = categoryName.split('\n');
+  if (data.categoryName) {
+    categoryArr = data.categoryName.split('\n');
   }
 
   return (
     <div id="breadcrumb" className={stylesMain}>
-      {categoryName
+      {data.categoryName
         ? categoryArr.map((x, i) => (
           <span key={x + i}>
             <a href="#" className={stylesBreadcrumb}>

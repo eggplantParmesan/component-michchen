@@ -1,5 +1,8 @@
 import Popup from './Popup.jsx';
-import styles from '../styles/AmazonsChoice.css';
+import {
+  styleAmazonsChoiceHolder, styleAmazonsChoice,
+  styleAmazonsChoiceOrange, styleAmazonsChoicePopup,
+} from '../styles/AmazonsChoice.css';
 
 const React = require('react');
 
@@ -24,12 +27,7 @@ class AmazonsChoice extends React.Component {
   }
 
   render() {
-    const {
-      styleAmazonsChoiceHolder, styleAmazonsChoice,
-      styleAmazonsChoiceOrange, styleAmazonsChoicePopup,
-    } = styles;
     const { hover } = this.state;
-    // console.log(hover);
     return (
       <div
         className={styleAmazonsChoiceHolder}

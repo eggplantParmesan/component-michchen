@@ -1,17 +1,13 @@
-import styles from '../styles/Popup.css';
+import { stylesMain, stylesPopupBox } from '../styles/Popup.css';
 import Arrow from './PopupArrow.jsx';
 import PopupHistogram from './PopupHistogram.jsx';
 import PopupMessage from './PopupMessage.jsx';
 
 const React = require('react');
 
-const { stylesMain, stylesPopupBox } = styles;
-
-const Popup = (props) => {
-  const {
-    dir, show, content, rating, numReviews, clickCb,
-  } = props;
-
+const Popup = ({
+  dir, show, content, rating, numReviews, clickCb,
+}) => {
   let popupSize;
 
   if (content === 'ratings') {

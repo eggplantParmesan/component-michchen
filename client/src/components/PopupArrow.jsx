@@ -27,13 +27,10 @@ const stylesArrowBorder = {
   zIndex: '99',
 };
 
-const PopupArrow = (props) => {
-  const { dir } = props;
-  return (
-    <div style={stylesArrowBorder} className={`popupArrowBorder_${dir}`}>
-      <div style={stylesArrow} className={`popupArrow_${dir}`} />
-    </div>
-  );
-};
+const PopupArrow = ({ dir }) => (
+  <div style={stylesArrowBorder} className={`popupArrowBorder_${dir}`}>
+    <div style={stylesArrow} className={`popupArrow_${dir}`} />
+  </div>
+);
 
 export default PopupArrow;

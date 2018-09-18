@@ -1,7 +1,13 @@
 exports.randomDistribution = function randomDistribution(average) {
+
+  //
+  // this is a garbage function that i started and never finished
+  // this is a garbage function that i started and never finished
+  // this is a garbage function that i started and never finished
+  //
+
+
   // generate n random numbers, compute their sum, divide each one by the sum.
-
-
   // array of random numbers between 0 and 1
   var rand = [Math.random(), Math.random(), Math.random(), Math.random(), Math.random()];
   var randSum = rand.reduce((a, b) => (a + b));
