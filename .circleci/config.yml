@@ -10,8 +10,8 @@ jobs:
     docker:
       - image: circleci/node:8.11.4
     
-    working_directory: ~/repo
-    # working_directory: ~/Hack-Reactor/hrsf102-front-end-capstone
+    # working_directory: ~/repo
+    working_directory: ~/Hack-Reactor/hrsf102-front-end-capstone
 
     steps:
       - run: npm install
