@@ -5,7 +5,7 @@ const React = require('react');
 const PopupMessage = ({ content, clickCb }) => (
   /* OnKeyPress in div below: If user presses 88 (X) or 27 (ESC) on the keyboard, clickCb
   (close popup) is called. The onKeyPress accessibility feature is required by ESLint */
-  <div>
+  <React.Fragment>
     <div className={stylesPopupMessage}>{content}</div>
     <div
       className={stylesPopupMessageX}
@@ -16,7 +16,7 @@ const PopupMessage = ({ content, clickCb }) => (
     >
       x
     </div>
-  </div>
+  </React.Fragment>
 );
 
 export default PopupMessage;

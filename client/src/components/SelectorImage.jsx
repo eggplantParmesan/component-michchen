@@ -5,7 +5,7 @@ import {
 const React = require('react');
 
 const SelectorImage = ({ selectedVariation, images, cb }) => (
-  <div>
+  <React.Fragment>
     <div className={stylesVariationNameHolder}>
       <span className={stylesVariationName}>Color:</span>
       &nbsp;
@@ -21,7 +21,7 @@ const SelectorImage = ({ selectedVariation, images, cb }) => (
         />
       ))
     }
-  </div>
+  </React.Fragment>
 );
 
 const SelectorImageOption = ({ selectedVariation, data, cb }) => (

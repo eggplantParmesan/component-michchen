@@ -10,7 +10,7 @@ const PopupHistogram = ({ rating, numReviews }) => {
   const percentageArr = Object.entries(randomDistribution()).sort((x, y) => x[0] < y[0]);
 
   return (
-    <div>
+    <React.Fragment>
       <span className={stylesAvgRatingText}>
         {`${rating} out of 5 stars` || ''}
       </span>
@@ -31,7 +31,7 @@ const PopupHistogram = ({ rating, numReviews }) => {
         {numReviews}
         &nbsp;reviews &raquo;
       </a>
-    </div>
+    </React.Fragment>
   );
 };
 

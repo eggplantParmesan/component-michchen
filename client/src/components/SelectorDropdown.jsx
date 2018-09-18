@@ -32,12 +32,4 @@ const SelectorDropdown = ({ images, cb }) => (
   </div>
 );
 
-// SelectorDropdown.defaultProps = {
-//   images: [],
-// };
-//
-// SelectorDropdown.propTypes = {
-//   images: React.PropTypes.arrayOf(React.PropTypes.string),
-// };
-
 export default SelectorDropdown;
