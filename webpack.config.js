@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  // extends: 'airbnb',
   entry: path.join(__dirname, '/client/src/App.jsx'),
   module: {
     rules: [
@@ -41,4 +40,10 @@ module.exports = {
     filename: 'bundle.js',
     path: path.join(__dirname, '/client/dist'),
   },
+  // jest: {
+  //   testPathIgnorePatterns: [
+  //     '/node_modules/',
+  //     './test/test.js'
+  //   ]
+  // }
 };

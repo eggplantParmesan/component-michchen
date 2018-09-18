@@ -1,11 +1,9 @@
-const functions = require('./functions');
 const { addCommas, renderPrice } = require('../client/src/components/ProductInfo.js');
+const {
+  truncateToDecimalPlace, randomNumFromRange, createProductQuery, createImageQuery,
+} = require('../database/seed.js');
 
-// addCommas
-
-test('Adds 2 + 2 to equal 4', () => {
-  expect(functions.sum(2, 2)).toBe(4);
-});
+// addCommas()
 
 test('Adds comma to after the first digit in 1000', () => {
   expect(addCommas(1000)).toBe('1,000');
@@ -31,4 +29,22 @@ test('Renders price less than 1 dollar', () => {
 
 test('Renders price, with trailing 0s if it\'s a round number', () => {
   expect(renderPrice(1000)).toBe('$1,000.00');
+});
+
+// truncateToDecimalPlace()
+
+test('truncateToDecimalPlace', () => {
+  expect(truncateToDecimalPlace(3.14159265359, 2)).toBe(3.14);
+});
+
+// test('randomNumFromRange', () => {
+//   expect(randomNumFromRange()).toBe();
+// });
+
+test('createProductQuery', () => {
+  expect(typeof createProductQuery(3)).toBe('string');
+});
+
+test('createImageQuery', () => {
+  expect(typeof createImageQuery(3)).toBe('string');
 });

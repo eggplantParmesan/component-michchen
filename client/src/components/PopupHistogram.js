@@ -12,7 +12,7 @@ exports.randomDistribution = function randomDistribution(average) {
   var percSum = perc.reduce((a, b) => (a + b));
 
   var actualAvg = percSum / 5;
-  console.log(actualAvg)
+  // console.log(actualAvg)
 
   // console.log(randSum, rand);
   // console.log(percSum, perc);

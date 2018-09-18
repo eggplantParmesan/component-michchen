@@ -2,7 +2,9 @@ import styles from '../styles/SelectorDropdown.css';
 
 const React = require('react');
 
-const { styleMain, styleDropdown, styleCategory } = styles;
+const {
+  styleMain, styleDropdownBg, styleDropdownText, styleDropdownSelect, styleCategory,
+} = styles;
 
 const SelectorDropdown = (props) => {
   const { images, cb } = props;
@@ -16,16 +18,17 @@ const SelectorDropdown = (props) => {
 
           {/* if there is more than one option, render dropdown. otherwise render empty string */}
 
-          <span>
-            <select className={styleDropdown} onChange={cb}>
-
+          <div className={styleDropdownBg}>
+            <span className={styleDropdownText}>
+              Select
+            </span>
+            <select className={styleDropdownSelect} onChange={cb}>
               { /* first default option is the text "Select" */ }
               <option>Select</option>
               { /* each option in the dropdown */ }
               {Object.entries(images).map(x => <option value={x[0]} key={x}>{ x[0] }</option>)}
             </select>
-            <span />
-          </span>
+          </div>
         </div>
       )
         : ''
@@ -33,5 +36,13 @@ const SelectorDropdown = (props) => {
     </div>
   );
 };
+
+// SelectorDropdown.defaultProps = {
+//   images: [],
+// };
+//
+// SelectorDropdown.propTypes = {
+//   images: React.PropTypes.arrayOf(React.PropTypes.string),
+// };
 
 export default SelectorDropdown;

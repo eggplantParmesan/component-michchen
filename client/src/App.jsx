@@ -31,19 +31,19 @@ class App extends React.Component {
   getData(prodNum) {
     const prodNumCopy = prodNum || 1;
 
-    let reqProduct = $.get({
+    const reqProduct = $.get({
       url: `http://localhost:${process.env.PORT || 9001}/get`,
       context: this,
-      data: { id: prodNumCopy }
+      data: { id: prodNumCopy },
     });
 
-    reqProduct.done(res => {
+    reqProduct.done((res) => {
       this.setState(res, () => {
         // onload, select the first option for product variation
-        if (res.images['color'] !== null) {
+        if (res.images.color !== null) {
           this.setState({
-            selectedVariation: Object.keys(Object.values(res.images)[0])[0]
-          })
+            selectedVariation: Object.keys(Object.values(res.images)[0])[0],
+          });
         }
       });
 
@@ -51,7 +51,7 @@ class App extends React.Component {
     });
   };
 
-  selectOption (e) {
+  selectOption(e) {
     if (e.target.value !== 'Select') {
       this.setState({
         selectedSize: e.target.value // value of the dropdown
@@ -88,8 +88,8 @@ class App extends React.Component {
     });
   }
 
-  render(props) {
-    const {selectedVariation, images, timeLeft} = this.state;
+  render() {
+    const { selectedVariation, images, timeLeft } = this.state;
 
     return (
       <div>

@@ -29,7 +29,7 @@ class Countdown extends React.Component {
         &nbsp;and choose&nbsp;
         <span className={stylesBold}>One-Day Shipping</span>
         &nbsp;at checkout.&nbsp;
-        <a href="http://hackreactor.com">Details</a>
+        <a href="#">Details</a>
       </div>
     );
   }
