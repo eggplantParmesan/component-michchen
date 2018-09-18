@@ -38,13 +38,15 @@ const variations = [
   },
 ];
 
-function truncateToDecimalPlace(num, places) {
+exports.truncateToDecimalPlace = function truncateToDecimalPlace(num, places) {
   let placesCopy = places || 0;
   placesCopy = 10 ** placesCopy;
   return Math.round(num * placesCopy) / placesCopy;
-}
+};
 
-function randomNumFromRange(lowerBound, upperBound, growthRate, decimalPlaces) {
+exports.randomNumFromRange = function randomNumFromRange(
+  lowerBound, upperBound, growthRate, decimalPlaces
+) {
   let growthRateCopy;
   if (growthRate === undefined || growthRate === 'exp') {
     // more low numbers
@@ -53,11 +55,11 @@ function randomNumFromRange(lowerBound, upperBound, growthRate, decimalPlaces) {
     // more high numbers. a higher denominator means on average higher nums are generated
     growthRateCopy = 1 / 1.5;
   }
-  return truncateToDecimalPlace((Math.random() ** growthRateCopy)
+  return exports.truncateToDecimalPlace((Math.random() ** growthRateCopy)
         * (upperBound - lowerBound) + lowerBound, decimalPlaces);
-}
+};
 
-function createProductQuery(howMany) {
+exports.createProductQuery = function createProductQuery(howMany) {
   let queryConcat = 'INSERT INTO products (productName, sellerName, ratingsAverage, ratingsCount, questionsCount, amazonsChoice, categoryName, priceList, price, freeReturns, freeShipping, soldByName, available, hasCountdown, description, usedCount, usedPrice) VALUES ';
 
   for (let i = 0; i < howMany; i += 1) {
@@ -69,10 +71,10 @@ function createProductQuery(howMany) {
     const listPrice = parseInt(faker.commerce.price() / 9, 10);
 
     // price is between 80% to 95% of the list price
-    const price = listPrice * (randomNumFromRange(80, 95) / 100);
+    const price = listPrice * (exports.randomNumFromRange(80, 95) / 100);
 
     // used price is between 50% to 95% of the price
-    const usedPrice = price * (randomNumFromRange(50, 95) / 100);
+    const usedPrice = price * (exports.randomNumFromRange(50, 95) / 100);
 
     // generate a random sequence of departments for breadcrumb
     let department = `${faker.commerce.department()}`;
@@ -84,29 +86,29 @@ function createProductQuery(howMany) {
     queryConcat += `(
 "${/* productName */faker.commerce.productName()}",\
 "${/* sellerName */faker.company.companyName()}",\
-"${/* ratingsAverage */randomNumFromRange(0.5, 5, 'log', 1)}",\
-"${/* ratingsCount */randomNumFromRange(5, 1000)}",\
-"${/* questionsCount */randomNumFromRange(2, 30, 'log')}",\
-"${/* amazonsChoice */randomNumFromRange(0, 1)}",\
+"${/* ratingsAverage */exports.randomNumFromRange(0.5, 5, 'log', 1)}",\
+"${/* ratingsCount */exports.randomNumFromRange(5, 1000)}",\
+"${/* questionsCount */exports.randomNumFromRange(2, 30, 'log')}",\
+"${/* amazonsChoice */exports.randomNumFromRange(0, 1)}",\
 "${/* categoryName */department}",\
 "${/* priceList */listPrice}",\
 "${/* price */price}",\
-"${/* freeReturns */randomNumFromRange(0, 1)}",\
-"${/* free_shipping */randomNumFromRange(0, 1)}",\
+"${/* freeReturns */exports.randomNumFromRange(0, 1)}",\
+"${/* free_shipping */exports.randomNumFromRange(0, 1)}",\
 "${/* sold_byName */faker.company.companyName()}",\
-"${/* available */randomNumFromRange(0, 1, 'log')}",\
-"${/* hasCountdown */randomNumFromRange(0, 1)}",\
+"${/* available */exports.randomNumFromRange(0, 1, 'log')}",\
+"${/* hasCountdown */exports.randomNumFromRange(0, 1)}",\
 "${/* description */faker.lorem.lines().replace(/\n/g, '\\n')}",\
-"${/* usedCount */randomNumFromRange(1, 20)}",\
+"${/* usedCount */exports.randomNumFromRange(1, 20)}",\
 "${/* usedPrice */usedPrice}"\
 )`;
   }
   // end for loop
 
   return `${queryConcat};`;
-}
+};
 
-function createImageQuery(howMany) {
+exports.createImageQuery = function createImageQuery(howMany) {
   let queryConcat = 'INSERT INTO images (productId,varKey,varValue,imageUrl) VALUES ';
   let imindex = 0;
 
@@ -134,16 +136,16 @@ function createImageQuery(howMany) {
   }
 
   return `${queryConcat};`;
-}
+};
 
 // reset products table and insert rows
 db.resetTable('products', () => {
-  db.insertRow(createProductQuery(numToGenerate), () => {
+  db.insertRow(exports.createProductQuery(numToGenerate), () => {
     console.log(`  INSERTED ${numToGenerate} ROWS into products`);
 
     // reset images table and insert rows
     db.resetTable('images', () => {
-      db.insertRow(createImageQuery(numToGenerate), () => {
+      db.insertRow(exports.createImageQuery(numToGenerate), () => {
         // log success
         console.log(`  INSERTED ${numToGenerate} ROWS into images`);
         console.log('Data generation finished. Press ctrl-C to exit.');
