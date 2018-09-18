@@ -10,7 +10,7 @@ const {
 
 const PopupHistogram = (props) => {
   const percentageArr = Object.entries(randomDistribution()).sort((x, y) => x[0] < y[0]);
-  const { rating, numReviews } = props;
+  const { rating, numReviews, boxHeight, boxWidth } = props;
 
   return (
     <div>
@@ -29,7 +29,7 @@ const PopupHistogram = (props) => {
           }
         </tbody>
       </table>
-      <a href="http://hackreactor.com" className={stylesSeeAllReviews}>
+      <a href="#" className={stylesSeeAllReviews}>
         See all&nbsp;
         {numReviews}
         &nbsp;reviews &raquo;
@@ -44,8 +44,10 @@ const HistogramBar = (props) => {
   return (
     <tr>
       <td width="50">
-        <a href="http://hackreactor.com" className={stylesStarText}>
-          {num} star
+        <a href="#" className={stylesStarText}>
+          {num}
+          &nbsp;
+          star
         </a>
       </td>
       <td className={`${stylesBar} bartest`}>

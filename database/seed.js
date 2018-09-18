@@ -1,28 +1,27 @@
-/* (1) set numToGenerate */
+/* HOW TO USE */
+// set numToGenerate below
+// run "node database/faker.js" in the terminal
+// node database/seed.js
+
 const numToGenerate = 100;
 
-/* (2) run "node database/faker.js" in the terminal
-node database/faker.js
-*/
-
 /*
---- NOTES ---
-delete "link" columns
+INSERT INTO products (id, productName, productUrl, sellerName, sellerUrl,
+ratingsAverage, ratingsCount, questionsCount, categoryName, categoryUrl,
+price, priceList, freeReturns, freeShipping, soldByName, soldByUrl, available,
+description, usedCount, usedPrice) VALUES (101, "LG G6+ - 128 GB - Unlocked
+(AT&T/T-Mobile/Verizon) - Black - Prime Exclusive", "#", "LG", "#", 4, 80, 86,
+"Cell Phones & Accessories", "#", 40999, 79999, 1, 1, "Some sketchy guy", "#",
+1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare augue non
+eleifend accumsan. \nMaecenas sit amet maximus lacus. Nullam eu placerat metus,
+et aliquet ex. Vivamus justo magna, tincidunt a convallis eu, semper vitae nunc.
+\nSed tincidunt quis purus vitae dictum. \nDonec eu ante pharetra, maximus erat
+sit amet, imperdiet odio. \nIn tincidunt feugiat ligula, quis tempus leo eleifend
+in. Pellentesque vitae lectus est.", 20, 30749);
 
-Add "fit" (maybe), "Prime"
-Add star distribution and fit distribution
-
-Breadcrumb trail?
-"Style" in addition to Size and Color?
-Replace "In stock" with "available"?
-Convert prices back to normal, eg $5.99 = '5.99' and not '599'
-More images per product
+INSERT INTO images (productId,varKey,varValue,imageUrl) VALUES (101, "","",
+"https://images-na.ssl-images-amazon.com/images/I/61Rh3tVbr-L._SL1200_.jpg");
 */
-
-// INSERT INTO products (id, productName, productUrl, sellerName, sellerUrl, ratingsAverage, ratingsCount, questionsCount, categoryName, categoryUrl, price, priceList, freeReturns, freeShipping, soldByName, soldByUrl, available, description, usedCount, usedPrice) VALUES (101, "LG G6+ - 128 GB - Unlocked (AT&T/T-Mobile/Verizon) - Black - Prime Exclusive", "#", "LG", "#", 4, 80, 86, "Cell Phones & Accessories", "#", 40999, 79999, 1, 1, "Some sketchy guy", "#", 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare augue non eleifend accumsan. \nMaecenas sit amet maximus lacus. Nullam eu placerat metus, et aliquet ex. Vivamus justo magna, tincidunt a convallis eu, semper vitae nunc. \nSed tincidunt quis purus vitae dictum. \nDonec eu ante pharetra, maximus erat sit amet, imperdiet odio. \nIn tincidunt feugiat ligula, quis tempus leo eleifend in. Pellentesque vitae lectus est.", 20, 30749);
-
-// INSERT INTO images (productId,varKey,varValue,imageUrl) VALUES (101, "","","https://images-na.ssl-images-amazon.com/images/I/61Rh3tVbr-L._SL1200_.jpg");
-
 
 const cats = require('./cats');
 const faker = require('faker');
@@ -38,21 +37,6 @@ const variations = [
     data: [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10],
   },
 ];
-
-// function randImArr: gets a randomly-sized part of the image array (sourced from from cats.js)
-function randImArr() {
-  // num = a random number between 1 and 4, representing number of images to get
-  const howManyImages = Math.round(Math.random() * 3) + 1;
-  return `[${// randomize cats
-    cats.data.sort(() => 0.5 - Math.random())
-      // get a random slice of the array
-      .slice(0, howManyImages)
-      // put each entry between single quotes
-      .map(x => `'${x}'`)
-      // join by comma
-      .join(',')}
-    ]`;
-}
 
 function truncateToDecimalPlace(num, places) {
   let placesCopy = places || 0;
@@ -82,7 +66,7 @@ function createProductQuery(howMany) {
     }
 
     // the 9 is to put the price within an affordable range haha
-    const listPrice = parseInt(faker.commerce.price() / 9);
+    const listPrice = parseInt(faker.commerce.price() / 9, 10);
 
     // price is between 80% to 95% of the list price
     const price = listPrice * (randomNumFromRange(80, 95) / 100);

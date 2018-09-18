@@ -1,4 +1,5 @@
 import Rating from './Rating.jsx';
+import AmazonsChoice from './AmazonsChoice.jsx';
 import Countdown from './Countdown.jsx';
 import SelectorDropdown from './SelectorDropdown.jsx';
 import SelectorImage from './SelectorImage.jsx';
@@ -56,20 +57,20 @@ const ProductInfo = (props) => {
         <h3 className={styleProductName}>{productName}</h3>
         <div className={styleSeller}>
           by&nbsp;
-          <a className={styleSellerName} href="http://hackreactor.com">
+          <a className={styleSellerName} href="#">
             {sellerName}
           </a>
         </div>
 
         <Rating
           className={styleRatingsAverage}
-          rating={Math.round(ratingsAverage * 10) / 10}
+          rating={ratingsAverage}
           numReviews={ratingsCount}
         />
 
         {ratingsCount
           ? (
-            <a className={styleRatingsCount} href="http://hackreactor.com">
+            <a className={styleRatingsCount} href="#">
               {addCommas(ratingsCount)}
               &nbsp;customer&nbsp;
               {ratingsCount === 1 ? 'review' : 'reviews'}
@@ -81,7 +82,7 @@ const ProductInfo = (props) => {
         {ratingsCount && questionsCount ? <span className={styleSubhedPipe}>|</span> : ''}
 
         {questionsCount ? (
-          <a className={styleQuestionsCount} href="http://hackreactor.com">
+          <a className={styleQuestionsCount} href="#">
             {addCommas(questionsCount)}
             &nbsp;answered&nbsp;
             {questionsCount === 1 ? 'question' : 'questions'}
@@ -91,10 +92,7 @@ const ProductInfo = (props) => {
 
         {amazonsChoice ? (
           <div>
-            <div className={styleAmazonsChoice}>
-              Amazon&apos;s&nbsp;
-              <span className={styleAmazonsChoiceOrange}>Choice</span>
-            </div>
+            <AmazonsChoice />
           </div>)
           : ''
         }
@@ -176,7 +174,7 @@ const ProductInfo = (props) => {
       </ul>
 
       <div className={styleCompare}>
-        <a href="http://hackreactor.com">
+        <a href="#">
           Compare with similar items
         </a>
       </div>
@@ -184,7 +182,7 @@ const ProductInfo = (props) => {
       {usedCount > 0 && available
         ? (
           <div className={styleUsed}>
-            <a href="http://hackreactor.com">
+            <a href="#">
               <span className={styleUsedBold}>Used & new</span>
               &nbsp;(
               {usedCount}
@@ -196,7 +194,7 @@ const ProductInfo = (props) => {
               : ''
             }
             .&nbsp;
-            <a href="http://hackreactor.com">Details</a>
+            <a href="#">Details</a>
           </div>
         )
         : ''

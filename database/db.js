@@ -1,14 +1,14 @@
 const mysql = require('mysql');
 
-var con = mysql.createConnection({
+const con = mysql.createConnection({
   url: 'localhost',
   user: 'root',
   // port: 9001,
   password: '',
-  database: 'amazon'
+  database: 'amazon',
 });
 
-con.connect(err => {
+con.connect((err) => {
   console.log('con.connect--------------------------------')
   if (err) {
     console.log('db.js > connection error', err);
@@ -18,56 +18,55 @@ con.connect(err => {
 });
 
 // for creating fake data (faker.js)
-exports.resetTable = function(table, cb){
-  con.query(`DELETE FROM ${table};`, (err,res) => {
+exports.resetTable = (table, cb) => {
+  con.query(`DELETE FROM ${table};`, () => {
     console.log(`DELETED TABLE ${table}`);
-    con.query(`ALTER TABLE ${table} AUTO_INCREMENT=1;`, (err,res) => {
+    con.query(`ALTER TABLE ${table} AUTO_INCREMENT=1;`, () => {
       console.log(`RESET AUTO_INCREMENT for ${table}`);
       cb();
-    })
-  })
-}
+    });
+  });
+};
 
-exports.insertRow = function(query, cb){
-  con.query(query, function(err, res) {
-      if(err){
-        console.log(err);
-      } else {
-        cb(res, con);
-      }
+exports.insertRow = (query, cb) => {
+  con.query(query, (err, res) => {
+    if (err) {
+      console.log(err);
+    } else {
+      cb(res, con);
     }
-  );
-}
+  });
+};
 
-exports.getProduct = function(id, cb) {
-
+exports.getProduct = (id, cb) => {
   console.log('exports.getProduct');
   console.log(`SELECT * FROM products WHERE id=${id}`);
 
-  con.query(`SELECT * FROM products WHERE id=${id}`, function(err, result) {
-
+  con.query(`SELECT * FROM products WHERE id=${id}`, (err, result) => {
     console.log('selected sucessfully from products');
 
-    let productObj = result[0];
-    con.query(`SELECT * FROM images WHERE productId=${id}`, function(err, res) {
-      let img_arr = {};
-      for (var i = 0; i < res.length; i++) {
+    const productObj = result[0];
+    con.query(`SELECT * FROM images WHERE productId=${id}`, (error, res) => {
+      const imgArr = {};
+      for (let i = 0; i < res.length; i += 1) {
         // init category object if does not exist
-        if (img_arr[res[i].varKey] === undefined){
-          img_arr[res[i].varKey] = {};
+        if (imgArr[res[i].varKey] === undefined) {
+          imgArr[res[i].varKey] = {};
         }
 
         // init category object's value arr if does not exist
-        if (img_arr[res[i].varKey][res[i].varValue] === undefined){
-          img_arr[res[i].varKey][res[i].varValue] = [];
+        if (imgArr[res[i].varKey][res[i].varValue] === undefined) {
+          imgArr[res[i].varKey][res[i].varValue] = [];
         }
 
         // add image url to array
-        img_arr[res[i].varKey][res[i].varValue].push(res[i].imageUrl);
+        imgArr[res[i].varKey][res[i].varValue].push(res[i].imageUrl);
       }
 
-      if (productObj) {productObj.images = img_arr;}
-      cb(productObj)
+      if (productObj) {
+        productObj.images = imgArr;
+      }
+      cb(productObj);
     });
   });
 };

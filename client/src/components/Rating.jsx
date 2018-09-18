@@ -31,23 +31,25 @@ class Rating extends React.Component {
     const { hover } = this.state;
     let { rating, numReviews } = this.props;
 
-    if (rating !== undefined && !isNaN(rating)) {
+    let ratingClassName = '';
+    if (rating !== undefined && !Number.isNaN(rating)) {
       // round to nearest .5
-      rating = Math.round(rating * 2) / 2;
+      ratingClassName = Math.round(rating * 2) / 2;
+      ratingClassName = String(ratingClassName).replace(/\./g, '');
     }
     // remove .s so it's a usable class name
-    const ratingClassName = String(rating).replace(/\./g, '');
 
     return (
-      <div className={styleMain}>
+      <div
+        className={styleMain}
+        onMouseEnter={this.hoverOn.bind(this)}
+        onMouseLeave={this.hoverOff.bind(this)}
+      >
         <div
           id="stars"
           className={`${styleStars} s${ratingClassName}`}
-          onMouseEnter={this.hoverOn.bind(this)}
-          onMouseLeave={this.hoverOff.bind(this)}
         >
           &nbsp;
-          {/* up down left right */}
           <Popup content="ratings" show={hover} dir="down" rating={rating} numReviews={numReviews} />
         </div>
         <div className={styleArr}>
