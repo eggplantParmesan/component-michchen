@@ -42,9 +42,9 @@ test('truncateToDecimalPlace', () => {
 // });
 
 test('createProductQuery', () => {
-  expect(typeof createProductQuery(3)).toBe('String');
+  expect(typeof createProductQuery(3)).toBe('string');
 });
 
 test('createImageQuery', () => {
-  expect(typeof createImageQuery(3)).toBe('String');
+  expect(typeof createImageQuery(3)).toBe('string');
 });
