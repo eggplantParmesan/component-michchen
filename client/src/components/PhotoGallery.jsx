@@ -13,8 +13,8 @@ class PhotoGallery extends React.Component {
       photoList: [
         'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/20800148_884991911705244_8847631967476084829_n.jpg?_nc_cat=0&oh=f65b967c668c091ea0b530193175533d&oe=5C1E5825',
         'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/1958562_232816943589414_1989928331_n.jpg?_nc_cat=0&oh=4b14fc7bca42f9aa7f451722d2aebe1e&oe=5C27D523',
-        'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/10306256_330658910471883_1485038244507827308_n.jpg?_nc_cat=0&oh=70e12fd4f4839e4be287cf09bcfba61c&oe=5C2D6494',
-      ]
+        'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/22780363_924977621040006_8409040957155351341_n.jpg?_nc_cat=0&oh=3ea2c72274c8b345d0c5ce6ec731a118&oe=5C375B3B',
+      ],
     };
     this.handleClick = this.handleClick.bind(this);
   }
