@@ -57,7 +57,7 @@ class MainPhoto extends React.Component {
       width: `${boxDimension}px`,
       height: `${boxDimension}px`,
     };
-    console.log(boxDimension);
+    // console.log(boxDimension);
 
     const { x, y, mouseOnImage } = this.state;
 

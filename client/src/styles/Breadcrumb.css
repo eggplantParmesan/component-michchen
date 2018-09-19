@@ -1,11 +1,11 @@
 .stylesMain {
-  font-size: 11px;
-  height: 34px;
+  font-size: 1.5vmin;
+  height: 4vmin;
   color: #666;
   display: block;
 }
 
 .stylesBreadcrumb{
   color: #666;
-  font-size: 11px;
+  font-size: 1.5vmin;
 }

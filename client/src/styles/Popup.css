@@ -3,6 +3,7 @@
   font-size: 1px;
   cursor: default;
   z-index: 9;
+  display: none;
 }
 
 .stylesPopupBox {

@@ -25,7 +25,28 @@ const stylesArrowBorder = {
   position: 'absolute',
   borderWidth: '11px',
   zIndex: '99',
+  left: '50%',
+  marginLeft: '-10px !important',
 };
+
+/*
+  #ProductInfo .popupArrow_down { border-bottom-color: #ffffff !important;}
+  #ProductInfo .popupArrowBorder_down {
+    top:-21px;
+    left: 50%;
+    margin-left: -10px !important;
+    border-bottom-color: #000000 !important;
+  }
+
+  #ProductInfo .popupArrow_up { border-top-color: #ffffff !important;}
+  #ProductInfo .popupArrowBorder_up {
+    bottom: -23px;
+    left: 50%;
+    margin-left: -10px !important;
+    border-top-color: #000000 !important;
+  }
+  */
+
 
 const PopupArrow = ({ dir }) => (
   <div style={stylesArrowBorder} className={`popupArrowBorder_${dir}`}>
