@@ -1,8 +1,9 @@
 .styleMain {
   display: block;
   float: left;
-  width: 45.5%;
-  margin: 0 0 0 2vmin;
+  width: 45vw;
+  min-width: 230px;
+  margin: 0 0 0 3vw;
 }
 
 .styleTitleBlock {

@@ -9,9 +9,10 @@ class PhotoGallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPhoto: 'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg',
-      photoList: ['https://d17fnq9dkz9hgj.cloudfront.net/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5cvWFxhk8ahH30zJ0UmbAgamdpY4lpjFkmP2daxX2aajUIOq3',
+      currentPhoto: 'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/1958562_232816943589414_1989928331_n.jpg?_nc_cat=0&oh=4b14fc7bca42f9aa7f451722d2aebe1e&oe=5C27D523',
+      photoList: [
+        'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/1958562_232816943589414_1989928331_n.jpg?_nc_cat=0&oh=4b14fc7bca42f9aa7f451722d2aebe1e&oe=5C27D523',
+        'https://d17fnq9dkz9hgj.cloudfront.net/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg',
         'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg'],
     };
     this.handleClick = this.handleClick.bind(this);
