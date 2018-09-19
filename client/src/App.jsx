@@ -1,10 +1,11 @@
-const React = require("react");
-const ReactDOM = require("react-dom");
-const $ = require("jquery");
+import Breadcrumb from './components/Breadcrumb.jsx';
+// import PhotoGallery from './components/PhotoGallery.jsx';
+import ProductInfo from './components/ProductInfo.jsx';
 
-import Breadcrumb from "./components/Breadcrumb.jsx";
-import PhotoGallery from "./components/PhotoGallery.jsx";
-import ProductInfo from "./components/ProductInfo.jsx";
+const React = require('react');
+const ReactDOM = require('react-dom');
+const $ = require('jquery');
+
 
 $(document).keydown((e) => {
   let productNum = document.location.search;
@@ -69,10 +70,11 @@ class App extends React.Component {
 
   componentDidMount() {
     // get "id" from URL params
-    let id = window.location.href.match(/(\?|\&)id=(\d\d?\d?\d?\d?\d?\d?\d?)/);
+    // let id = window.location.href.match(/(\?|\&)id=(\d\d?\d?\d?\d?\d?\d?\d?)/);
+    let id = window.location.search.replace(/\?id=/,'');
     if (id) {
       // get data using id from window URL
-      this.getData(id[2], this);
+      this.getData(id, this);
     } else {
       // otherwise get data for id=1
       this.getData(1, this);
@@ -89,13 +91,13 @@ class App extends React.Component {
   }
 
   render() {
+    // <PhotoGallery />
     const { selectedVariation, images, timeLeft } = this.state;
 
     return (
       <React.Fragment>
         <Breadcrumb data={this.state} />
         <div style={{ display: 'flex' }}>
-          <PhotoGallery />
           <ProductInfo
             data={this.state}
             selectedVariation={selectedVariation}
@@ -108,5 +110,7 @@ class App extends React.Component {
     );
   }
 }
+
+window.ProductInfo = App;
 
 ReactDOM.render(<App />, document.getElementById('app'));

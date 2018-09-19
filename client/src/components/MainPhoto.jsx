@@ -9,7 +9,7 @@ class MainPhoto extends React.Component {
       x: 0,
       y: 0,
       mouseOnImage: false,
-    }
+    };
     this.openZoom = this.openZoom.bind(this);
     this.closeZoom = this.closeZoom.bind(this);
     this.setCoordinates = this.setCoordinates.bind(this);
@@ -18,69 +18,71 @@ class MainPhoto extends React.Component {
   openZoom (event) {
     this.setState({
       mouseOnImage: true,
-    })
+    });
   }
 
-  closeZoom () {
+  closeZoom() {
     this.setState({
       mouseOnImage: false,
-    })
+    });
   }
 
-  setCoordinates (event) {
-    console.log('setting coordinate')
-    var x = event.clientX;
-    var y = event.clientY;
+  setCoordinates(event) {
     this.setState({
-      x: x,
-      y: y,
-    })
+      x: event.clientX,
+      y: event.clientY,
+    });
   }
 
   render() {
-    console.log('x: ', this.state.x);
-    console.log('y: ', this.state.y);
-    var boxDimension; // in px for both width and height for the blue box 
-    var mainFrame;
-    var mainFrameBottomMostY;
-    var mainFrameLeftMostX;
-    var mainFrameRightMostX;
-    var mainFrameTopMostY;
- 
+    // console.log('x: ', x);
+    // console.log('y: ', y);
+    let boxDimension; // in px for both width and height for the blue box
+    let mainFrame;
+    let mainFrameBottomMostY;
+    let mainFrameLeftMostX;
+    let mainFrameRightMostX;
+    let mainFrameTopMostY;
+
     if (this.myRef.current) {
       mainFrame = this.myRef.current.getBoundingClientRect();
       mainFrameRightMostX = mainFrame.right;
       mainFrameLeftMostX = mainFrame.left;
       mainFrameBottomMostY = mainFrame.bottom;
       mainFrameTopMostY = mainFrame.top;
-      boxDimension = mainFrame.width/2.5; // 2.5 was chosen arbitrarily
+      boxDimension = mainFrame.width / 2.5; // 2.5 was chosen arbitrarily
     }
-    
+
     const styledBlueBox = {
       width: `${boxDimension}px`,
       height: `${boxDimension}px`,
-    }
+    };
+    // console.log(boxDimension);
+
+    const { x, y, mouseOnImage } = this.state;
 
     // Setting up y bounds for blue box
-    if (this.state.y < mainFrameBottomMostY+1 && this.state.y > mainFrameBottomMostY-boxDimension/2){
-      styledBlueBox.top = `${mainFrameBottomMostY-boxDimension}px`;
-    } else if (this.state.y < mainFrameTopMostY+boxDimension/2 && this.state.y > mainFrameTopMostY-1){
+    if (y < mainFrameBottomMostY + 1 && y > mainFrameBottomMostY - boxDimension / 2) {
+      styledBlueBox.top = `${mainFrameBottomMostY - boxDimension}px`;
+    } else if (y < mainFrameTopMostY + boxDimension / 2 && y > mainFrameTopMostY - 1) {
       styledBlueBox.top = `${mainFrameTopMostY}px`;
     } else {
-      styledBlueBox.top = `${this.state.y-boxDimension/2}px`;
+      styledBlueBox.top = `${y - boxDimension / 2}px`;
     }
     // Setting up x bounds for blue box
-    if (this.state.x > mainFrameLeftMostX-1 && this.state.x < mainFrameLeftMostX+boxDimension/2) {
+    if (x > mainFrameLeftMostX - 1 && x < mainFrameLeftMostX + boxDimension / 2) {
       styledBlueBox.left = `${mainFrameLeftMostX}px`;
-    } else if (this.state.x > mainFrameRightMostX-boxDimension/2 && this.state.x < mainFrameRightMostX+1) {
-      styledBlueBox.left = `${mainFrameRightMostX-boxDimension}px`;
+    } else if (x > mainFrameRightMostX - boxDimension / 2 && x < mainFrameRightMostX + 1) {
+      styledBlueBox.left = `${mainFrameRightMostX - boxDimension}px`;
     } else {
-      styledBlueBox.left = `${this.state.x-boxDimension/2}px`;
+      styledBlueBox.left = `${x - boxDimension / 2}px`;
     }
 
     // Set position coordinates for zoom Photo
-    const newX = -(this.state.x - mainFrameLeftMostX)+200-(boxDimension/2); // subtract 190 to get left corner of mouse ref 
-    const newY = -(this.state.y - mainFrameTopMostY)+250-(boxDimension/2); // subtract 190 to get left corner of mouse ref
+    // subtract 190 to get left corner of mouse ref
+    const newX = -(x - mainFrameLeftMostX) + 200 - (boxDimension / 2);
+    // subtract 190 to get left corner of mouse ref
+    const newY = -(y - mainFrameTopMostY) + 250 - (boxDimension / 2);
     // then subtract another 108 and 19 because that is the document's mouse ref
 
     const styledImg = {
@@ -92,19 +94,32 @@ class MainPhoto extends React.Component {
       transform: 'scale(2.9)',
       width: '90vmin',
       height: '90vmin',
+      // display: 'block !important',
+      // display zoom only if mouseOnImage is true
+      display: `${!mouseOnImage ? 'none' : 'block'}`,
+    };
+
+    // display blueBox only if mouseOnImage is true
+    if (!mouseOnImage) {
+      styledBlueBox.display = 'none';
+    } else {
+      styledBlueBox.display = 'block';
     }
 
-    !this.state.mouseOnImage ? styledImg.display = 'none' : styledImg.display = 'block'; // display zoom only if mouseOnImage is true
-    !this.state.mouseOnImage ? styledBlueBox.display = 'none' : styledBlueBox.display = 'block'; // display blueBox only if mouseOnImage is true
-
     return (
-      <div className={ styles.mainPhoto }>
-        <div ref={this.myRef} className={ styles.mainFrame } onMouseEnter={ this.openZoom } onMouseLeave={ this.closeZoom } onMouseMove={this.setCoordinates }>
-          <div className={ styles.blueBox } style={ styledBlueBox }><img src="https://images-na.ssl-images-amazon.com/images/G/01/apparel/rcxgs/tile._CB211431200_.gif"/></div>
-          <img src={this.props.curr}/>
+      <div className={styles.mainPhoto}>
+        <div
+          ref={this.myRef}
+          className={styles.mainFrame}
+          onMouseEnter={this.openZoom}
+          onMouseLeave={this.closeZoom}
+          onMouseMove={this.setCoordinates}
+        >
+          <div className={styles.blueBox} style={styledBlueBox}><img src="https://images-na.ssl-images-amazon.com/images/G/01/apparel/rcxgs/tile._CB211431200_.gif"/></div>
+          <img src={this.props.curr} />
         </div>
-        <div className={ styles.zoomFrame }>
-          <img style={ styledImg } />
+        <div className={styles.zoomFrame}>
+          <img style={styledImg} />
         </div>
       </div>
     );

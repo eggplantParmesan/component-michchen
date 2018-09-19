@@ -1,10 +1,11 @@
 :local .photoListItem > div {
-  margin: 10px 0;
+  margin-bottom: 10px;
   width: 38px;
   height: 38px;
   border: 1px lightgrey;
   border-style: solid;
   border-radius: 1px;
+  cursor: pointer;
 }
 
 :local .img {
@@ -14,12 +15,6 @@
 }
 
 :local .img:hover {
-  outline: 2px solid orange;
-  /* border-radius: 2px; */
-}
-
-.local .img:focus {
-  outline: none;
-  border-color: #9ecaed;
-  box-shadow: 0 0 10px #9ecaed;
+  outline: 1px solid orange;
+  box-shadow: 0 0 10px orange;
 }

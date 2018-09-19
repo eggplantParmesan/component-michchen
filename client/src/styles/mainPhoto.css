@@ -22,13 +22,12 @@
 }
 
 :local .zoomFrame {
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 5px 5px lightgray;
+  /* border: 1px solid black; */
+  box-shadow: 0 0 5px lightgray;
   position: absolute;
-  margin-left: 55vmin;
+  left: 34vw;
   z-index: 100;
-  background-color: white;
+  background-color: red;
 }
 
 :local .zoomFrame > img {

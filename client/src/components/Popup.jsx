@@ -8,17 +8,20 @@ const React = require('react');
 const Popup = ({
   dir, show, content, rating, numReviews, clickCb,
 }) => {
-  let popupSize;
+  let popupStyle;
+  // console.log(`show: ${show}`);
 
   if (content === 'ratings') {
-    // histogram
-    popupSize = {
+    popupStyle = {
       width: '240px',
       height: '200px',
+      left: '-100%',
+      marginLeft: '30%',
+      marginTop: '5px',
+
     };
   } else {
-    // message
-    popupSize = {
+    popupStyle = {
       width: '425px',
       height: '70px',
       top: '-84px',
@@ -26,12 +29,17 @@ const Popup = ({
     };
   }
 
-  // dir: up/down/left/right
+  if (show) {
+    popupStyle.display = 'block';
+  } else {
+    popupStyle.display = 'none';
+  }
+  console.log(content);
 
   return (
     <div
-      style={popupSize}
-      className={`${stylesMain} popup${dir} ${(show ? '' : 'hide')}`}
+      style={popupStyle}
+      className={`${stylesMain} popup${dir}`}
     >
 
       <Arrow dir={dir} />
