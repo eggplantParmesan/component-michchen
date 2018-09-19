@@ -11,9 +11,9 @@ class PhotoGallery extends React.Component {
     this.state = {
       currentPhoto: 'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg',
       photoList: ['https://d17fnq9dkz9hgj.cloudfront.net/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5cvWFxhk8ahH30zJ0UmbAgamdpY4lpjFkmP2daxX2aajUIOq3',
-      'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg'],
-    }
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5cvWFxhk8ahH30zJ0UmbAgamdpY4lpjFkmP2daxX2aajUIOq3',
+        'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg'],
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -21,21 +21,22 @@ class PhotoGallery extends React.Component {
     this.setState({
       currentPhoto: `${imgURL}`,
       magnifyOn: false,
-    })
+    });
   }
 
   render() {
-    return(
-      <div className={ styles.photoGallery } >
-        <div className={ styles.photoList }>
-          <PhotoList handleClick={this.handleClick} photos={ this.state.photoList } />
+    const { photoList, currentPhoto } = this.state;
+    return (
+      <div className={styles.photoGallery}>
+        <div className={styles.photoList}>
+          <PhotoList handleClick={this.handleClick} photos={photoList} />
         </div>
-        <div className={ styles.mainPhoto }>
-          <MainPhoto curr={ this.state.currentPhoto }/>
+        <div className={styles.mainPhoto}>
+          <MainPhoto curr={currentPhoto} />
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 export default PhotoGallery;
