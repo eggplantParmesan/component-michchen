@@ -6,10 +6,13 @@
 
 :local .photoList {
   display: inline;
-  margin: 10px 10px 10px 5px;
+  margin-top: 18px;
+  width: 5vw;
+  min-width: 60px;
 }
 
 :local .mainPhoto {
   display: inline;
-  margin: 10px 10px 10px 20px;
+  /* margin-top: 10px; */
+  width: 350px;
 }

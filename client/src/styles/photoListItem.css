@@ -1,7 +1,7 @@
 :local .photoListItem > div {
-  margin: 10px;
-  width: 8vmin;
-  height: 8vmin;
+  margin: 10px 0;
+  width: 38px;
+  height: 38px;
   border: 1px lightgrey;
   border-style: solid;
   border-radius: 1px;

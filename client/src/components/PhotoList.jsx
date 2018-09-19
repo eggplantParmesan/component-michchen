@@ -3,17 +3,15 @@ import styles from '../styles/photoList.css';
 import PhotoListItem from './PhotoListItem.jsx';
 
 const PhotoList = ({ photos, handleClick }) => (
-  <div className={styles.photoList}>
-    <div>
-      {photos.map(photo => (
-        <PhotoListItem
-          key={photo}
-          changePhoto={handleClick}
-          photoURL={photo}
-        />
-      ))}
-    </div>
-  </div>
+  <React.Fragment>
+    {photos.map(photo => (
+      <PhotoListItem
+        key={photo}
+        changePhoto={handleClick}
+        photoURL={photo}
+      />
+    ))}
+  </React.Fragment>
 );
 
 export default PhotoList;

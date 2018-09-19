@@ -1,7 +1,7 @@
 :local .mainPhoto {
   display: flex;
-  width: 50vmin;
-  height: 50vmin;
+  width: 100%;
+  height: auto;
 }
 
 :local .mainFrame {
@@ -34,13 +34,10 @@
 :local .zoomFrame > img {
   width: 100%;
   height: auto;
-  /* object-fit: cover; */
 }
 
 :local .blueBox {
-  /* background-color: blue; */
   position: absolute;
-  /* opacity: 0.5; */
 }
 
 :local .blueBox > img {
