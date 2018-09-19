@@ -3,7 +3,7 @@ const ReactDOM = require("react-dom");
 const $ = require("jquery");
 
 import Breadcrumb from "./components/Breadcrumb.jsx";
-import Gallery from "./components/Gallery.jsx";
+import PhotoGallery from "./components/PhotoGallery.jsx";
 import ProductInfo from "./components/ProductInfo.jsx";
 
 $(document).keydown((e) => {
@@ -54,7 +54,7 @@ class App extends React.Component {
   selectOption(e) {
     if (e.target.value !== 'Select') {
       this.setState({
-        selectedSize: e.target.value // value of the dropdown
+        selectedSize: e.target.value, // value of the dropdown
       });
     }
   }
@@ -92,20 +92,19 @@ class App extends React.Component {
     const { selectedVariation, images, timeLeft } = this.state;
 
     return (
-      <div>
+      <React.Fragment>
         <Breadcrumb data={this.state} />
-        <Gallery
-          currentImage={selectedVariation}
-          images={images}
-        />
-        <ProductInfo
-          data={this.state}
-          selectedVariation={selectedVariation}
-          dropdownCb={this.selectOption.bind(this)}
-          imageCb={this.selectImage.bind(this)}
-          timeLeft={timeLeft}
-        />
-      </div>
+        <div style={{ display: 'flex' }}>
+          <PhotoGallery />
+          <ProductInfo
+            data={this.state}
+            selectedVariation={selectedVariation}
+            dropdownCb={this.selectOption.bind(this)}
+            imageCb={this.selectImage.bind(this)}
+            timeLeft={timeLeft}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }

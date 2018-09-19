@@ -43,8 +43,8 @@ exports.getProduct = (id, cb) => {
   console.log(`SELECT * FROM products WHERE id=${id}`);
 
   con.query(`SELECT * FROM products WHERE id=${id}`, (err, result) => {
-    console.log('selected sucessfully from products');
-
+    // console.log('selected sucessfully from products');
+    // console.log(result);
     const productObj = result[0];
     con.query(`SELECT * FROM images WHERE productId=${id}`, (error, res) => {
       const imgArr = {};

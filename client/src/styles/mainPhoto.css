@@ -1,0 +1,50 @@
+:local .mainPhoto {
+  display: flex;
+  width: 50vmin;
+  height: 50vmin;
+}
+
+:local .mainFrame {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}
+
+:local .mainFrame > img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+:local .mainPhoto > div {
+  overflow: hidden;
+}
+
+:local .zoomFrame {
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 5px 5px lightgray;
+  position: absolute;
+  margin-left: 55vmin;
+  z-index: 100;
+  background-color: white;
+}
+
+:local .zoomFrame > img {
+  width: 100%;
+  height: auto;
+  /* object-fit: cover; */
+}
+
+:local .blueBox {
+  /* background-color: blue; */
+  position: absolute;
+  /* opacity: 0.5; */
+}
+
+:local .blueBox > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
