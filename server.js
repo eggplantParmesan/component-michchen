@@ -15,10 +15,10 @@ app.use(cors(corsOptions));
 app.use('/', express.static(path.join(__dirname, '/client/dist')));
 // app.use('/', express.static(__dirname + '/client/dist'));
 
-
 app.get('/get', (req, res) => {
   // req.query is the URL query string, and 'id' is the product id i wish to fetch
   db.getProduct(req.query.id, (data) => {
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(data);
   });
 });
