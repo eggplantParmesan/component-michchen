@@ -1,4 +1,4 @@
 :local .photoList {
-  width: 8.5vmin;
-  margin-right: 2.5vmin;
+  width: 100%;
+  /* margin-right: 2.5vmin; */
 }

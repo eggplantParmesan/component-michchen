@@ -1,20 +1,16 @@
 :local .photoGallery {
-  /* width: 75vmin; */
-  /* width: 65vw; */
+  width: 30vw;
   display: flex;
-  margin-right: 3vw;
-  flex: 1;
 }
 
 :local .photoList {
   display: inline;
-  margin: 0 2vmin;
+  margin: 1.7vmin 1.7vmin 1.7vmin 0.85vmin;
 }
 
 :local .mainPhoto {
   display: inline;
-  /* margin: 1.7vmin 1.7vmin 1.7vmin 3.4vmin; */
-  margin-right: 0.85vmin;
+  margin: 1.7vmin 1.7vmin 1.7vmin 3.4vmin;
 }
 
 :local .rollOverText {

@@ -16,14 +16,14 @@ const Popup = ({
       width: '35vmin',
       height: '25vmin',
       left: '-100%',
-      marginTop: '5px',
+      marginTop: '0.5vmin',
     };
   } else {
     popupStyle = {
-      width: '425px',
-      height: '70px',
-      top: '-84px',
-      left: '-132%',
+      width: '44vmin',
+      height: '9vmin',
+      top: '-11vmin',
+      left: '-15vmin',
     };
   }
 

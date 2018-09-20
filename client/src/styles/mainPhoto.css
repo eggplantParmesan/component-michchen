@@ -1,6 +1,6 @@
 :local .mainPhoto {
   display: flex;
-  width: 20vw;
+  width: 90%;
   height: auto;
 }
 
@@ -23,7 +23,7 @@
 
 :local .zoomFrame {
   border-style: solid;
-  border-width: 1px;
+  border-width: 0px;
   box-shadow: 0.85vmin 0.85vmin lightgray;
   position: absolute;
   margin-left: 55vmin;

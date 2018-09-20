@@ -9,36 +9,39 @@ class PhotoGallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPhoto: 'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/20800148_884991911705244_8847631967476084829_n.jpg?_nc_cat=0&oh=f65b967c668c091ea0b530193175533d&oe=5C1E5825',
-      photoList: [
-        'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/20800148_884991911705244_8847631967476084829_n.jpg?_nc_cat=0&oh=f65b967c668c091ea0b530193175533d&oe=5C1E5825',
-        'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/1958562_232816943589414_1989928331_n.jpg?_nc_cat=0&oh=4b14fc7bca42f9aa7f451722d2aebe1e&oe=5C27D523',
-        'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/22780363_924977621040006_8409040957155351341_n.jpg?_nc_cat=0&oh=3ea2c72274c8b345d0c5ce6ec731a118&oe=5C375B3B',
-      ],
-    };
+      currentPhoto: 'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg',
+      photoList: ['https://d17fnq9dkz9hgj.cloudfront.net/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5cvWFxhk8ahH30zJ0UmbAgamdpY4lpjFkmP2daxX2aajUIOq3',
+      'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg'],
+    }
     this.handleClick = this.handleClick.bind(this);
   }
+  
 
   handleClick(imgURL) {
     this.setState({
       currentPhoto: `${imgURL}`,
       magnifyOn: false,
-    });
+    })
   }
 
   render() {
-    const { photoList, currentPhoto } = this.state;
-    return (
-      <div className={styles.photoGallery}>
-        <div className={styles.photoList}>
-          <PhotoList handleClick={this.handleClick} photos={photoList} />
+    return(
+      <div className={ styles.photoGallery } >
+        <div className={ styles.photoList }>
+          <PhotoList handleClick={this.handleClick} photos={ this.state.photoList } />
         </div>
-        <div className={styles.mainPhoto}>
-          <MainPhoto curr={currentPhoto} />
+        <div>
+          <div className={ styles.mainPhoto }>
+            <MainPhoto curr={ this.state.currentPhoto }/>
+          </div>
+          <div className={ styles.rollOverText }>
+            Roll over image to zoom in
+          </div>
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default PhotoGallery;

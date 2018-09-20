@@ -1,5 +1,10 @@
 const path = require('path');
 
+
+// console.log(path.join(__dirname, '/client/src/App.jsx'));
+console.log(path.join(__dirname, '/client/dist'));
+
+
 module.exports = {
   entry: path.join(__dirname, '/client/src/App.jsx'),
   module: {
@@ -40,10 +45,4 @@ module.exports = {
     filename: 'bundle.js',
     path: path.join(__dirname, '/client/dist'),
   },
-  // jest: {
-  //   testPathIgnorePatterns: [
-  //     '/node_modules/',
-  //     './test/test.js'
-  //   ]
-  // }
 };

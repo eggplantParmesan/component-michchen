@@ -4,16 +4,14 @@
 
 .styleDropdownBg {
   border: 1px solid #a6a6a6;
-  height: 30px;
-  width: 80px;
+  height: 3.3vmin;
+  width: 9vmin;
+  line-height: 3.3vmin;
   background-image: url('https://s3-us-west-1.amazonaws.com/parmezon/select_bg.png');
   background-position: center right;
-  margin-top: 6px;
-  line-height: 20px;
-  border-radius: 2px;
-  cursor: pointer;
   position: relative;
-  line-height: 30px;
+  margin-top: 6px;
+  border-radius: 2px;
   text-align: center;
   cursor: pointer;
 }

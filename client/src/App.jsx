@@ -95,7 +95,6 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Breadcrumb data={this.state} />
-        <br />
         <div style={{ display: 'flex' }}>
           <PhotoGallery />
           <ProductInfo
