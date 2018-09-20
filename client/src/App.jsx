@@ -95,7 +95,9 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Breadcrumb data={this.state} />
+        <br />
         <div style={{ display: 'flex' }}>
+          <PhotoGallery />
           <ProductInfo
             data={this.state}
             selectedVariation={selectedVariation}
@@ -112,4 +114,6 @@ class App extends React.Component {
 // this for integration
 window.ProductInfo = App;
 
-// ReactDOM.render(<App />, document.getElementById('app'));
+
+// COMMENT BEFORE UPLOADING
+ReactDOM.render(<App />, document.getElementById('ProductInfo'));
