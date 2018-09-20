@@ -1,7 +1,7 @@
 :local .mainPhoto {
   display: flex;
-  width: 90%;
-  height: auto;
+  width: 25vw;
+  height: 25vw;
 }
 
 :local .mainFrame {
@@ -22,12 +22,13 @@
 }
 
 :local .zoomFrame {
-  border-style: solid;
-  border-width: 0px;
-  box-shadow: 0.85vmin 0.85vmin lightgray;
+  outline: 1px solid #aaa;
+  box-shadow: 0vmin 0.5vmin 1vmin #ddd;
+  background-color: white;
   position: absolute;
-  margin-left: 55vmin;
   z-index: 99;
+  left: 77vmin;
+  margin-top: -1vmin;
 }
 
 :local .zoomFrame > img {

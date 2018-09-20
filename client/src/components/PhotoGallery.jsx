@@ -9,14 +9,15 @@ class PhotoGallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPhoto: 'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg',
-      photoList: ['https://d17fnq9dkz9hgj.cloudfront.net/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5cvWFxhk8ahH30zJ0UmbAgamdpY4lpjFkmP2daxX2aajUIOq3',
-      'https://r.hswstatic.com/w_907/gif/tesla-cat.jpg'],
+      currentPhoto: 'https://images-na.ssl-images-amazon.com/images/I/81ddD9aqDWL._UX679_.jpg',
+      photoList: [
+        'https://images-na.ssl-images-amazon.com/images/I/81ddD9aqDWL._UX679_.jpg',
+        'https://images-na.ssl-images-amazon.com/images/I/81qSlA2twYL._SL1500_.jpg',
+      ],
     }
     this.handleClick = this.handleClick.bind(this);
   }
-  
+
 
   handleClick(imgURL) {
     this.setState({
