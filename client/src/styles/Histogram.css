@@ -2,19 +2,47 @@
   margin: 0px auto;
   width: 85%;
   color: #777777;
+  color: red;
 }
 
 /* 3.5 out of 5 stars */
 .stylesAvgRatingText {
   display: block;
-  font-size: 13px;
-  padding: 14px 0 9px 0;
+  font-size: 1.8vmin;
+  padding: 1.4vmin 0 1vmin 0;
 }
 
-/* how many stars does this bar represent */
-.stylesStarText {
-  font-size: 11px;
+/* see all 100 reviews */
+.stylesSeeAllReviews {
+  font-size: 1.5vmin;
+  padding: 1vmin 0 0 0 ;
+  display: block;
 }
+
+/* 5 star, 4 star... */
+.stylesStarText {
+  /* font-size: 1.6vmin; */
+  line-height: 0.6vmin;
+  font-size: 0.6vmin;
+  height: 10px;
+  padding:0;
+  margin: 0;
+  display: none;
+}
+
+/* right-side grey percentages */
+.stylesPercentageText {
+  position: relative;
+  left: 1vmin;
+  /* font-size: 1.6vmin; */
+  line-height: 0.6vmin;
+  font-size: 0.6vmin;
+  height: 10px;
+  padding:0;
+  margin: 0;
+  display: none;
+}
+
 
 /* grey bar */
 .stylesBar {
@@ -22,8 +50,10 @@
   background: linear-gradient(to bottom, #999, #ccc 6%, #eee 20%, #eee 100%);
   border-right: 1px solid #ddd;
   width: 200px;
-  height: 18px;
-  margin: 3px 0;
+
+  /* here */
+  height: 2.5vmin;
+  margin: 1.2vmin 0;
 }
 
 /* invisible percentage bar for the yellow bar to fill up */
@@ -53,16 +83,4 @@
   0% { width: 0%; display:block; }
   1% { width: 1%; }
   100% { width: 100%; }
-}
-
-.stylesPercentageText {
-  position: relative;
-  left: 8px;
-  font-size: 11px;
-}
-
-.stylesSeeAllReviews {
-  font-size: 12px;
-  padding: 8px 0;
-  display: block;
 }

@@ -1,4 +1,4 @@
-DROP DATABASE amazon;
+DROP DATABASE IF EXISTS amazon;
 CREATE DATABASE amazon;
 USE amazon;
 
