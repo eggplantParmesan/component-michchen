@@ -1,3 +1,12 @@
+a {
+  color: #0066c0;
+  text-decoration: none;
+}
+a:hover{
+  color: #e47911;
+  text-decoration: underline;
+}
+
 .styleMain {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
@@ -9,7 +18,7 @@
   /* background-color: red; */
   width: 80vmin;
   /* min-width: 230px; */
-  /* margin: 0 0 0 3; */
+  margin: 0 0 0 200px;;
 }
 
 .styleTitleBlock {
@@ -59,7 +68,7 @@
 
 .styleAvailable {
   margin-top: 0.75vmin;
-  font-size: 1.2vmin;
+  font-size: 2vmin;
   color: green;
 }
 
@@ -70,6 +79,7 @@
 }
 
 .styleYouSave {
+  font-size: 2.25vmin;
   color: #B12704;
 }
 

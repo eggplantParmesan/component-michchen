@@ -13,12 +13,10 @@ const Popup = ({
 
   if (content === 'ratings') {
     popupStyle = {
-      width: '240px',
-      height: '200px',
+      width: '35vmin',
+      height: '25vmin',
       left: '-100%',
-      marginLeft: '30%',
       marginTop: '5px',
-
     };
   } else {
     popupStyle = {
@@ -34,7 +32,8 @@ const Popup = ({
   } else {
     popupStyle.display = 'none';
   }
-  console.log(content);
+  // console.log(content);
+  popupStyle.display = 'block';
 
   return (
     <div
