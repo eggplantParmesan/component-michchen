@@ -6,7 +6,7 @@
   border: 1px solid #a6a6a6;
   height: 30px;
   width: 80px;
-  background-image: url('./select_bg.png');
+  background-image: url('https://s3-us-west-1.amazonaws.com/parmezon/select_bg.png');
   background-position: center right;
   margin-top: 6px;
   line-height: 20px;

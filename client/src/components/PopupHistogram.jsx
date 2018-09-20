@@ -1,19 +1,16 @@
-import styles from '../styles/Histogram.css';
+import {
+  stylesMain, stylesAvgRatingText, stylesStarText, stylesBar, stylesBarInner,
+  stylesBarOuter, stylesPercentageText, stylesSeeAllReviews,
+} from '../styles/Histogram.css';
 import {randomDistribution} from './PopupHistogram.js';
 
 const React = require('react');
 
-const {
-  stylesMain, stylesAvgRatingText, stylesStarText, stylesBar, stylesBarInner,
-  stylesBarOuter, stylesPercentageText, stylesSeeAllReviews,
-} = styles;
-
-const PopupHistogram = (props) => {
+const PopupHistogram = ({ rating, numReviews }) => {
   const percentageArr = Object.entries(randomDistribution()).sort((x, y) => x[0] < y[0]);
-  const { rating, numReviews, boxHeight, boxWidth } = props;
 
   return (
-    <div>
+    <React.Fragment>
       <span className={stylesAvgRatingText}>
         {`${rating} out of 5 stars` || ''}
       </span>
@@ -34,7 +31,7 @@ const PopupHistogram = (props) => {
         {numReviews}
         &nbsp;reviews &raquo;
       </a>
-    </div>
+    </React.Fragment>
   );
 };
 

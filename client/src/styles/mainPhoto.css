@@ -1,0 +1,46 @@
+:local .mainPhoto {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+:local .mainFrame {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}
+
+:local .mainFrame > img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+:local .mainPhoto > div {
+  overflow: hidden;
+}
+
+:local .zoomFrame {
+  /* border: 1px solid black; */
+  box-shadow: 0 0 5px lightgray;
+  position: absolute;
+  left: 34vw;
+  z-index: 100;
+  background-color: red;
+}
+
+:local .zoomFrame > img {
+  width: 100%;
+  height: auto;
+}
+
+:local .blueBox {
+  position: absolute;
+}
+
+:local .blueBox > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

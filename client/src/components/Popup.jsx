@@ -1,28 +1,25 @@
-import styles from '../styles/Popup.css';
+import { stylesMain, stylesPopupBox } from '../styles/Popup.css';
 import Arrow from './PopupArrow.jsx';
 import PopupHistogram from './PopupHistogram.jsx';
 import PopupMessage from './PopupMessage.jsx';
 
 const React = require('react');
 
-const { stylesMain, stylesPopupBox } = styles;
-
-const Popup = (props) => {
-  const {
-    dir, show, content, rating, numReviews, clickCb,
-  } = props;
-
-  let popupSize;
+const Popup = ({
+  dir, show, content, rating, numReviews, clickCb,
+}) => {
+  let popupStyle;
+  // console.log(`show: ${show}`);
 
   if (content === 'ratings') {
-    // histogram
-    popupSize = {
-      width: '240px',
-      height: '200px',
+    popupStyle = {
+      width: '35vmin',
+      height: '25vmin',
+      left: '-100%',
+      marginTop: '5px',
     };
   } else {
-    // message
-    popupSize = {
+    popupStyle = {
       width: '425px',
       height: '70px',
       top: '-84px',
@@ -30,12 +27,18 @@ const Popup = (props) => {
     };
   }
 
-  // dir: up/down/left/right
+  if (show) {
+    popupStyle.display = 'block';
+  } else {
+    popupStyle.display = 'none';
+  }
+  // console.log(content);
+  popupStyle.display = 'block';
 
   return (
     <div
-      style={popupSize}
-      className={`${stylesMain} popup${dir} ${(show ? '' : 'hide')}`}
+      style={popupStyle}
+      className={`${stylesMain} popup${dir}`}
     >
 
       <Arrow dir={dir} />

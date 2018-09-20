@@ -1,20 +1,18 @@
-import styles from '../styles/Countdown.css';
+import { stylesMain, stylesBold, stylesGreen } from '../styles/Countdown.css';
 
 const React = require('react');
-const { stylesMain, stylesBold, stylesGreen } = styles;
 
 class Countdown extends React.Component {
   constructor(props) {
     super(props);
 
 
-    this.getRemainingTime = function (endTime) {
-      let hoursLeft = endTime / 1000 / 60 / 60;
-      let hours = Math.floor(hoursLeft);
-      let minutes = Math.round((hoursLeft % 1) * 60);
-      return `${ hours } hrs ${ minutes } mins`;
+    this.getRemainingTime = (endTime) => {
+      const hoursLeft = endTime / 1000 / 60 / 60;
+      const hours = Math.floor(hoursLeft);
+      const minutes = Math.round((hoursLeft % 1) * 60);
+      return `${hours} hrs ${minutes} mins`;
     }
-
   }
 
   render() {

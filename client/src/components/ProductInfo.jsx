@@ -4,12 +4,8 @@ import Countdown from './Countdown.jsx';
 import SelectorDropdown from './SelectorDropdown.jsx';
 import SelectorImage from './SelectorImage.jsx';
 import DescBullet from './DescBullet.jsx';
-import styles from '../styles/ProductInfo.css';
 import {addCommas, renderPrice, savedPercent} from './ProductInfo.js';
-
-const React = require('react');
-
-const {
+import {
   styleMain,
   styleTitleBlock,
   styleProductName,
@@ -19,24 +15,20 @@ const {
   styleRatingsCount,
   styleSubhedPipe,
   styleQuestionsCount,
-  styleAmazonsChoice,
-  styleAmazonsChoiceOrange,
   styleAvailable,
   styleUnavailable,
   stylePriceLabel,
   stylePrice,
   styleListPrice,
   styleYouSave,
-  styleFreeShipping,
-  styleSale,
   styleDescription,
   styleCompare,
   styleUsed,
   styleUsedBold,
-} = styles;
+} from '../styles/ProductInfo.css';
 
 
-// here i had functions addCommas and rednerPrice
+const React = require('react');
 
 const ProductInfo = (props) => {
   const {
@@ -44,10 +36,23 @@ const ProductInfo = (props) => {
   } = props;
 
   const {
-    amazonsChoice, available, categoryName, curSelect, description, freeReturns,
-    freeShipping, id, hasCountdown, images, price, priceList, productName,
-    questionsCount, ratingsAverage, ratingsCount, sellerName, soldByName,
-    usedCount, usedPrice,
+    amazonsChoice,
+    available,
+    description,
+    // freeReturns,
+    freeShipping,
+    hasCountdown,
+    images,
+    price,
+    priceList,
+    productName,
+    questionsCount,
+    ratingsAverage,
+    ratingsCount,
+    sellerName,
+    // soldByName,
+    usedCount,
+    usedPrice,
   } = data;
 
   return (

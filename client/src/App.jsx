@@ -1,10 +1,11 @@
-const React = require("react");
-const ReactDOM = require("react-dom");
-const $ = require("jquery");
+import Breadcrumb from './components/Breadcrumb.jsx';
+// import PhotoGallery from './components/PhotoGallery.jsx';
+import ProductInfo from './components/ProductInfo.jsx';
 
-import Breadcrumb from "./components/Breadcrumb.jsx";
-import Gallery from "./components/Gallery.jsx";
-import ProductInfo from "./components/ProductInfo.jsx";
+const React = require('react');
+const ReactDOM = require('react-dom');
+const $ = require('jquery');
+
 
 $(document).keydown((e) => {
   let productNum = document.location.search;
@@ -54,7 +55,7 @@ class App extends React.Component {
   selectOption(e) {
     if (e.target.value !== 'Select') {
       this.setState({
-        selectedSize: e.target.value // value of the dropdown
+        selectedSize: e.target.value, // value of the dropdown
       });
     }
   }
@@ -69,10 +70,11 @@ class App extends React.Component {
 
   componentDidMount() {
     // get "id" from URL params
-    let id = window.location.href.match(/(\?|\&)id=(\d\d?\d?\d?\d?\d?\d?\d?)/);
+    // let id = window.location.href.match(/(\?|\&)id=(\d\d?\d?\d?\d?\d?\d?\d?)/);
+    let id = window.location.search.replace(/\?id=/,'');
     if (id) {
       // get data using id from window URL
-      this.getData(id[2], this);
+      this.getData(id, this);
     } else {
       // otherwise get data for id=1
       this.getData(1, this);
@@ -89,25 +91,26 @@ class App extends React.Component {
   }
 
   render() {
+    // <PhotoGallery />
     const { selectedVariation, images, timeLeft } = this.state;
 
     return (
-      <div>
+      <React.Fragment>
         <Breadcrumb data={this.state} />
-        <Gallery
-          currentImage={selectedVariation}
-          images={images}
-        />
-        <ProductInfo
-          data={this.state}
-          selectedVariation={selectedVariation}
-          dropdownCb={this.selectOption.bind(this)}
-          imageCb={this.selectImage.bind(this)}
-          timeLeft={timeLeft}
-        />
-      </div>
+        <div style={{ display: 'flex' }}>
+          <ProductInfo
+            data={this.state}
+            selectedVariation={selectedVariation}
+            dropdownCb={this.selectOption.bind(this)}
+            imageCb={this.selectImage.bind(this)}
+            timeLeft={timeLeft}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }
+
+window.ProductInfo = App;
 
 ReactDOM.render(<App />, document.getElementById('app'));

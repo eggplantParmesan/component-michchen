@@ -1,0 +1,113 @@
+/* body {
+  background-size: 1440px auto;
+  background-repeat: no-repeat;
+  background-image: url("img/mock2.png");
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 19px;
+  margin: 28px 495px;
+  color: #111111;
+}
+
+* {
+  font-size: 13px;
+}
+
+#ProductInfo {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 19px;
+  margin: 6px 18px;
+  color: #111111;
+  font-size: 13px;
+  display:flex
+}
+
+#ProductInfo a {
+  color: #0066c0;
+  text-decoration: none;
+}
+#ProductInfo a:hover{
+  color: #e47911;
+  text-decoration: underline;
+}
+
+#ProductInfo #stars.s5 { background-position-x: -4px; }
+#ProductInfo #stars.s45 { background-position-x: -177px; }
+#ProductInfo #stars.s4 { background-position-x: -21px; }
+#ProductInfo #stars.s35 { background-position-x: -194px; }
+#ProductInfo #stars.s3 { background-position-x: -37px; }
+#ProductInfo #stars.s25 { background-position-x: -210px; }
+#ProductInfo #stars.s2 { background-position-x: -53px; }
+#ProductInfo #stars.s15 { background-position-x: -227px; }
+#ProductInfo #stars.s1 { background-position-x: -70px; }
+#ProductInfo #stars.s05 { background-position-x: -243px; }
+#ProductInfo #stars.s0 { background-position-x: -86px; }
+*/
+/* which color is chosen */
+/* .selectedVariation {
+  outline: 1px solid #e77600 !important;
+  box-shadow: 0px 0px 2px 2px #fa7;
+}
+
+// used for hiding popups when no mouseover
+#ProductInfo .hide {
+  display: none;
+}
+
+// popup below target
+// used for ratings onhover
+#ProductInfo .popupdown {
+  left: -100%;
+  margin-left: 30%;
+  margin-top: 5px;
+}
+#ProductInfo .popupArrow_down { border-bottom-color: #ffffff !important;}
+#ProductInfo .popupArrowBorder_down {
+  top:-21px;
+  left: 50%;
+  margin-left: -10px !important;
+  border-bottom-color: #000000 !important;
+}
+
+// popup on top
+// used for Amazon's Choice hover
+#ProductInfo .popupup {
+  // top: -100px;
+  // left: 50%;
+  // margin-left: -100%;
+}
+#ProductInfo .popupArrow_up { border-top-color: #ffffff !important;}
+#ProductInfo .popupArrowBorder_up {
+  bottom: -23px;
+  left: 50%;
+  margin-left: -10px !important;
+  border-top-color: #000000 !important;
+}
+
+// right
+// this is not actually used
+#ProductInfo .popupright {
+  left: 120%;
+}
+#ProductInfo .popupArrow_right { border-right-color: #ffffff !important;}
+#ProductInfo .popupArrowBorder_right {
+  top: 50%;
+  margin-top: -10px !important;
+  left: -21px;
+  border-right-color: #000000 !important;
+}
+
+// popup on the left side
+// this is not actually used
+#ProductInfo .popupleft {
+  right: 100%;
+}
+#ProductInfo .popupArrow_left { border-left-color: #ffffff !important;}
+#ProductInfo .popupArrowBorder_left {
+  top: 50%;
+  margin-top: -10px !important;
+  right: -22px;
+  border-left-color: #000000 !important;
+}
+*/

@@ -1,8 +1,8 @@
 .stylesMain {
   position: absolute;
-  font-size: 1px;
+  font-size: 1.75vmin;
   cursor: default;
-  z-index: 99;
+  z-index: 9;
 }
 
 .stylesPopupBox {

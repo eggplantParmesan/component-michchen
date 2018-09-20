@@ -1,48 +1,65 @@
+a {
+  color: #0066c0;
+  text-decoration: none;
+}
+a:hover{
+  color: #e47911;
+  text-decoration: underline;
+}
+
 .styleMain {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 2.75vmin;
+  color: #111111;
+  font-size: 1.75vmin;
   display: block;
   float: left;
-  width: 45.5%;
-  margin: 0 0 0 2vmin;
+  /* background-color: red; */
+  width: 80vmin;
+  /* min-width: 230px; */
+  margin: 0 0 0 200px;;
 }
 
 .styleTitleBlock {
   border: 1px solid #ddd;
   border-width: 0 0 1px 0;
-  margin: 0 0 12px 0;
-  padding: 0 0 5px 0;
+  margin: 0 0 1vmin 0;
+  padding: 0 0 0.5vmin 0;
 }
 
 .styleProductName {
   padding: 0;
   margin: 0;
   font-weight: 400;
-  font-size: 21px;
+  font-size: 2.8vmin;
   line-height: 1.3;
 }
 
 .styleSeller {
-  margin: 2px 0 6px 0;
+  margin: 0.3vmin 0 0.5vmin 0;
 }
 
 .styleRatingsCount {
   display: inline-block;
-  margin: 0 0.4em 0 0;
+  margin: 0 1vmin 0 0;
 }
 
 .styleSubhedPipe, .styleQuestionsCount {
   display: inline-block;
-  margin: 0 0.4em;
+  margin: 0 0.4vmin;
 }
 
 .stylePriceLabel {
   text-align: right;
   color: #555555;
+  font-size: 1.75vmin;
 }
 
 .stylePrice {
-  font-size: 1.4em;
+  font-size: 2.25vmin;
   color: #B12704;
-  margin-left: 0.25em;
+  margin-left: 0.25vmin;
 }
 
 .styleListPrice {
@@ -50,18 +67,19 @@
 }
 
 .styleAvailable {
-  margin-top: 0.75em;
-  font-size: 1.2em;
+  margin-top: 0.75vmin;
+  font-size: 2vmin;
   color: green;
 }
 
 .styleUnavailable {
-  margin-top: 0.75em;
-  font-size: 1.2em;
+  margin-top: 0.75vmin;
+  font-size: 2vmin;
   color: red;
 }
 
 .styleYouSave {
+  font-size: 2.25vmin;
   color: #B12704;
 }
 
@@ -69,11 +87,11 @@
 .styleSale {}
 
 .styleDescription {
-  padding-left: 1.8em;
+  padding-left: 1.8vmin;
 }
 
 .styleCompare {
-  margin: 0.75em 0;
+  margin: 0.75vmin 0;
   display: block;
 }
 
@@ -83,4 +101,9 @@
 
 .styleUsedBold {
   font-weight: 700;
+}
+
+.selectedVariation {
+  outline: 1px solid #e77600 !important;
+  box-shadow: 0px 0px 2px 2px #fa7;
 }

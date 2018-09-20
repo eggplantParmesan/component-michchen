@@ -1,0 +1,20 @@
+:local .photoListItem > div {
+  margin-bottom: 10px;
+  width: 38px;
+  height: 38px;
+  border: 1px lightgrey;
+  border-style: solid;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+:local .img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+:local .img:hover {
+  outline: 1px solid orange;
+  box-shadow: 0 0 10px orange;
+}

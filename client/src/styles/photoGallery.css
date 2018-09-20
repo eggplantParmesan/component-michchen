@@ -1,0 +1,16 @@
+:local .photoGallery {
+  display: flex;
+}
+
+:local .photoList {
+  display: inline;
+  margin-top: 18px;
+  width: 5vw;
+  min-width: 60px;
+}
+
+:local .mainPhoto {
+  display: inline;
+  width: 25vw;
+  min-width: 230px;
+}
