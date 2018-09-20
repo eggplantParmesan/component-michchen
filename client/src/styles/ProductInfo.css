@@ -1,34 +1,32 @@
-a {
+/* a {
   color: #0066c0;
   text-decoration: none;
 }
 a:hover{
   color: #e47911;
   text-decoration: underline;
-}
+} */
 
-.styleMain {
+:local .styleMain {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  line-height: 2.75vmin;
   color: #111111;
+  line-height: 2.75vmin;
   font-size: 1.75vmin;
   display: block;
   float: left;
-  /* background-color: red; */
   width: 80vmin;
-  /* min-width: 230px; */
   margin: 0 0 0 200px;;
 }
 
-.styleTitleBlock {
+:local .styleTitleBlock {
   border: 1px solid #ddd;
   border-width: 0 0 1px 0;
   margin: 0 0 1vmin 0;
   padding: 0 0 0.5vmin 0;
 }
 
-.styleProductName {
+:local .styleProductName {
   padding: 0;
   margin: 0;
   font-weight: 400;
@@ -36,74 +34,74 @@ a:hover{
   line-height: 1.3;
 }
 
-.styleSeller {
+:local .styleSeller {
   margin: 0.3vmin 0 0.5vmin 0;
 }
 
-.styleRatingsCount {
+:local .styleRatingsCount {
   display: inline-block;
   margin: 0 1vmin 0 0;
 }
 
-.styleSubhedPipe, .styleQuestionsCount {
+:local .styleSubhedPipe, .styleQuestionsCount {
   display: inline-block;
   margin: 0 0.4vmin;
 }
 
-.stylePriceLabel {
+:local .stylePriceLabel {
   text-align: right;
   color: #555555;
   font-size: 1.75vmin;
 }
 
-.stylePrice {
-  font-size: 2.25vmin;
+:local .stylePrice {
+  font-size: 2.2vmin;
   color: #B12704;
   margin-left: 0.25vmin;
 }
 
-.styleListPrice {
+
+:local .styleListPrice {
   text-decoration: line-through;
 }
 
-.styleAvailable {
+:local .styleYouSave {
+  color: #B12704;
+}
+
+:local .styleAvailable {
   margin-top: 0.75vmin;
   font-size: 2vmin;
   color: green;
 }
 
-.styleUnavailable {
+:local .styleUnavailable {
   margin-top: 0.75vmin;
   font-size: 2vmin;
   color: red;
 }
 
-.styleYouSave {
-  font-size: 2.25vmin;
-  color: #B12704;
-}
+:local .styleFreeShipping {}
+:local .styleSale {}
 
-.styleFreeShipping {}
-.styleSale {}
-
-.styleDescription {
+:local .styleDescription {
   padding-left: 1.8vmin;
 }
 
-.styleCompare {
+:local .styleCompare {
   margin: 0.75vmin 0;
   display: block;
 }
 
-.styleUsed {
+:local .styleUsed {
   color: #555555;
 }
 
-.styleUsedBold {
+:local .styleUsedBold {
   font-weight: 700;
 }
 
-.selectedVariation {
+:local .selectedVariation {
   outline: 1px solid #e77600 !important;
   box-shadow: 0px 0px 2px 2px #fa7;
 }

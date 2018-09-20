@@ -33,7 +33,7 @@ const Popup = ({
     popupStyle.display = 'none';
   }
   // console.log(content);
-  popupStyle.display = 'block';
+  // popupStyle.display = 'block';
 
   return (
     <div

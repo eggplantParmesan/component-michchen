@@ -1,5 +1,5 @@
 import Breadcrumb from './components/Breadcrumb.jsx';
-// import PhotoGallery from './components/PhotoGallery.jsx';
+import PhotoGallery from './components/PhotoGallery.jsx';
 import ProductInfo from './components/ProductInfo.jsx';
 
 const React = require('react');
@@ -91,9 +91,7 @@ class App extends React.Component {
   }
 
   render() {
-    // <PhotoGallery />
     const { selectedVariation, images, timeLeft } = this.state;
-
     return (
       <React.Fragment>
         <Breadcrumb data={this.state} />
@@ -111,6 +109,7 @@ class App extends React.Component {
   }
 }
 
-window.ProductInfo = App;
+// window.ProductInfo = App;
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('ProductInfo'));
+// ReactDOM.render(<App />, document.getElementById('app'));
