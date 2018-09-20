@@ -27,6 +27,7 @@
   box-shadow: 0.85vmin 0.85vmin lightgray;
   position: absolute;
   margin-left: 55vmin;
+  z-index: 99;
 }
 
 :local .zoomFrame > img {
@@ -44,4 +45,3 @@
   width: 100%;
   object-fit: cover;
 }
-
