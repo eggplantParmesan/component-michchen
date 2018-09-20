@@ -109,7 +109,7 @@ class App extends React.Component {
   }
 }
 
-// window.ProductInfo = App;
+// this for integration
+window.ProductInfo = App;
 
-ReactDOM.render(<App />, document.getElementById('ProductInfo'));
 // ReactDOM.render(<App />, document.getElementById('app'));
