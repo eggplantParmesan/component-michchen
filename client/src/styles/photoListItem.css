@@ -1,7 +1,8 @@
 :local .photoListItem > div {
-  margin: 1.7vmin;
-  width: 8vmin;
-  height: 8vmin;
+  margin-bottom: 1.7vmin;
+  /* margin-top: 0; */
+  width: 6vmin;
+  height: 6vmin;
   border: 1px lightgrey;
   border-style: solid;
   border-radius: 1px;
@@ -18,7 +19,7 @@
   border-radius: 2px;
 }
 
-.local .img:focus { 
+.local .img:focus {
   outline: none;
   border-color: #9ecaed;
   box-shadow: 0 0 1.7vmin #9ecaed;

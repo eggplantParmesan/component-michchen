@@ -15,8 +15,9 @@ a:hover{
   font-size: 1.75vmin;
   display: block;
   float: left;
-  width: 80vmin;
-  margin: 0 0 0 200px;;
+  width: 42vw;
+  margin-right: 3vw;
+  flex: 1;
 }
 
 :local .styleTitleBlock {
