@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "react-dev": "webpack -d --watch",
-    "test": "jest"
+    "test": "jest",
+    "seed": "node database/faker.js"
   },
   "repository": {
     "type": "git",

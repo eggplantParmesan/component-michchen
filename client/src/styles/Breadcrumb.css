@@ -1,12 +1,13 @@
-.stylesMain {
+:local .stylesMain {
   font-family: 'Lato', sans-serif;
   font-size: 1.5vmin;
   height: 4vmin;
   color: #666;
   display: block;
+  width:100%;
 }
 
-.stylesBreadcrumb{
+:local .stylesBreadcrumb{
   color: #666;
   font-size: 1.5vmin;
 }
