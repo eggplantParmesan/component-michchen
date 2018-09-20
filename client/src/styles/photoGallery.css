@@ -1,16 +1,21 @@
 :local .photoGallery {
+  width: 85vmin;
   display: flex;
+
 }
 
 :local .photoList {
   display: inline;
-  margin-top: 18px;
-  width: 5vw;
-  min-width: 60px;
+  margin: 1.7vmin 1.7vmin 1.7vmin 0.85vmin;
 }
 
 :local .mainPhoto {
   display: inline;
-  width: 25vw;
-  min-width: 230px;
+  margin: 1.7vmin 1.7vmin 1.7vmin 3.4vmin;
+}
+
+:local .rollOverText {
+  text-align: center;
+  font-size: 2vmin;
+  color: #555;
 }
