@@ -1,7 +1,7 @@
 :local .mainPhoto {
   display: flex;
   width: 20vw;
-  height: 20vw;
+  height: auto;
 }
 
 :local .mainFrame {
