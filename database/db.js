@@ -1,15 +1,24 @@
 const mysql = require('mysql');
-
+// console.log(process.env);
 const con = mysql.createConnection({
-  url: 'localhost',
-  user: 'root',
-  // port: 9001,
-  password: '',
-  database: 'amazon',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: 'hramazon',
+  // port: 9001
 });
 
+// const con = mysql.createConnection({
+//   host: 'hramazon.cwakgm40gffr.us-west-1.rds.amazonaws.com',
+//   user: 'pikapoo',
+//   password: '123password',
+//   database: 'hramazon',
+//   // port: 3306
+// });
+
+
 con.connect((err) => {
-  console.log('con.connect--------------------------------')
+  // console.log('con.connect--------------------------------');
   if (err) {
     console.log('db.js > connection error', err);
   } else {

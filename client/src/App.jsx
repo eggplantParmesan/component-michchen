@@ -33,7 +33,7 @@ class App extends React.Component {
     const prodNumCopy = prodNum || 1;
 
     const reqProduct = $.get({
-      url: `http://localhost:${process.env.PORT || 9001}/get`,
+      url: '/get',
       context: this,
       data: { id: prodNumCopy },
     });

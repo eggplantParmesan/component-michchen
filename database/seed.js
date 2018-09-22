@@ -138,6 +138,9 @@ exports.createImageQuery = function createImageQuery(howMany) {
   return `${queryConcat};`;
 };
 
+console.log(exports.createProductQuery(100));
+
+/*
 // reset products table and insert rows
 db.resetTable('products', () => {
   db.insertRow(exports.createProductQuery(numToGenerate), () => {
@@ -153,3 +156,6 @@ db.resetTable('products', () => {
     });
   });
 });
+
+
+*/

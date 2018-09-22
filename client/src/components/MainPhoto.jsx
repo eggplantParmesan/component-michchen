@@ -38,8 +38,8 @@ class MainPhoto extends React.Component {
   }
 
   render() {
-    console.log('x: ', this.state.x);
-    console.log('y: ', this.state.y);
+    // console.log('x: ', this.state.x);
+    // console.log('y: ', this.state.y);
     var boxDimension; // in px for both width and height for the blue box
     var mainFrame;
     var mainFrameBottomMostY;
