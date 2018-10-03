@@ -3,25 +3,7 @@
 // run "node database/faker.js" in the terminal
 // node database/seed.js
 
-const numToGenerate = 100;
-
-/*
-INSERT INTO products (id, productName, productUrl, sellerName, sellerUrl,
-ratingsAverage, ratingsCount, questionsCount, categoryName, categoryUrl,
-price, priceList, freeReturns, freeShipping, soldByName, soldByUrl, available,
-description, usedCount, usedPrice) VALUES (101, "LG G6+ - 128 GB - Unlocked
-(AT&T/T-Mobile/Verizon) - Black - Prime Exclusive", "#", "LG", "#", 4, 80, 86,
-"Cell Phones & Accessories", "#", 40999, 79999, 1, 1, "Some sketchy guy", "#",
-1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare augue non
-eleifend accumsan. \nMaecenas sit amet maximus lacus. Nullam eu placerat metus,
-et aliquet ex. Vivamus justo magna, tincidunt a convallis eu, semper vitae nunc.
-\nSed tincidunt quis purus vitae dictum. \nDonec eu ante pharetra, maximus erat
-sit amet, imperdiet odio. \nIn tincidunt feugiat ligula, quis tempus leo eleifend
-in. Pellentesque vitae lectus est.", 20, 30749);
-
-INSERT INTO images (productId,varKey,varValue,imageUrl) VALUES (101, "","",
-"https://images-na.ssl-images-amazon.com/images/I/61Rh3tVbr-L._SL1200_.jpg");
-*/
+const numToGenerate = 2000;
 
 const cats = require('./cats');
 const faker = require('faker');
@@ -138,24 +120,24 @@ exports.createImageQuery = function createImageQuery(howMany) {
   return `${queryConcat};`;
 };
 
-console.log(exports.createProductQuery(100));
+// console.log(exports.createProductQuery(100));
 
-/*
+
 // reset products table and insert rows
-db.resetTable('products', () => {
-  db.insertRow(exports.createProductQuery(numToGenerate), () => {
-    console.log(`  INSERTED ${numToGenerate} ROWS into products`);
+// db.resetTable('products', () => {
+//   db.insertRow(exports.createProductQuery(numToGenerate), () => {
+//     console.log(`  INSERTED ${numToGenerate} ROWS into products`);
 
-    // reset images table and insert rows
-    db.resetTable('images', () => {
-      db.insertRow(exports.createImageQuery(numToGenerate), () => {
-        // log success
-        console.log(`  INSERTED ${numToGenerate} ROWS into images`);
-        console.log('Data generation finished. Press ctrl-C to exit.');
-      });
-    });
-  });
-});
+//     // reset images table and insert rows
+//     db.resetTable('images', () => {
+//       db.insertRow(exports.createImageQuery(numToGenerate), () => {
+//         // log success
+//         console.log(`  INSERTED ${numToGenerate} ROWS into images`);
+//         console.log('Data generation finished. Press ctrl-C to exit.');
+//       });
+//     });
+//   });
+// });
 
 
-*/
+

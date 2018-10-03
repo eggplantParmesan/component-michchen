@@ -1,12 +1,17 @@
 const mysql = require('mysql');
 // console.log(process.env);
 const con = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: 'hramazon',
-  // port: 9001
+  host: 'localhost',
+  user: 'root',
+  database: 'amazon'
 });
+
+
+ // host: process.env.DB_HOST,
+ //  user: process.env.DB_USER,
+ //  password: process.env.DB_PASS,
+ //  database: 'hramazon',
+  // port: 9001
 
 // const con = mysql.createConnection({
 //   host: 'hramazon.cwakgm40gffr.us-west-1.rds.amazonaws.com',
@@ -79,3 +84,31 @@ exports.getProduct = (id, cb) => {
     });
   });
 };
+
+exports.deleteProduct = (id, cb) => {
+  con.query(`DELETE * FROM products WHERE id=${id}`, (err, result) => {
+    console.log('DELETED sucessfully from products');
+    console.log(result);
+  });  
+ con.query(`DELETE * FROM images WHERE productId=${id}`, (error, res) => {
+    console.log('DELETED sucessfully from products');
+    console.log(res);
+  });
+};
+
+// exports.addProduct = (id, cb) => {
+//   con.query(`DELETE * FROM products WHERE id=${id}`, (err, result) => {
+//     console.log('DELETED sucessfully from products');
+//     console.log(result);
+//   });  
+//  con.query(`DELETE * FROM images WHERE productId=${id}`, (error, res) => {
+//     console.log('DELETED sucessfully from products');
+//     console.log(result);
+//   });
+// };
+
+
+
+
+
+
