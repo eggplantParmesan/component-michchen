@@ -30,7 +30,7 @@ USE amazon;
  id, productName, sellerName, ratingsAverage, ratingsCount, questionsCount, amazonsChoice, categoryName, price, priceList FLOAT, freeReturns, freeShipping, soldByName, available, hasCountdown, description, usedCount, usedPrice, imageUrl, varKey, varValue
 
 CREATE TABLE products(
-  id INT PRIMARY KEY, 
+  id INT, 
   productName VARCHAR, 
   sellerName VARCHAR, 
   ratingsAverage FLOAT,
@@ -47,10 +47,11 @@ CREATE TABLE products(
   hasCountdown INT,
   description TEXT,
   usedCount INT,
-  usedPrice INT,
+  usedPrice FLOAT,
   imageUrl VARCHAR,
   varKey VARCHAR,
-  varValue VARCHAR
+  varValue VARCHAR,
+  PRIMARY KEY(id, productName)
 );
 
 (id, productName, sellerName, ratingsAverage,ratingsCount,questionsCount,amazonsChoice,categoryName,price,priceList,freeReturns,freeShipping,soldByName,available,hasCountdown,description,usedCount,usedPrice,imageUrl,varKey,varValue)
@@ -85,7 +86,7 @@ COPY eggplants.products (id, productName, sellerName, ratingsAverage,ratingsCoun
 --   varValue VARCHAR(150)
 -- );
 
-cassandra-loader -f /path/to/file.csv -host localhost -schema "test.test3(id, productName, sellerName, ratingsAverage,ratingsCount,questionsCount,amazonsChoice,categoryName,price,priceList,freeReturns,freeShipping,soldByName,available,hasCountdown,description,usedCount,usedPrice,imageUrl,varKey,varValue)"
+cassandra-loader -f /Users/i/hackreactor/item-listing-component-rich/database/bigFile.csv -host localhost -schema "eggplants.products(id, productName, sellerName, ratingsAverage,ratingsCount,questionsCount,amazonsChoice,categoryName,price,priceList,freeReturns,freeShipping,soldByName,available,hasCountdown,description,usedCount,usedPrice,imageUrl,varKey,varValue)"
 
 
-
+ cassandra-loader -f /Users/i/hackreactor/item-listing-component-rich/database/bigFile.csv -host 127.0.0.1:9042 -schema "eggplants.products(id, productName, sellerName, ratingsAverage,ratingsCount,questionsCount,amazonsChoice,categoryName,price,priceList,freeReturns,freeShipping,soldByName,available,hasCountdown,description,usedCount,usedPrice,imageUrl,varKey,varValue)"
