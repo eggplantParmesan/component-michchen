@@ -13,14 +13,15 @@ const corsOptions = {
   origin: 'http://localhost:3306',
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
-// app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use('/', express.static(path.join(__dirname, '/client/dist')));
 // app.use('/', express.static(__dirname + '/client/dist'));
 
-app.get('/cruddy/:id', (req, res) => {  
-  var productNumber = req.params.id;
+app.get('/cruddy', (req, res) => {  
+  console.log(req, 'YOYOYOYOY');
+  var productNumber = req.url.split('=')[1];
   db.getProduct(productNumber, (err, data) => {
     if (err){
       res.send(err);
@@ -37,7 +38,7 @@ app.get('/cruddy/:id', (req, res) => {
         ratingsCount: ratingscount,
         questionsCount: questionscount,
         amazonsChoice: amazonschoice,
-        categoryName: categories,
+        categoryName: categories[0],
         price: price,
         priceList: pricelist,
         freeReturns: freereturns,
@@ -50,7 +51,7 @@ app.get('/cruddy/:id', (req, res) => {
         usedPrice: usedprice,
         imageUrl: imageurl,
         varKey: varkey,
-        varValue: values
+        varValue: values[0]
       }
       res.send(newData);
     }  
