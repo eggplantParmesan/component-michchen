@@ -17,8 +17,8 @@ scenarios:
     #       url: "/cruddy/{{$randomNumber(1, 10000000)}}"
     # count: 100
     - loop:
-      - post:
-          url: "/cruddy"
-    count: 100
+      - get:
+          url: "/cruddy/{{$randomNumber(1, 10000000)}}"
+    count: 1
 
     

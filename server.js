@@ -19,10 +19,11 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 app.use('/', express.static(path.join(__dirname, '/client/dist')));
 // app.use('/', express.static(__dirname + '/client/dist'));
 
-app.get('/cruddy', (req, res) => {  
-  console.log(req, 'YOYOYOYOY');
-  var productNumber = req.url.split('=')[1];
-  db.getProduct(productNumber, (err, data) => {
+app.get('/cruddy/:productId', (req, res) => {  
+  // console.log(req, 'YOYOYOYOY');
+  // var productNumber = req.url.split('=')[1];
+  var {productId} = req.params;
+  db.getProduct(productId, (err, data) => {
     if (err){
       res.send(err);
     } else {

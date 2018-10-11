@@ -32,7 +32,7 @@ class App extends React.Component {
   getData(prodNum) {
     const prodNumCopy = prodNum || 1;
     const reqProduct = $.get({
-      url: `/cruddy`,
+      url: `http://localhost:3000/cruddy/${prodNumCopy}`,
       context: this,
       data: { id: prodNumCopy },
     });
