@@ -8,8 +8,7 @@ config:
     - duration: 30
       arrivalRate: 100
       name: "Sustained max load"
-  
-  
+
 scenarios:
   - flow:
     # - loop:
@@ -20,5 +19,3 @@ scenarios:
       - get:
           url: "/cruddy/{{$randomNumber(1, 10000000)}}"
     count: 1
-
-    

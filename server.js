@@ -19,22 +19,20 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 app.use('/', express.static(path.join(__dirname, '/client/dist')));
 // app.use('/', express.static(__dirname + '/client/dist'));
 
-app.get('/cruddy/:productId', (req, res) => {  
-  // console.log(req, 'YOYOYOYOY');
-  // var productNumber = req.url.split('=')[1];
+app.get('/cruddy/:productId', (req, res) => {
   var {productId} = req.params;
   db.getProduct(productId, (err, data) => {
-    if (err){
+    if (err) {
       res.send(err);
     } else {
       const {id, productname, sellername, ratingsaverage, ratingscount, questionscount, amazonschoice, categoryname, price, pricelist, freereturns, freeshipping, soldbyname, available, hascountdown, description, usedcount, usedprice, imageurl, varkey, varvalue} = data.rows[0];
       const categories = categoryname.split('-');
       const values = varvalue.split('-');
       res.header('Access-Control-Allow-Origin', '*');
-      var newData = {
+      let newData = {
         id: id, 
-        productName: productname, 
-        sellerName: sellername, 
+        productName: productname,
+        sellerName: sellername,
         ratingsAverage: ratingsaverage,
         ratingsCount: ratingscount,
         questionsCount: questionscount,
@@ -52,34 +50,32 @@ app.get('/cruddy/:productId', (req, res) => {
         usedPrice: usedprice,
         imageUrl: imageurl,
         varKey: varkey,
-        varValue: values[0]
-      }
+        varValue: values[0],
+      };
       res.send(newData);
-    }  
+    }
   });
 });
 
 app.post('/cruddy', (req, res) => {
   db.addProduct ((err, data) => {
-    if (err){
+    if (err) {
       res.send(err);
     } else {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.send(data);
+      res.header('Access-Control-Allow-Origin', '*');
+      res.send(data);
     }
   });
 });
 
 app.put('/cruddy/*', (req, res) => {
-  console.log('put')
   var productNumber = req.params[0];
   db.updateProduct (productNumber, (err, data) => {
-    if (err){
+    if (err) {
       res.send(err);
     } else {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.send(data);
-    console.log ('hey yo i am updated yo');
+      res.header('Access-Control-Allow-Origin', '*');
+      res.send(data);
     }
   });
 });
@@ -90,7 +86,7 @@ app.delete('/cruddy/*', (req, res) => {
   db.deleteProduct(productNumber, () => {
     console.log('DELETED');
     res.send ('YO I AM DELETED YO');
-  });  
+  });
 });
 
 app.listen(3306, () => {

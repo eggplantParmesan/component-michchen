@@ -2,6 +2,9 @@
 
 .env
 
+bigFileTest.csv
+newrelic.js
+
 ## MAC files ##
 .DS_Store
 

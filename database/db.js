@@ -2,9 +2,10 @@ const generate = require('./generateData');
 const { Client } = require('pg');
 
 const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'richtest',
+  user: 'power_user',
+  host: 'ec2-54-183-161-186.us-west-1.compute.amazonaws.com',
+  password: 'demuth13',
+  database: 'amazon',
   port: 5432,
 })
 client.connect()
