@@ -7,7 +7,15 @@ const client = new Client({
   password: 'demuth13',
   database: 'amazon',
   port: 5432,
-})
+});
+
+// host: process.env.RDS_HOSTNAME,
+//  user: process.env.RDS_USERNAME,
+//  password: process.env.RDS_PASSWORD,
+//  database: process.env.RDS_DB_NAME,
+//  port: process.env.RDS_PORT,
+
+
 client.connect()
 
 // client.query('SELECT NOW()', (err, res) => {
