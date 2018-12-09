@@ -6,7 +6,6 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const $ = require('jquery');
 
-
 $(document).keydown((e) => {
   let productNum = document.location.search;
   if (productNum) {
@@ -27,44 +26,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-  }
-
-  getData(prodNum) {
-    const prodNumCopy = prodNum || 1;
-    const reqProduct = $.get({
-      url: `http://localhost:3306/cruddy/${prodNumCopy}`,
-      context: this,
-      data: { id: prodNumCopy },
-    });
-
-    reqProduct.done((res) => {
-      this.setState(res, () => {
-        // onload, select the first option for product variation
-        if (res.varKey!== null) {
-          this.setState({
-            selectedVariation: Object.keys(Object.values(res)[0])[0],
-          });
-        }
-      });
-
-      window.state = this.state;
-    });
-  };
-
-  selectOption(e) {
-    if (e.target.value !== 'Select') {
-      this.setState({
-        selectedSize: e.target.value, // value of the dropdown
-      });
-    }
-  }
-
-  selectImage(e) {
-    this.setState({
-      selectedVariation: e.target.getAttribute('data')
-    });
-
-    e.stopPropagation();
   }
 
   componentDidMount() {
@@ -89,6 +50,42 @@ class App extends React.Component {
     });
   }
 
+  getData(prodNum) {
+    const prodNumCopy = prodNum || 1;
+    const reqProduct = $.get({
+      url: `/cruddy/${prodNumCopy}`,
+      context: this,
+      data: { id: prodNumCopy },
+    });
+
+    reqProduct.done((res) => {
+      this.setState(res, () => {
+        // onload, select the first option for product variation
+        if (res.varKey!== null) {
+          this.setState({
+            selectedVariation: Object.keys(Object.values(res)[0])[0],
+          });
+        }
+      });
+      window.state = this.state;
+    });
+  };
+
+  selectOption(e) {
+    if (e.target.value !== 'Select') {
+      this.setState({
+        selectedSize: e.target.value, // value of the dropdown
+      });
+    }
+  }
+
+  selectImage(e) {
+    this.setState({
+      selectedVariation: e.target.getAttribute('data')
+    });
+    e.stopPropagation();
+  }
+
   render() {
     const { selectedVariation, images, timeLeft } = this.state;
     return (
@@ -111,7 +108,6 @@ class App extends React.Component {
 
 // this for integration
 window.ProductInfo = App;
-
 
 // COMMENT BEFORE UPLOADING
 ReactDOM.render(<App />, document.getElementById('ProductInfo'));

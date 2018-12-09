@@ -2,11 +2,7 @@ const generate = require('./generateData');
 const { Client } = require('pg');
 
 const client = new Client({
-  user: 'power_user',
-  host: 'ec2-54-183-161-186.us-west-1.compute.amazonaws.com',
-  password: 'demuth13',
-  database: 'amazon',
-  port: 5432,
+ 
 });
 
 // host: process.env.RDS_HOSTNAME,
@@ -14,7 +10,6 @@ const client = new Client({
 //  password: process.env.RDS_PASSWORD,
 //  database: process.env.RDS_DB_NAME,
 //  port: process.env.RDS_PORT,
-
 
 client.connect()
 
@@ -81,7 +76,7 @@ exports.getProduct = (id, whenGotten) => {
     if (error) {
       console.log(error);
     } else {
-    whenGotten(null, result);
+      whenGotten(null, result);
     }
   //   const productObj = result[0];
   //   con.query(`SELECT * FROM images WHERE productId=${id}`, (error, res) => {
@@ -116,9 +111,9 @@ exports.deleteProduct = ((id, whenDeleted) => {
       console.log(error);
     } else {
     whenDeleted();
-    console.log('DELETED sucessfully from products');
+    // console.log('DELETED sucessfully from products');
     }
-  });  
+  });
 });
 
 exports.addProduct = (whenAdded) => {
@@ -131,30 +126,23 @@ exports.addProduct = (whenAdded) => {
     whenAdded(null, result);
     // console.log('ADDED sucessfully to products');
     }
-  });  
+  });
 };
-
 
 exports.updateProduct = (id, whenUpdated) => {
   var thisProduct = generate.generateObject();
-  console.log(thisProduct);
+  // console.log(thisProduct);
   var thisProductArray = thisProduct.split(',');
   thisProductArray[0] = id;
   client.query
   (`UPDATE products
   SET productName=${thisProductArray[1]}, sellerName=${thisProductArray[2]}, ratingsAverage=${thisProductArray[3]},ratingsCount=${thisProductArray[4]}, questionsCount=${thisProductArray[5]},amazonsChoice=${thisProductArray[6]},categoryName=${thisProductArray[7]},price=${thisProductArray[8]},priceList=${thisProductArray[9]},freeReturns=${thisProductArray[10]},freeShipping=${thisProductArray[11]},soldByName=${thisProductArray[12]},available=${thisProductArray[13]},hasCountdown=${thisProductArray[14]},description=${thisProductArray[15]},usedCount=${thisProductArray[16]},usedPrice=${thisProductArray[17]}
-  WHERE id=${id}`, (error, result) => {  
+  WHERE id=${id}`, (error, result) => {
     if (error) {
       whenUpdated(error);
     } else {
-    whenUpdated(null, result);
-    console.log('UPDATED sucessfully', result);
+      whenUpdated(null, result);
+      // console.log('UPDATED sucessfully', result);
     }
-  });  
+  });
 };
-
-
-
-
-
-
