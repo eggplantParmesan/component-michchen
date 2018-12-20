@@ -2,40 +2,15 @@ const generate = require('./generateData');
 const { Client } = require('pg');
 
 const client = new Client({
- 
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
 });
 
-// host: process.env.RDS_HOSTNAME,
-//  user: process.env.RDS_USERNAME,
-//  password: process.env.RDS_PASSWORD,
-//  database: process.env.RDS_DB_NAME,
-//  port: process.env.RDS_PORT,
 
 client.connect()
-
-// client.query('SELECT NOW()', (err, res) => {
-//   console.log(err, res)
-//   client.end()
-// })
-
-
-
-
- // host: process.env.DB_HOST,
- //  user: process.env.DB_USER,
- //  password: process.env.DB_PASS,
- //  database: 'hramazon',
-  // port: 9001
-
-// const con = mysql.createConnection({
-//   host: 'hramazon.cwakgm40gffr.us-west-1.rds.amazonaws.com',
-//   user: 'pikapoo',
-//   password: '123password',
-//   database: 'hramazon',
-//   // port: 3306
-// });
-
-
 // client.connect((err) => {
 //   // console.log('con.connect--------------------------------');
 //   if (err) {
@@ -110,7 +85,7 @@ exports.deleteProduct = ((id, whenDeleted) => {
     if (error) {
       console.log(error);
     } else {
-    whenDeleted();
+      whenDeleted();
     // console.log('DELETED sucessfully from products');
     }
   });

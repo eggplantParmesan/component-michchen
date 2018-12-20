@@ -20,7 +20,7 @@ app.use('/', express.static(path.join(__dirname, '/client/dist')));
 // app.use('/', express.static(__dirname + '/client/dist'));
 
 app.get('/cruddy/:productId', (req, res) => {
-  var {productId} = req.params;
+  const { productId } = req.params;
   db.getProduct(productId, (err, data) => {
     if (err) {
       res.send(err);
@@ -29,7 +29,7 @@ app.get('/cruddy/:productId', (req, res) => {
       const categories = categoryname.split('-');
       const values = varvalue.split('-');
       res.header('Access-Control-Allow-Origin', '*');
-      let newData = {
+      const newData = {
         id: id, 
         productName: productname,
         sellerName: sellername,

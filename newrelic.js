@@ -9,11 +9,11 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['My Application'],
+  app_name: ['My SDC Microservice'],
   /**
    * Your New Relic license key.
    */
-  license_key: 'c719358655a8525fed33e5b13cf023c9b12f8a3a',
+  license_key: '7dc2666b1a3be8bf9e388f352406abeac348dd63',
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
