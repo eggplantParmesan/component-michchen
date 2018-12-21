@@ -1,8 +1,8 @@
-**/database
+# **/database
 
 .env
 
-/bigFile.csv
+/database/bigFile.csv
 /newrelic.js
 
 ## MAC files ##
